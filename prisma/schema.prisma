@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Group {
+  id              Int         @default(autoincrement()) @id
+  finder          String      @unique
+  name            String
+  createdAt       DateTime    @default(now())
+  users           User[]
+}
+
+
+model User {
+  id              Int         @default(autoincrement()) @id
+  group           Group?      @relation(fields: [groupId], references: [id])
+  groupId         Int?
+  username        String      @unique
+  firstName       String
+  lastName        String
+  age             Int
+  email           String      @unique
+  password        String
+  createdAt       DateTime    @default(now())
+  currentDay      Int         @default(1)
+  streak          Int         @default(0)
+  posts           Post[]
+}
+
+model Post {
+  id              Int         @default(autoincrement()) @id
+  author          User        @relation(fields: [authorId], references: [id])
+  authorId        Int
+
+  msgEng          String
+  msgKor          String
+
+  bookEng         String?
+  bookKor         String?
+
+  chapAndVerse    String?
+
+  thoughtOnVerse1 String
+  thoughtOnVerse2 String
+  thoughtOnVerse3 String
+  thoughtOnVerse4 String
+  thoughtOnVerse5 String
+
+  showThanks1     String
+  showThanks2     String
+  showThanks3     String
+
+  isPrivate       Boolean     @default(false)
+  createdAt       DateTime    @default(now())
+}
+
+
+model Message {
+  id              Int         @default(autoincrement()) @id
+  msgEng          String
+  msgKor          String
+  bookEng         String?
+  bookKor         String?
+  chapAndVerse    String?
+}
+
+
