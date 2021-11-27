@@ -4,12 +4,10 @@ import Text from "../../Text";
 import Button from "../../Buttons/Button";
 import { motion } from "framer-motion";
 import { fadeUpVariant } from "./../../../motion/index";
-import { IErrorState } from './../../../types/index';
+import { IErrorState } from "./../../../types/index";
 
 interface ILoginErrorModal {
-  setShowLoginErrorModal: Dispatch<
-    SetStateAction<IErrorState | null>
-  >;
+  setShowLoginErrorModal: Dispatch<SetStateAction<IErrorState | null>>;
   showLoginErrorModal: IErrorState | null;
 }
 

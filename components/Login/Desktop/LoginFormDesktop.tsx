@@ -11,6 +11,7 @@ import { useRouter } from "next/dist/client/router";
 import LoginFormField from "../../FormFields/LoginFormField";
 import LoginErrorModal from "../Mobile/LoginErrorModal";
 import { fadeUpVariant } from './../../../motion/index';
+import Loading from "../../Loading";
 
 const LoginFormDesktop: React.FC = () => {
   const [showLoginErrorModal, setShowLoginErrorModal] =
@@ -66,7 +67,7 @@ const LoginFormDesktop: React.FC = () => {
         />
       )}
 
-
+{isLoading && <Loading />}
       <Text type="h1" textEng="Let's sign you in." customStyles="mb-5" />
       <Text type="h3" textEng="Welcome back." customStyles="text-gray-400" />
       <Text

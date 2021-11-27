@@ -1,6 +1,9 @@
 import AlreadyAuthenticated from "./../components/HOC/AlreadyAuthenticated";
 import { NextPage, GetServerSideProps } from "next"
+import useResponsive from './../hooks/useResponsive';
 import axios from "axios";
+import RegisterMobile from './../components/Register/Mobile/RegisterMobile';
+import RegisterDesktop from './../components/Register/Desktop/RegisterDesktop';
 
 
 export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
@@ -15,20 +18,9 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
 
 const Register: NextPage = ({}) => {
 
-    const login = async () => {
-        try {
-          const body = { email: "pjaew94@gmail.com", password: "Wnstjd77" };
-          await fetch("http://localhost:3000/api/user/login", {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body),
-          });
-        } catch (err) {
-          console.log("fuck");
-        }
-      };
+   
+  const responsive = useResponsive();
 
-      
 const logout = async () => {
     try {
       const res = await axios.post("http://localhost:3000/api/user/logout");
@@ -40,10 +32,9 @@ const logout = async () => {
   };
 
     return (
-        <div>
-            <button onClick={() => login()}>LOGIN</button>
-            <button onClick={() => logout()}>LOGOUT</button>
-        </div>
+        <div className="h-screen w-screen">
+        {responsive === "sm" || responsive ==="md" ? <RegisterMobile /> : <RegisterDesktop />}
+    </div>
     )
 }
 
