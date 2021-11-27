@@ -15,7 +15,7 @@ const LoginDeskTopDisplay: React.FC = () => {
         <TNUnderlined />
       </div>
 
-      <div className="w-9/12 mb-5">
+      <div className="w-9/12 mb-5 transition-all duration-200  lg:hover:rotate-6">
         <Image
           src="/groupImg.png"
           width="100%"

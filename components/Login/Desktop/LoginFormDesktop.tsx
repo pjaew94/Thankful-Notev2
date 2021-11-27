@@ -51,7 +51,7 @@ const LoginFormDesktop: React.FC = () => {
   return (
     <motion.form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col w-1/2 px-10 py-16 justify-center xl:py-20 2xl:px-52"
+      className="flex flex-col w-1/2 px-10 py-16 justify-center xl:py-20 2xl:px-[10%]"
       variants={fadeUpVariant}
       initial='initial'
       animate='animate'
@@ -100,7 +100,7 @@ const LoginFormDesktop: React.FC = () => {
             customStyles="mr-2 text-gray-400"
           />
           <Link href="/register">
-            <a>
+            <a className='lg:hover:text-gray-400'>
               <Text type="p" textEng="Register" customStyles="font-bold" />
             </a>
           </Link>

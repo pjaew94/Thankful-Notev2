@@ -26,7 +26,7 @@ const LoginErrorModal: React.FC<ILoginErrorModal> = ({
       />
       {/* Content */}
       <motion.div
-        className="flex flex-col w-10/12 items-center py-10 px-10 bg-gray-100 z-50 rounded-xl md:w-6/12 lg:w-4/12 xl:w-3/12 2xl:w-2/12"
+        className="flex flex-col w-10/12 items-center py-10 px-10 bg-gray-100 z-50 rounded-xl md:w-6/12 lg:w-4/12 xl:w-3/12 2xl:w-3/12"
         variants={fadeUpVariant}
         initial="initial"
         animate="animate"
