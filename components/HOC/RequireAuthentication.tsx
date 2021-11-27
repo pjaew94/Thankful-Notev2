@@ -28,7 +28,7 @@ const RequireAuthentication = (gssp: GetServerSideProps) => {
               },
             };
           } else {
-            res.setHeader(
+            return res.setHeader(
               "Set-Cookie",
               cookie.serialize("userId", dec!.user, {
                 httpOnly: true,
