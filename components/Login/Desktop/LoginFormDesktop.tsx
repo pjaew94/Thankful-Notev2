@@ -12,6 +12,7 @@ import LoginFormField from "../../FormFields/LoginFormField";
 import LoginErrorModal from "../Mobile/LoginErrorModal";
 import { fadeUpVariant } from "./../../../motion/index";
 import Loading from "../../Loading";
+import { API_URL } from './../../../helpers/url';
 
 const LoginFormDesktop: React.FC = () => {
   const [showLoginErrorModal, setShowLoginErrorModal] =
@@ -36,7 +37,7 @@ const LoginFormDesktop: React.FC = () => {
         },
       };
       await axios.post(
-        "http://localhost:3000/api/user/login",
+        `${API_URL}/api/user/login`,
         JSON.stringify(data),
         config
       );

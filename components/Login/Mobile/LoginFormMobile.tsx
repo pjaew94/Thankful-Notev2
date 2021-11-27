@@ -12,6 +12,7 @@ import LoginErrorModal from "./LoginErrorModal";
 import { useRouter } from "next/dist/client/router";
 import Loading from './../../Loading/index';
 import { IErrorState } from './../../../types/index';
+import { API_URL } from './../../../helpers/url';
 
 interface ILoginFormMobile {
   showLoginForm: boolean;
@@ -46,7 +47,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
         },
       };
       await axios.post(
-        "http://localhost:3000/api/user/login",
+        `${API_URL}/api/user/login`,
         JSON.stringify(data),
         config
       );
