@@ -31,7 +31,7 @@ const Button: React.FC<IButton> = ({
     <motion.button
       disabled={disabled}
       type={formSubmit ? "submit" : undefined}
-      className={`w-full flex justify-center items-center py-3 rounded-xl transition-all duration-200 ease-in-out  lg:hover:shadow-xl lg:hover:scale-105 ${
+      className={`w-full flex justify-center items-center py-3 rounded-xl transition-all duration-100 ease-in-out  lg:hover:shadow-xl lg:hover:scale-105 ${
         primary ? "bg-black text-gray-100" : "bg-sunnyYellow text-black"
       } ${customStyles}`}
       whileTap={{ scale: 0.98 }}

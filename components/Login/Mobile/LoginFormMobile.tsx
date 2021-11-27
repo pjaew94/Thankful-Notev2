@@ -46,7 +46,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
         },
       };
       await axios.post(
-        "http://localhost:3000/api/user/login",
+        "https://thankful-notev2.vercel.app/api/user/login",
         JSON.stringify(data),
         config
       );

@@ -10,7 +10,7 @@ import { IErrorState } from "./../../../types/index";
 import { useRouter } from "next/dist/client/router";
 import LoginFormField from "../../FormFields/LoginFormField";
 import LoginErrorModal from "../Mobile/LoginErrorModal";
-import { fadeUpVariant } from './../../../motion/index';
+import { fadeUpVariant } from "./../../../motion/index";
 import Loading from "../../Loading";
 
 const LoginFormDesktop: React.FC = () => {
@@ -36,7 +36,7 @@ const LoginFormDesktop: React.FC = () => {
         },
       };
       await axios.post(
-        "http://localhost:3000/api/user/login",
+        "https://thankful-notev2.vercel.app/api/user/login",
         JSON.stringify(data),
         config
       );
@@ -54,12 +54,10 @@ const LoginFormDesktop: React.FC = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col w-1/2 px-10 py-16 justify-center xl:py-20 2xl:px-[10%]"
       variants={fadeUpVariant}
-      initial='initial'
-      animate='animate'
+      initial="initial"
+      animate="animate"
       custom={0.6}
     >
-
-
       {showLoginErrorModal && (
         <LoginErrorModal
           showLoginErrorModal={showLoginErrorModal}
@@ -67,7 +65,7 @@ const LoginFormDesktop: React.FC = () => {
         />
       )}
 
-{isLoading && <Loading />}
+      {isLoading && <Loading />}
       <Text type="h1" textEng="Let's sign you in." customStyles="mb-5" />
       <Text type="h3" textEng="Welcome back." customStyles="text-gray-400" />
       <Text
@@ -101,7 +99,7 @@ const LoginFormDesktop: React.FC = () => {
             customStyles="mr-2 text-gray-400"
           />
           <Link href="/register">
-            <a className='lg:hover:text-gray-400'>
+            <a className="lg:hover:text-gray-400">
               <Text type="p" textEng="Register" customStyles="font-bold" />
             </a>
           </Link>

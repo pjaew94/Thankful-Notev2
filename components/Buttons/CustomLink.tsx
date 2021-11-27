@@ -20,7 +20,7 @@ const CustomLink: React.FC<ICustomLink> = ({
   customStyles,
   disabled,
 }) => {
-  return <motion.div className={`w-full flex justify-center items-center py-3 rounded-xl ${primary ? "bg-black text-gray-100" : "bg-sunnyYellow text-black"} ${customStyles}`}
+  return <motion.div className={`w-full flex justify-center items-center py-3 rounded-xl transition-all duration-100 ease-in-out  lg:hover:shadow-xl lg:hover:scale-105 ${primary ? "bg-black text-gray-100" : "bg-sunnyYellow text-black"} ${customStyles}`}
     whileTap={{scale: 0.98}}
   >
       <Link href={route}>
