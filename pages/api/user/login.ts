@@ -14,6 +14,10 @@ export default async function handler(
   try {
     const { email, password } = req.body;
 
+    // Check if valid Email
+    const validateEmail = await usersRepo.validateEmail(email);
+    if(!validateEmail) return res.status(400).json({eng: "The email you've entered is not a valid email.", kor: "입력하신 이메일은 유효한 이메일이 아닙니다."})
+
     // Check if email even exists
     const checkEmail = await usersRepo.checkEmail(email);
     if (checkEmail === false)

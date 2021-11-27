@@ -5,6 +5,7 @@ import Text from "../components/Text";
 import AlreadyAuthenticated from "./../components/HOC/AlreadyAuthenticated";
 import useResponsive from './../hooks/useResponsive';
 import LoginMobile from './../components/Login/Mobile/LoginMobile';
+import LoginDesktop from "../components/Login/Desktop/LoginDesktop";
 
 export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
   async (ctx) => {
@@ -54,7 +55,7 @@ const Login: NextPage<IText> = () => {
 
   return (
     <div className="h-screen w-screen">
-        {responsive === "sm" || responsive ==="md" ? <LoginMobile /> : <div>asdfasf</div>}
+        {responsive === "sm" || responsive ==="md" ? <LoginMobile /> : <LoginDesktop />}
     </div>
   );
 };

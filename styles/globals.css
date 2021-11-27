@@ -7,26 +7,22 @@
 @layer base {
   html,
   body {
-    @apply bg-gray-100;
+    @apply bg-gray-100 text-black;
     padding: 0;
     margin: 0;
     
   }
 
   @font-face {
-    font-family: "Shapiro";
-    src: url("./fonts/Shapiro35.otf") format("opentype");
+    font-family: "Associate Sans";
+    src: url("./fonts/AssociateSansLight.otf") format("opentype");
   }
+
   @font-face {
-    font-family: "Helvetica";
-    src: url("./fonts/Helvetica-Bold.ttf") format("truetype");
-    font-weight: 700;
+    font-family: "Touche";
+    src: url("./fonts/Touche.otf") format("opentype");
   }
-  @font-face {
-    font-family: "Helvetica";
-    src: url("./fonts/Helvetica.ttf") format("truetype");
-    font-weight: 400;
-  }
+
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,

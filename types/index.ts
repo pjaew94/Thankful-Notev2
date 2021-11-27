@@ -18,3 +18,13 @@ export interface IFullInfoData {
 
 export interface IPostFullInfo {
 }
+
+export interface ILoginForm {
+    email: string,
+    password: string
+}
+
+export interface IErrorState {
+    eng: string;
+    kor: string;
+  }

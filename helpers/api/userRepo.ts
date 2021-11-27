@@ -59,6 +59,11 @@ const getId = async(email: string): Promise<number | null> => {
     }
 }
 
+const validateEmail = async(email: string) => {
+    const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regexp.test(email);
+}
+
 
 
 
@@ -70,5 +75,6 @@ export const usersRepo = {
     checkUsername,
     checkEmail,
     getPassword,
-    getId
+    getId,
+    validateEmail
 }
