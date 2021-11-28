@@ -35,7 +35,7 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
           <LogoLink />
         </div>
         <motion.div
-          className="flex flex-col items-center px-10 py-16 h-full justify-center md:h-[600px] md:w-[400px] lg:h-full lg:w-[40%] md:py-16 md:px-0 xl:w-[30%]"
+          className="flex flex-col items-center px-10 py-16 w-full h-full justify-center md:h-[600px] md:w-[400px] lg:h-full lg:w-[40%] md:py-16 md:px-0 xl:w-[30%]"
           variants={fadeUpQuickVariant}
           initial="initial"
           animate="animate"
@@ -55,7 +55,7 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
           </div>
   
           {/* Welcome Text */}
-          <div className="flex flex-col items-center mt-5 mb-16">
+          <div className="flex flex-col items-center mt-5 md:mb-16 lg:mb-6">
             <Text type="h1" textEng="Glad You're" />
             <Text type="h1" textEng="Joining us!" />
   
@@ -66,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
             />
           </div>
   
-          <div className="flex flex-col items-center w-full mt-10">
+          <div className="flex flex-col items-center w-full mt-auto">
             <div className="flex ">
               <Text
                 type="p"

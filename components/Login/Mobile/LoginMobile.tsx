@@ -20,13 +20,13 @@ const LoginMobile: React.FC = () => {
       />
 
       <motion.div
-        className="flex flex-col h-full items-center px-10 py-16 md:h-[800px] md:w-[400px] md:p-0"
+        className="flex flex-col w-full h-full items-center px-10 py-16 md:h-[800px] md:w-[400px] md:p-0"
         variants={fadeUpVariant}
         initial="initial"
         animate="animate"
       >
         {/* Image */}
-        <div className="w-full">
+        <div className="w-3/4">
           <Image
             src="/landingImg.png"
             width="100%"

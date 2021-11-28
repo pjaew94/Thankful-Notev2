@@ -43,7 +43,7 @@ const Home: NextPage<Home> = ({userId}) => {
   return (
     <div >
         <button onClick={() => logout()}>
-          CLICK
+     
 
         </button>
     </div>
