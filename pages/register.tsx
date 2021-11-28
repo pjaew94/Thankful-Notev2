@@ -62,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
             <Text
               type="p"
               textEng="Thankful notes helps all of us to take a step back and recognize the good in our lives. Ready to get started?"
-              customStyles="text-center mt-5 "
+              customStyles="text-center mt-5 lg:w-9/12"
             />
           </div>
   

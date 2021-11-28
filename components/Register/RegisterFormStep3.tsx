@@ -7,7 +7,7 @@ import Text from "../Text";
 import {
   IErrorState,
   IRegisterData,
-  IRegisterStep3Form
+  IRegisterStep3Form,
 } from "./../../types/index";
 import { motion } from "framer-motion";
 import { fadeUpQuickVariant } from "./../../motion/index";
@@ -17,6 +17,7 @@ import { API_URL } from "../../helpers/url";
 import RegisterGroupToggle from "./IRegisterGroupToggle";
 import RegisterStep3FormField from "../FormFields/RegisterStep3FormField";
 import { useRouter } from "next/dist/client/router";
+import Link from "next/link";
 
 interface IRegisterFormStep3 {
   setRegisterStep: Dispatch<SetStateAction<1 | 2 | 3>>;
@@ -29,8 +30,7 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
   setData,
   data,
 }) => {
-
-    const router = useRouter();
+  const router = useRouter();
   const [showErrorModal, setShowErrorModal] = useState<IErrorState | null>(
     null
   );
@@ -48,34 +48,37 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
 
   useEffect(() => {
     if (data.finder && data.name) {
-        setValue("finder", data.finder);
-        setValue("name", data.name);
-      }
-  }, [])
+      setValue("finder", data.finder);
+      setValue("name", data.name);
+    }
+  }, []);
 
   const onSubmit = async (formData: IRegisterStep3Form) => {
     setIsLoading(true);
     try {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-        const {finder, name} = formData
-        const deliverData = {...data, finder, name}
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { finder, name } = formData;
+      const deliverData = { ...data, finder, name };
 
-        if(joinOrCreateGroup == "join") {
-
-            const res = await axios.post(`${API_URL}/api/group/join-group`, JSON.stringify(deliverData), config)
-            router.push('/')
-
-        } else {
-
-            const res = await axios.post(`${API_URL}/api/group/create-group`, JSON.stringify(deliverData), config);
-            router.push('/')
-        }
-
-
+      if (joinOrCreateGroup == "join") {
+        const res = await axios.post(
+          `${API_URL}/api/group/join-group`,
+          JSON.stringify(deliverData),
+          config
+        );
+        router.push("/");
+      } else {
+        const res = await axios.post(
+          `${API_URL}/api/group/create-group`,
+          JSON.stringify(deliverData),
+          config
+        );
+        router.push("/");
+      }
     } catch (err: any) {
       setShowErrorModal(err.response.data);
     }
@@ -118,23 +121,39 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
         register={register}
         customStyles="mb-5"
       />
-      {joinOrCreateGroup === "create" && <RegisterStep3FormField
-        field="name"
-        placeholder="Group Name"
-        errors={errors?.name && errors.name.message}
-        errorMsg="Please select a name for your group!"
-        register={register}
-        customStyles="mb-5"
-      />}
-
-      <div className="w-full mt-auto grid grid-cols-2 gap-3">
-        <Button
-          primary={true}
-          textEng="Back"
-          formSubmit={false}
-          onClick={() => setRegisterStep(2)}
+      {joinOrCreateGroup === "create" && (
+        <RegisterStep3FormField
+          field="name"
+          placeholder="Group Name"
+          errors={errors?.name && errors.name.message}
+          errorMsg="Please select a name for your group!"
+          register={register}
+          customStyles="mb-5"
         />
-        <Button primary={false} textEng="Join!" formSubmit={true} />
+      )}
+
+      <div className="w-full mt-auto flex flex-col items-center gap-3">
+        <div className="flex mb-2">
+          <Text
+            type="p"
+            textEng="Already a member?"
+            customStyles="mr-2 text-black"
+          />
+          <Link href="/login">
+            <a className="lg:hover:text-gray-400">
+              <Text type="p" textEng="Sign In" customStyles="font-bold" />
+            </a>
+          </Link>
+        </div>
+        <div className="w-full mt-auto grid grid-cols-2 gap-3">
+          <Button
+            primary={true}
+            textEng="Back"
+            formSubmit={false}
+            onClick={() => setRegisterStep(2)}
+          />
+          <Button primary={false} textEng="Join!" formSubmit={true} />
+        </div>
       </div>
 
       {isLoading && <Loading />}

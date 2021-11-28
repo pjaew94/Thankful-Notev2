@@ -4,12 +4,10 @@ import Button from "../Buttons/Button";
 import RegisterStep1FormField from "../FormFields/RegisterStep1FormField";
 import Loading from "../Loading";
 import Text from "../Text";
-import {
-  IRegisterData,
-  IRegisterStep1Form,
-} from "./../../types/index";
-import {motion} from 'framer-motion'
-import { fadeUpQuickVariant } from './../../motion/index';
+import { IRegisterData, IRegisterStep1Form } from "./../../types/index";
+import { motion } from "framer-motion";
+import { fadeUpQuickVariant } from "./../../motion/index";
+import Link from "next/link";
 
 interface IRegisterFormStep1 {
   setRegisterStep: Dispatch<SetStateAction<1 | 2 | 3>>;
@@ -31,21 +29,20 @@ const RegisterFormStep1: React.FC<IRegisterFormStep1> = ({
     setValue,
   } = useForm<IRegisterStep1Form>();
 
-
   useEffect(() => {
     if (data.firstName && data.lastName && data.age) {
-        setValue("firstName", data.firstName);
-        setValue("lastName", data.lastName);
-        setValue("age", data.age);
-      }
-  }, [])
+      setValue("firstName", data.firstName);
+      setValue("lastName", data.lastName);
+      setValue("age", data.age);
+    }
+  }, []);
 
   const onSubmit = async (formData: IRegisterStep1Form) => {
-    setIsLoading(true)
-    const { firstName, lastName, age} = formData
-    setData({...data, firstName, lastName, age})
-    setIsLoading(false)
-    setRegisterStep(2)
+    setIsLoading(true);
+    const { firstName, lastName, age } = formData;
+    setData({ ...data, firstName, lastName, age });
+    setIsLoading(false);
+    setRegisterStep(2);
   };
 
   return (
@@ -53,8 +50,8 @@ const RegisterFormStep1: React.FC<IRegisterFormStep1> = ({
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col h-full md:h-[600px] md:w-[400px]"
       variants={fadeUpQuickVariant}
-      initial='initial'
-      animate='animate'
+      initial="initial"
+      animate="animate"
     >
       <Text type="h3" textEng="Let's start easy." customStyles="mb-10" />
       <RegisterStep1FormField
@@ -83,7 +80,19 @@ const RegisterFormStep1: React.FC<IRegisterFormStep1> = ({
         inputType="number"
       />
 
-      <div className="w-full mt-auto">
+      <div className="flex flex-col items-center w-full mt-auto">
+        <div className="flex mb-2">
+          <Text
+            type="p"
+            textEng="Already a member?"
+            customStyles="mr-2 text-black"
+          />
+          <Link href="/login">
+            <a className="lg:hover:text-gray-400">
+              <Text type="p" textEng="Sign In" customStyles="font-bold" />
+            </a>
+          </Link>
+        </div>
         <Button primary={false} textEng="Next" formSubmit={true} />
       </div>
 

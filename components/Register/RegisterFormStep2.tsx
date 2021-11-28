@@ -14,6 +14,7 @@ import { fadeUpQuickVariant } from "./../../motion/index";
 import LoginErrorModal from "../ErrorModals";
 import axios from "axios";
 import { API_URL } from "../../helpers/url";
+import Link from "next/link";
 
 interface IRegisterFormStep2 {
   setRegisterStep: Dispatch<SetStateAction<1 | 2 | 3>>;
@@ -40,10 +41,10 @@ const RegisterFormStep2: React.FC<IRegisterFormStep2> = ({
 
   useEffect(() => {
     if (data.email && data.username) {
-        setValue("email", data.email);
-        setValue("username", data.username);
-      }
-  }, [])
+      setValue("email", data.email);
+      setValue("username", data.username);
+    }
+  }, []);
 
   const onSubmit = async (formData: IRegisterStep2Form) => {
     setIsLoading(true);
@@ -56,7 +57,7 @@ const RegisterFormStep2: React.FC<IRegisterFormStep2> = ({
       };
       const res = await axios.post(
         `${API_URL}/api/user/register-checkpoint-2`,
-        JSON.stringify( formData ),
+        JSON.stringify(formData),
         config
       );
 
@@ -103,7 +104,7 @@ const RegisterFormStep2: React.FC<IRegisterFormStep2> = ({
         errorMsg="Please select a password."
         register={register}
         customStyles="mb-5"
-        
+        inputType="password"
       />
       <RegisterStep2FormField
         field="repeatPassword"
@@ -112,16 +113,31 @@ const RegisterFormStep2: React.FC<IRegisterFormStep2> = ({
         errorMsg="Make sure the two passwords are matching."
         register={register}
         customStyles="mb-5"
+        inputType="password"
       />
 
-      <div className="w-full mt-auto grid grid-cols-2 gap-3">
-        <Button
-          primary={true}
-          textEng="Back"
-          formSubmit={false}
-          onClick={() => setRegisterStep(1)}
-        />
-        <Button primary={false} textEng="Next" formSubmit={true} />
+      <div className="w-full mt-auto flex flex-col items-center gap-3">
+        <div className="flex mb-2">
+          <Text
+            type="p"
+            textEng="Already a member?"
+            customStyles="mr-2 text-black"
+          />
+          <Link href="/login">
+            <a className="lg:hover:text-gray-400">
+              <Text type="p" textEng="Sign In" customStyles="font-bold" />
+            </a>
+          </Link>
+        </div>
+        <div className="w-full mt-auto grid grid-cols-2 gap-3">
+          <Button
+            primary={true}
+            textEng="Back"
+            formSubmit={false}
+            onClick={() => setRegisterStep(1)}
+          />
+          <Button primary={false} textEng="Next" formSubmit={true} />
+        </div>
       </div>
 
       {isLoading && <Loading />}
