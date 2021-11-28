@@ -41,7 +41,7 @@ const Home: NextPage<IHome> = ({userInfo}) => {
 
   return (
     <div className='w-screen min-h-screen overflow-x-hidden'>
-        {responsive === "sm" || responsive === "md" ? <HomeMobile /> : <HomeDesktop />}
+        {responsive === "sm" || responsive === "md" ? <HomeMobile userInfo={userInfo} /> : <HomeDesktop />}
     </div>
   )
 }
