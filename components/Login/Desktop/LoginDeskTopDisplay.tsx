@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import TNUnderlined from "../../Buttons/LogoLink";
+import LogoLink from "../../Buttons/LogoLink";
 import { fadeUpVariant } from './../../../motion/index';
 
 const LoginDeskTopDisplay: React.FC = () => {
@@ -12,7 +12,7 @@ const LoginDeskTopDisplay: React.FC = () => {
       custom={0.2}
     >
       <div className="absolute top-10 left-10">
-        <TNUnderlined />
+        <LogoLink />
       </div>
 
       <div className="w-9/12 mb-5 transition-all duration-200  lg:hover:rotate-6">

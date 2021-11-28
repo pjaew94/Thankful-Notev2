@@ -1,8 +1,8 @@
-import Text from "../Text/index";
+
 import Image from "next/image";
 import Link from "next/link";
 
-const TNUnderlined: React.FC = () => {
+const LogoLink: React.FC = () => {
   return (
     <Link href="/">
       <a>
@@ -25,4 +25,4 @@ const TNUnderlined: React.FC = () => {
   );
 };
 
-export default TNUnderlined;
+export default LogoLink;

@@ -28,3 +28,36 @@ export interface IErrorState {
     eng: string;
     kor: string;
   }
+
+export interface IRegisterStep1Form {
+    firstName: string,
+    lastName: string,
+    age: number
+}
+
+export interface IRegisterStep2Form {
+    email: string,
+    username: string,
+    password: string,
+    repeatPassword: string
+}
+
+
+export interface IRegisterStep3Form {
+    finder: string,
+    name: string
+}
+
+
+export interface IRegisterData {
+    firstName: string,
+    lastName: string,
+    age: number,
+    email: string,
+    username: string,
+    password: string,
+    repeatPassword: string,
+    finder: string,
+    name: string
+}
+

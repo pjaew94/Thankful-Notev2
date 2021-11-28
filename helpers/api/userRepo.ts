@@ -1,3 +1,6 @@
+import { groupRepo } from './groupRepos';
+import { IRegisterData } from './../../types/index';
+import  bcrypt  from 'bcryptjs';
 import prisma from '../../lib/prisma';
 
 const checkUsername = async(username: string) => {
@@ -66,8 +69,52 @@ const validateEmail = async(email: string) => {
 
 
 
+const validatePassword = async(password: string) => {
+    const regexp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9_])/
+    return regexp.test(password)
+}
+
+const hashPassword = async (password: string) => {
+        // Hash password
+        const saltRound = 10;
+        const salt = await bcrypt.genSalt(saltRound);
+        const bcryptPassword = await bcrypt.hash(password, salt);
+
+        return bcryptPassword
+}
+
+const createUser = async (data: IRegisterData) => {
+    const {
+        firstName,
+        lastName,
+        age,
+        email,
+        username,
+        password,
+        finder
+      } = data;
+
+      const hashedPassword = await hashPassword(password);
+      const numberAge = Number(age);
 
 
+
+      const user = await prisma.user.create({
+          data: {
+              firstName,
+              lastName,
+              age: numberAge,
+              email,
+              username,
+              password: hashedPassword,
+                group: {
+                    connect: { finder }
+                }
+          }
+      })
+
+      return user;
+}
 
 
 
@@ -76,5 +123,8 @@ export const usersRepo = {
     checkEmail,
     getPassword,
     getId,
-    validateEmail
+    validateEmail,
+    validatePassword,
+    hashPassword,
+    createUser
 }

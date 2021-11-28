@@ -20,7 +20,7 @@ const LoginMobile: React.FC = () => {
       />
 
       <motion.div
-        className="flex flex-col items-center px-10 py-10 md:h-[800px] md:w-[400px] md:p-0"
+        className="flex flex-col h-full items-center px-10 py-16 md:h-[800px] md:w-[400px] md:p-0"
         variants={fadeUpVariant}
         initial="initial"
         animate="animate"
@@ -54,7 +54,7 @@ const LoginMobile: React.FC = () => {
         </div>
 
         {/* Buttons */}
-        <div className="w-full flex flex-col">
+        <div className="w-full flex flex-col mt-auto">
           <Button
             onClick={() => setShowLoginForm(true)}
             textEng="Sign In"

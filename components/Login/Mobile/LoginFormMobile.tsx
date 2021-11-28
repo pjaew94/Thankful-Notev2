@@ -8,18 +8,16 @@ import Link from "next/link";
 import Button from "./../../Buttons/Button";
 import axios from "axios";
 import { useState } from "react";
-import LoginErrorModal from "./LoginErrorModal";
+import LoginErrorModal from "../../ErrorModals";
 import { useRouter } from "next/dist/client/router";
-import Loading from './../../Loading/index';
-import { IErrorState } from './../../../types/index';
-import { API_URL } from './../../../helpers/url';
+import Loading from "./../../Loading/index";
+import { IErrorState } from "./../../../types/index";
+import { API_URL } from "./../../../helpers/url";
 
 interface ILoginFormMobile {
   showLoginForm: boolean;
   setShowLoginForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
-
 
 const LoginFormMobile: React.FC<ILoginFormMobile> = ({
   showLoginForm,
@@ -27,7 +25,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
 }) => {
   const router = useRouter();
 
-  const [showLoginErrorModal, setShowLoginErrorModal] =
+  const [showErrorModal, setShowErrorModal] =
     useState<IErrorState | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -54,27 +52,19 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
 
       router.push("/");
     } catch (err: any) {
-      setShowLoginErrorModal(err.response.data);
-      reset()
+      setShowErrorModal(err.response.data);
+      reset();
     }
     setIsLoading(false);
   };
 
   return (
     <div
-      className={` flex flex-col px-10 py-10 absolute top-0 w-full h-full bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center ${
+      className={` flex flex-col px-10 py-16 absolute top-0 w-full h-full bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center ${
         showLoginForm ? "left-0" : "left-full"
       }`}
     >
-      {showLoginErrorModal && (
-        <LoginErrorModal
-          setShowLoginErrorModal={setShowLoginErrorModal}
-          showLoginErrorModal={showLoginErrorModal}
-        />
-      )}
-      {isLoading && <Loading />}
-      {/* Back Button Line */}
-      <div className="md:w-[400px]">
+       <div className="md:w-[400px]">
         <motion.button
           onClick={() => setShowLoginForm(false)}
           whileTap={{ scale: 0.95 }}
@@ -82,8 +72,11 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
           <ReplyIcon className="h-7 w-7" />
         </motion.button>
       </div>
-
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col h-full md:h-[600px] md:w-[400px]">
+      
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col h-full md:h-[600px] md:w-[400px]"
+      >
         <Text
           type="h1"
           textEng="Let's sign you in."
@@ -109,7 +102,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
           errors={errors?.password && errors.password.message}
           errorMsg="Please include your password."
           register={register}
-          isPassword={true}
+          inputType='password'
         />
 
         <div className="flex flex-col items-center mt-auto">
@@ -134,6 +127,15 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
           />
         </div>
       </form>
+
+      {showErrorModal && (
+        <LoginErrorModal
+          setShowErrorModal={setShowErrorModal}
+          showErrorModal={showErrorModal}
+        />
+      )}
+      {isLoading && <Loading />}
+      {/* Back Button Line */}
     </div>
   );
 };

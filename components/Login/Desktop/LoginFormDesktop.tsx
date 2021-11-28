@@ -9,13 +9,13 @@ import { useState } from "react";
 import { IErrorState } from "./../../../types/index";
 import { useRouter } from "next/dist/client/router";
 import LoginFormField from "../../FormFields/LoginFormField";
-import LoginErrorModal from "../Mobile/LoginErrorModal";
+import ErrorModal from "../../ErrorModals";
 import { fadeUpVariant } from "./../../../motion/index";
 import Loading from "../../Loading";
 import { API_URL } from './../../../helpers/url';
 
 const LoginFormDesktop: React.FC = () => {
-  const [showLoginErrorModal, setShowLoginErrorModal] =
+  const [showErrorModal, setShowErrorModal] =
     useState<IErrorState | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -44,7 +44,7 @@ const LoginFormDesktop: React.FC = () => {
 
       router.push("/");
     } catch (err: any) {
-      setShowLoginErrorModal(err.response.data);
+      setShowErrorModal(err.response.data);
       reset();
     }
     setIsLoading(false);
@@ -59,10 +59,10 @@ const LoginFormDesktop: React.FC = () => {
       animate="animate"
       custom={0.6}
     >
-      {showLoginErrorModal && (
-        <LoginErrorModal
-          showLoginErrorModal={showLoginErrorModal}
-          setShowLoginErrorModal={setShowLoginErrorModal}
+      {showErrorModal && (
+        <ErrorModal
+          showErrorModal={showErrorModal}
+          setShowErrorModal={setShowErrorModal}
         />
       )}
 
@@ -89,7 +89,7 @@ const LoginFormDesktop: React.FC = () => {
         errors={errors?.password && errors.password.message}
         errorMsg="Please include your password."
         register={register}
-        isPassword={true}
+        inputType="password"
       />
 
       <div className="flex flex-col items-center mt-auto">

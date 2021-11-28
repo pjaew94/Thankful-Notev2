@@ -5,7 +5,7 @@ const ThankfulNoteUnderlined: React.FC = () => {
   return (
     <div className="relative">
       <Text type="h1" textEng="Thankful Notes"  />
-      <div className="w-full absolute -bottom-5">
+      <div className="w-full absolute -bottom-3">
         <Image
           src="/underlineYellow.svg"
           height="10%"

@@ -42,13 +42,8 @@ model Post {
   author          User        @relation(fields: [authorId], references: [id])
   authorId        Int
 
-  msgEng          String
-  msgKor          String
-
-  bookEng         String?
-  bookKor         String?
-
-  chapAndVerse    String?
+  msg             Message     @relation(fields: [msgId], references: [id])
+  msgId           Int
 
   thoughtOnVerse1 String
   thoughtOnVerse2 String
@@ -67,6 +62,7 @@ model Post {
 
 model Message {
   id              Int         @default(autoincrement()) @id
+  messages        Post[]
   msgEng          String
   msgKor          String
   bookEng         String?

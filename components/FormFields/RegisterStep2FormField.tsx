@@ -1,18 +1,18 @@
 import { UseFormRegister } from "react-hook-form";
-import { ILoginForm } from "../../types";
+import { IRegisterStep2Form } from "../../types";
 import Text from "../Text";
 
-interface ILoginFormField {
-  field: "email" | "password";
+interface IRegisterStep2FormField {
+  field: "email" | "username" | "password" | "repeatPassword";
   placeholder: string;
   errors?: string;
   errorMsg: string;
-  register: UseFormRegister<ILoginForm>;
+  register: UseFormRegister<IRegisterStep2Form>;
   customStyles?: string;
-  inputType?: "password" | "number"
+  inputType?: "password" | "number";
 }
 
-const LoginFormField: React.FC<ILoginFormField> = ({
+const RegisterStep2FormField: React.FC<IRegisterStep2FormField> = ({
   field,
   placeholder,
   errors,
@@ -34,4 +34,4 @@ const LoginFormField: React.FC<ILoginFormField> = ({
   );
 };
 
-export default LoginFormField;
+export default RegisterStep2FormField;
