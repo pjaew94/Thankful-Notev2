@@ -1,5 +1,5 @@
 import { UseFormRegister } from "react-hook-form";
-import { IRegisterStep3FormCreate, IRegisterStep3FormJoin } from "../../types";
+import { IRegisterStep3Form } from "../../types";
 import Text from "../Text";
 
 interface IRegisterStep3FormField {
@@ -7,7 +7,7 @@ interface IRegisterStep3FormField {
   placeholder: string;
   errors?: string;
   errorMsg: string;
-  register: UseFormRegister<IRegisterStep3FormCreate | IRegisterStep3FormJoin>;
+  register: UseFormRegister<IRegisterStep3Form>;
   customStyles?: string;
   inputType?: "password" | "number";
 }
