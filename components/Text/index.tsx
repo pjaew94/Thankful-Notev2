@@ -14,7 +14,7 @@ const Text:React.FC<IText> = ({type, textEng, textKor, customStyles}) => {
         h3: 'font-sans text-3xl md:text-2xl xl:text-4xl',
         h4: '',
         p: 'font-serif text-sm leading-6',
-        label: '',
+        label: 'font-sans text-xl',
         button: 'font-sans text-2xl',
         error: 'text-xs text-red-400',
         

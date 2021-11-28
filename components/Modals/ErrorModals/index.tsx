@@ -1,10 +1,10 @@
 import React, { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
-import Text from "../Text";
-import Button from "../Buttons/Button";
+import Text from "../../Text";
+import Button from "../../Buttons/Button";
 import { motion } from "framer-motion";
-import { fadeUpQuickVariant } from "../../motion/index";
-import { IErrorState } from "../../types/index";
+import { fadeUpQuickVariant } from "../../../motion/index";
+import { IErrorState } from "../../../types/index";
 
 interface IErrorModal {
   setShowErrorModal: Dispatch<SetStateAction<IErrorState | null>>;

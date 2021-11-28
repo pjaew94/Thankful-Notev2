@@ -9,7 +9,7 @@ import { useState } from "react";
 import { IErrorState } from "./../../../types/index";
 import { useRouter } from "next/dist/client/router";
 import LoginFormField from "../../FormFields/LoginFormField";
-import ErrorModal from "../../ErrorModals";
+import ErrorModal from "../../Modals/ErrorModals";
 import { fadeUpVariant } from "./../../../motion/index";
 import Loading from "../../Loading";
 import { API_URL } from './../../../helpers/url';

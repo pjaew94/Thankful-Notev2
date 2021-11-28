@@ -11,7 +11,7 @@ import {
 } from "./../../types/index";
 import { motion } from "framer-motion";
 import { fadeUpQuickVariant } from "./../../motion/index";
-import LoginErrorModal from "../ErrorModals";
+import LoginErrorModal from "../Modals/ErrorModals";
 import axios from "axios";
 import { API_URL } from "../../helpers/url";
 import RegisterGroupToggle from "./IRegisterGroupToggle";

@@ -1,6 +1,6 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next'
-import prisma from './../../../lib/prisma';
+import prisma from '../../../lib/prisma';
 
 
 
@@ -9,14 +9,23 @@ import prisma from './../../../lib/prisma';
 export default async function handler ( req: NextApiRequest,
     res: NextApiResponse){
         try {
-        
+            
+
             const user = await prisma.user.findUnique({
                 where: {
-                    username: req.body.username
+                    id: req.body.id
                 },
                 select: {
-                    password: false,
-                    posts: false
+                    id: true,
+                    firstName: true,
+                    lastName: true,
+                    email: true,
+                    groupId: true,
+                    age: true,
+                    createdAt: true,
+                    currentDay: true,
+                    streak: true,
+                    username: true
                 }
             })
 
@@ -25,6 +34,7 @@ export default async function handler ( req: NextApiRequest,
             } else {
                 return res.status(200).send(user)
             }
+
 
 
 

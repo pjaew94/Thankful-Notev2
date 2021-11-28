@@ -38,6 +38,8 @@ const RequireAuthentication = (gssp: GetServerSideProps) => {
                 path: "/",
               })
             );
+
+           
           }
         })
       }

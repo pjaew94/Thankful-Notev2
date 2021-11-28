@@ -61,3 +61,17 @@ export interface IRegisterData {
     name: string
 }
 
+
+export interface IUserInfo {
+    id: number,
+    firstName: string,
+    lastName: string,
+    email: string,
+    groupId: number,
+    age: number,
+    createdAt: string,
+    currentDay: number,
+    streak: number,
+    username: string
+}
+

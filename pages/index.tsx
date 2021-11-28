@@ -1,51 +1,47 @@
 import RequireAuthentication from "./../components/HOC/RequireAuthentication";
 import { NextPage, GetServerSideProps } from "next"
-import axios from "axios";
+import useResponsive from "../hooks/useResponsive";
+import HomeMobile from "../components/Home/Mobile/HomeMobile";
+import HomeDesktop from "../components/Home/Desktop/HomeDesktop";
+import cookie from 'cookie'
+import { API_URL } from "../helpers/url";
+import { IUserInfo } from "../types";
 
 
 
 export const getServerSideProps: GetServerSideProps = RequireAuthentication(
   async (ctx) => {
+    const {req} = ctx
 
+      const { userId } = cookie.parse(req.headers!.cookie!);
+      const numberId = Number(userId)
 
-     
-    
+      const response = await fetch(`${API_URL}/api/user/full-info`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json" },
+        body: JSON.stringify({id: numberId})
+      })
+
+      
+      const userInfo = await response.json();
     return {
-      props: { },
+      props: { userInfo },
     };
   }
 );
 
-
-interface Home {
-  userId: number
+interface IHome {
+  userInfo: IUserInfo
 }
 
 
-
-
-const Home: NextPage<Home> = ({userId}) => {
-
-
-
-
- const logout = async () => {
-  try {
-    const res = await axios.post("http://localhost:3000/api/user/logout");
-
-    console.log(res);
-  } catch (err) {
-    console.log("fuck");
-  }
-};
+const Home: NextPage<IHome> = ({userInfo}) => {
+  const responsive = useResponsive()
 
 
   return (
-    <div >
-        <button onClick={() => logout()}>
-     
-
-        </button>
+    <div className='w-screen min-h-screen overflow-x-hidden'>
+        {responsive === "sm" || responsive === "md" ? <HomeMobile /> : <HomeDesktop />}
     </div>
   )
 }

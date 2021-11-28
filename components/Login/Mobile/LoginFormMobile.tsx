@@ -8,7 +8,7 @@ import Link from "next/link";
 import Button from "./../../Buttons/Button";
 import axios from "axios";
 import { useState } from "react";
-import LoginErrorModal from "../../ErrorModals";
+import LoginErrorModal from "../../Modals/ErrorModals";
 import { useRouter } from "next/dist/client/router";
 import Loading from "./../../Loading/index";
 import { IErrorState } from "./../../../types/index";
