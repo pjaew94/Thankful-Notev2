@@ -15,7 +15,9 @@ const LoginMobile: React.FC = () => {
   const deviceHeight = useDeviceHeight()
 
   return (
-    <div className={`flex relative w-full h-full items-center justify-center overflow-x-hidden`}>
+    <div className={`flex relative w-full items-center justify-center overflow-x-hidden`}
+      style={{height: deviceHeight}}
+    >
       <LoginFormMobile
         showLoginForm={showLoginForm}
         setShowLoginForm={setShowLoginForm}
