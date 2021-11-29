@@ -7,16 +7,22 @@ import Text from "../../Text";
 import ThankfulNoteUnderlined from "../../Text/ThankfulNoteUnderlined";
 import LoginFormMobile from "./LoginFormMobile";
 import { fadeUpVariant } from "./../../../motion/index";
+import useDeviceHeight from "../../../hooks/useDeviceHeight";
 
 
 const LoginMobile: React.FC = () => {
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const deviceHeight = useDeviceHeight()
 
   return (
-    <div className="flex relative w-full h-full items-center justify-center overflow-x-hidden">
-
+    <div className={`flex relative w-full ${deviceHeight} items-center justify-center overflow-x-hidden`}>
+      <LoginFormMobile
+        showLoginForm={showLoginForm}
+        setShowLoginForm={setShowLoginForm}
+      />
 
       <motion.div
-        className={`flex flex-col w-full h-full items-center px-10 pt-16 pb-24 md:h-[800px] md:w-[400px] md:p-0 `}
+        className={`flex flex-col w-full h-full items-center px-10 pt-16 pb-24 md:h-[800px] md:w-[400px] md:p-0 ${showLoginForm && "overflow-y-hidden"} `}
         variants={fadeUpVariant}
         initial="initial"
         animate="animate"
@@ -51,8 +57,8 @@ const LoginMobile: React.FC = () => {
 
         {/* Buttons */}
         <div className="w-full flex flex-col mt-auto">
-          <CustomLink
-            route="/login/mobile"
+          <Button
+            onClick={() => setShowLoginForm(true)}
             textEng="Sign In"
             textKor="로그인"
             primary={true}
