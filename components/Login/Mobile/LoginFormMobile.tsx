@@ -57,7 +57,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
         JSON.stringify(data),
         config
       );
-        router.reload();
+        router.push('/')
     } catch (err: any) {
       setShowErrorModal(err.response.data);
       reset();

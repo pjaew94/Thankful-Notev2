@@ -48,7 +48,7 @@ const LoginFormDesktop: React.FC = () => {
       );
 
 
-      router.reload();
+      router.push('/')
     } catch (err: any) {
       setShowErrorModal(err.response.data);
       reset();
