@@ -11,29 +11,27 @@ import { GetServerSideProps } from "next";
 import AlreadyAuthenticated from "../components/HOC/AlreadyAuthenticated";
 import useDeviceHeight from "../hooks/useDeviceHeight";
 
-
 export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
-    async (ctx) => {
-      return {
-        props: {},
-      };
-    }
-  );
+  async (ctx) => {
+    return {
+      props: {},
+    };
+  }
+);
 
+const RegisterMobile: React.FC = () => {
+  const [showRegisterMobileForm, setShowRegisterMobileForm] = useState(false);
 
-
-  const RegisterMobile: React.FC = () => {
-    const [showRegisterMobileForm, setShowRegisterMobileForm] = useState(false);
-    const deviceHeight = useDeviceHeight()
-  
-    return (
-      <div className='w-screen min-h-screen bg-sunnyYellow'>
-      <div className={`flex relative ${deviceHeight} pb-10 overflow-x-hidden items-center justify-center xl:pb-0 xl:h-screen`}>
+  return (
+    <div className="w-screen min-h-screen bg-sunnyYellow">
+      <div
+        className={`flex relative h-screen pb-10 overflow-x-hidden items-center justify-center xl:pb-0`}
+      >
         <RegisterForm
           setShowRegisterMobileForm={setShowRegisterMobileForm}
           showRegisterMobileForm={showRegisterMobileForm}
         />
-  
+
         <div className="absolute top-10 left-10">
           <LogoLink />
         </div>
@@ -57,19 +55,19 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
               alt="dude"
             />
           </div>
-  
+
           {/* Welcome Text */}
           <div className="flex flex-col items-center mt-5 md:mb-16 lg:mb-6">
             <Text type="h1" textEng="Glad You're" />
             <Text type="h1" textEng="Joining us!" />
-  
+
             <Text
               type="p"
               textEng="Thankful notes helps all of us to take a step back and recognize the good in our lives. Ready to get started?"
               customStyles="text-center mt-5 lg:w-9/12"
             />
           </div>
-  
+
           <div className="flex flex-col items-center w-full mt-auto">
             <div className="flex ">
               <Text
@@ -78,7 +76,7 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
                 customStyles="mr-2 text-black"
               />
               <Link href="/login">
-                <a className='lg:hover:text-gray-400'>
+                <a className="lg:hover:text-gray-400">
                   <Text type="p" textEng="Sign In" customStyles="font-bold" />
                 </a>
               </Link>
@@ -93,8 +91,8 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
           </div>
         </motion.div>
       </div>
-      </div>
-    );
-  };
-  
-  export default RegisterMobile;
+    </div>
+  );
+};
+
+export default RegisterMobile;

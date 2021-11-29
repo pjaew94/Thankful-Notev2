@@ -26,7 +26,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
   setShowLoginForm,
 }) => {
   const router = useRouter();
-  const deviceHeight = useDeviceHeight();
+
 
   const [showErrorModal, setShowErrorModal] =
     useState<IErrorState | null>(null);
