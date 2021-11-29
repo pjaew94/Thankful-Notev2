@@ -1,6 +1,6 @@
 
 
 
-export const checkToday = async(a, b) => {
+export const checkToday = async(date: string) => {
 
 }
