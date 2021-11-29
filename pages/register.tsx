@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
   
     return (
       <div className='w-screen min-h-screen bg-sunnyYellow'>
-      <div className={`flex relative h-screen overflow-x-hidden items-center justify-center xl:h-screen`}>
+      <div className={`flex relative ${deviceHeight} pb-10 overflow-x-hidden items-center justify-center xl:pb-0 xl:h-screen`}>
         <RegisterForm
           setShowRegisterMobileForm={setShowRegisterMobileForm}
           showRegisterMobileForm={showRegisterMobileForm}

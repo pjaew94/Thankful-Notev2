@@ -8,6 +8,7 @@ const useDeviceHeight = () => {
     const size: Size = useWindowSize();
 
     useEffect(() => {
+
         setDeviceHeight(Math.max(document.documentElement.clientHeight, window.innerHeight || 0).toString())
     }, [size])
 
