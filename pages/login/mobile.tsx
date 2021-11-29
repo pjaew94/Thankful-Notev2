@@ -13,7 +13,17 @@ import { useRouter } from "next/dist/client/router";
 import { API_URL } from "../../helpers/url";
 import Loading from "../../components/Loading";
 import { fadeUpQuickVariant } from "../../motion";
+import { GetServerSideProps } from "next";
+import AlreadyAuthenticated from "../../components/HOC/AlreadyAuthenticated";
 
+
+export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
+    async (ctx) => {
+      return {
+        props: {},
+      };
+    }
+  );
 
 
 
@@ -68,11 +78,12 @@ const LoginFormMobile: React.FC = ({
       
       <motion.form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col h-full md:h-[600px] md:w-[400px]"
+        className="flex flex-col justify-between h-full md:h-[600px] md:w-[400px]"
         variants={fadeUpQuickVariant}
         initial="initial"
         animate="animate"
       >
+          <div className='flex flex-col'>
         <Text
           type="h1"
           textEng="Let's sign you in."
@@ -100,8 +111,9 @@ const LoginFormMobile: React.FC = ({
           register={register}
           inputType='password'
         />
+        </div>
 
-        <div className="flex flex-col items-center mt-auto">
+        <div className="flex flex-col items-center">
           <div className="flex ">
             <Text
               type="p"
