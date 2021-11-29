@@ -27,7 +27,8 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
     const deviceHeight = useDeviceHeight()
   
     return (
-      <div className={`flex w-screen relative min-h-screen overflow-x-hidden items-center justify-center bg-sunnyYellow`}>
+      <div className='w-screen min-h-screen bg-sunnyYellow'>
+      <div className={`flex  relative ${deviceHeight} overflow-x-hidden items-center justify-center xl:h-screen`}>
         <RegisterForm
           setShowRegisterMobileForm={setShowRegisterMobileForm}
           showRegisterMobileForm={showRegisterMobileForm}
@@ -91,6 +92,7 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
             />
           </div>
         </motion.div>
+      </div>
       </div>
     );
   };

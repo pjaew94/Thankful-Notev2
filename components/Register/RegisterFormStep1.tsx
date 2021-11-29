@@ -50,11 +50,12 @@ const RegisterFormStep1: React.FC<IRegisterFormStep1> = ({
   return (
     <motion.form
       onSubmit={handleSubmit(onSubmit)}
-      className={`flex flex-col  ${deviceHeight} md:w-[400px]`}
+      className={`flex flex-col  h-full md:w-[400px]`}
       variants={fadeUpQuickVariant}
       initial="initial"
       animate="animate"
     >
+
       <Text type="h3" textEng="Let's start easy." customStyles="mb-10" />
       <RegisterStep1FormField
         field="firstName"
@@ -82,7 +83,7 @@ const RegisterFormStep1: React.FC<IRegisterFormStep1> = ({
         inputType="number"
       />
 
-      <div className="flex flex-col items-center w-full mt-28">
+      <div className="flex flex-col items-center w-full mt-auto">
         <div className="flex mb-2">
           <Text
             type="p"

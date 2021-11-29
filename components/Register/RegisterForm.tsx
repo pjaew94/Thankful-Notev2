@@ -38,7 +38,7 @@ const RegisterForm: React.FC<IRegisterForm> = ({
 
   return (
     <div
-      className={` flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full min-h-screen bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center  ${
+      className={` flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full h-full bg-gray-100 z-10 transition-all duration-500 ease-in-out md:py-36 md:justify-center md:items-center lg:pt-16 lg:pb-24 xl:pb-36 xl:pt-28 ${
         showRegisterMobileForm ? "left-0" : "left-full"
       }`}
     >
@@ -52,7 +52,7 @@ const RegisterForm: React.FC<IRegisterForm> = ({
             <ReplyIcon className="h-7 w-7" />
           </motion.button>
         </div>
-      ) : <div className='absolute left-10 top-10'>
+      ) : <div className='absolute left-10 top-16'>
           <LogoLink />
         </div>}
 
