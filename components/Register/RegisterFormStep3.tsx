@@ -99,7 +99,7 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
   return (
     <motion.form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex overflow-y-scroll flex-col h-full md:h-[600px] md:w-[400px]"
+      className="flex h-screen flex-col md:h-[600px] md:w-[400px]"
       variants={fadeUpQuickVariant}
       initial="initial"
       animate="animate"

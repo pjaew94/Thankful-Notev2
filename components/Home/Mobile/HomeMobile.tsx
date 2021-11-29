@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { userInfo } from "os";
 import { useState } from "react";
+import { checkToday } from "../../../helpers/check-today";
 import { IUserInfo } from "../../../types";
 
 import CustomLink from "../../Buttons/CustomLink";
@@ -43,7 +44,9 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, havePostedToday}) => {
 
 
                 {/* Statistics */}
-
+                <button onClick={() => console.log(checkToday('asd'))}>
+                    TEST
+                </button>
                  
             </div>
         </div>
