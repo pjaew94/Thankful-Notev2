@@ -1,8 +1,8 @@
 import { NextPage, GetServerSideProps } from "next";
-import AlreadyAuthenticated from "./../components/HOC/AlreadyAuthenticated";
-import useResponsive from './../hooks/useResponsive';
-import LoginMobile from './../components/Login/Mobile/LoginMobile';
-import LoginDesktop from "../components/Login/Desktop/LoginDesktop";
+import AlreadyAuthenticated from "../../components/HOC/AlreadyAuthenticated";
+import useResponsive from '../../hooks/useResponsive';
+import LoginMobile from '../../components/Login/Mobile/LoginMobile';
+import LoginDesktop from "../../components/Login/Desktop/LoginDesktop";
 
 export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
   async (ctx) => {

@@ -3,7 +3,6 @@ import { NextPage, GetServerSideProps } from "next";
 import useResponsive from "../hooks/useResponsive";
 import HomeMobile from "../components/Home/Mobile/HomeMobile";
 import HomeDesktop from "../components/Home/Desktop/HomeDesktop";
-import cookie from "cookie";
 import { API_URL } from "../helpers/url";
 import { IUserInfo } from "../types";
 

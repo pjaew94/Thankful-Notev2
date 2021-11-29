@@ -10,17 +10,13 @@ import { fadeUpVariant } from "./../../../motion/index";
 
 
 const LoginMobile: React.FC = () => {
-  const [showLoginForm, setShowLoginForm] = useState(false);
 
   return (
     <div className="flex relative w-full h-full items-center justify-center overflow-x-hidden">
-      <LoginFormMobile
-        showLoginForm={showLoginForm}
-        setShowLoginForm={setShowLoginForm}
-      />
+
 
       <motion.div
-        className={`flex flex-col w-full h-full items-center px-10 pt-16 pb-24 md:h-[800px] md:w-[400px] md:p-0 ${showLoginForm && "overflow-y-hidden"} `}
+        className={`flex flex-col w-full h-full items-center px-10 pt-16 pb-24 md:h-[800px] md:w-[400px] md:p-0 `}
         variants={fadeUpVariant}
         initial="initial"
         animate="animate"
@@ -55,8 +51,8 @@ const LoginMobile: React.FC = () => {
 
         {/* Buttons */}
         <div className="w-full flex flex-col mt-auto">
-          <Button
-            onClick={() => setShowLoginForm(true)}
+          <CustomLink
+            route="/login/mobile"
             textEng="Sign In"
             textKor="로그인"
             primary={true}
