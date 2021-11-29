@@ -15,6 +15,7 @@ import LoginErrorModal from "../Modals/ErrorModals";
 import axios from "axios";
 import { API_URL } from "../../helpers/url";
 import Link from "next/link";
+import useDeviceHeight from "../../hooks/useDeviceHeight";
 
 interface IRegisterFormStep2 {
   setRegisterStep: Dispatch<SetStateAction<1 | 2 | 3>>;
@@ -27,6 +28,7 @@ const RegisterFormStep2: React.FC<IRegisterFormStep2> = ({
   setData,
   data,
 }) => {
+  const deviceHeight = useDeviceHeight();
   const [showErrorModal, setShowErrorModal] = useState<IErrorState | null>(
     null
   );
@@ -75,7 +77,7 @@ const RegisterFormStep2: React.FC<IRegisterFormStep2> = ({
   return (
     <motion.form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex h-screen flex-col md:h-[600px] md:w-[400px]"
+      className={`flex ${deviceHeight} flex-col md:h-[600px] md:w-[400px]`}
       variants={fadeUpQuickVariant}
       initial="initial"
       animate="animate"

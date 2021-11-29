@@ -8,6 +8,7 @@ import { IRegisterData, IRegisterStep1Form } from "./../../types/index";
 import { motion } from "framer-motion";
 import { fadeUpQuickVariant } from "./../../motion/index";
 import Link from "next/link";
+import useDeviceHeight from "../../hooks/useDeviceHeight";
 
 interface IRegisterFormStep1 {
   setRegisterStep: Dispatch<SetStateAction<1 | 2 | 3>>;
@@ -20,6 +21,7 @@ const RegisterFormStep1: React.FC<IRegisterFormStep1> = ({
   setData,
   data,
 }) => {
+  const deviceHeight = useDeviceHeight();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -48,7 +50,7 @@ const RegisterFormStep1: React.FC<IRegisterFormStep1> = ({
   return (
     <motion.form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex h-screen flex-col md:h-[600px] md:w-[400px]"
+      className={`flex ${deviceHeight} flex-col md:h-[600px] md:w-[400px]`}
       variants={fadeUpQuickVariant}
       initial="initial"
       animate="animate"

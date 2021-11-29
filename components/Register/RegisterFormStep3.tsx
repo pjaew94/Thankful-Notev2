@@ -18,6 +18,7 @@ import RegisterGroupToggle from "./IRegisterGroupToggle";
 import RegisterStep3FormField from "../FormFields/RegisterStep3FormField";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
+import useDeviceHeight from "../../hooks/useDeviceHeight";
 
 interface IRegisterFormStep3 {
   setRegisterStep: Dispatch<SetStateAction<1 | 2 | 3>>;
@@ -30,6 +31,7 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
   setData,
   data,
 }) => {
+  const deviceHeight = useDeviceHeight();
   const router = useRouter();
   const [showErrorModal, setShowErrorModal] = useState<IErrorState | null>(
     null
@@ -99,7 +101,7 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
   return (
     <motion.form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex h-screen flex-col md:h-[600px] md:w-[400px]"
+      className={`flex ${deviceHeight} flex-col md:h-[600px] md:w-[400px]`}
       variants={fadeUpQuickVariant}
       initial="initial"
       animate="animate"
