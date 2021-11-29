@@ -6,22 +6,22 @@ import HomeDesktop from "../components/Home/Desktop/HomeDesktop";
 import { API_URL } from "../helpers/url";
 import { IUserInfo } from "../types";
 
-export const getServerSideProps: GetServerSideProps = RequireAuthentication(
-  async (ctx) => {
-    const { req } = ctx;
-    let userInfo;
-    const userId = req.cookies["userId"];
-    const response = await fetch(`${API_URL}/api/user/full-info`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: Number(userId) }),
-    });
-    userInfo = await response.json();
-    return {
-      props: { userInfo },
-    };
-  }
-);
+// export const getServerSideProps: GetServerSideProps = RequireAuthentication(
+//   async (ctx) => {
+//     const { req } = ctx;
+//     let userInfo;
+//     const userId = req.cookies["userId"];
+//     const response = await fetch(`${API_URL}/api/user/full-info`, {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ id: Number(userId) }),
+//     });
+//     userInfo = await response.json();
+//     return {
+//       props: { userInfo },
+//     };
+//   }
+// );
 
 interface IHome {
   userInfo: IUserInfo;
