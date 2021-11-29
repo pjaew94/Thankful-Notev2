@@ -46,7 +46,7 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
           custom={0.2}
         >
           {/* Image */}
-          <div className="w-full md:w-9/12 lg:w-9/12">
+          <div className="w-9/12 md:w-9/12 lg:w-9/12">
             <Image
               src="/register.png"
               width="100%"
