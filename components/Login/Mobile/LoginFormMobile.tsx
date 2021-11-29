@@ -68,7 +68,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
 
   return (
     <div
-      className={`flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full h-full bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center ${
+      className={`flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full h-full bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center  ${
         showLoginForm ? "left-0" : "left-full"
       }`}
     >
@@ -83,7 +83,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
       
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col h-full w-full md:py-32 md:px-32"
+        className="flex flex-col h-full w-full md:py-32 md:px-44"
       >
         <Text
           type="h1"

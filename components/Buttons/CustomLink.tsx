@@ -9,6 +9,7 @@ interface ICustomLink {
   textKor?: string;
   customStyles?: string;
   disabled?: boolean;
+  children?: React.ReactNode
 }
 
 
@@ -19,12 +20,15 @@ const CustomLink: React.FC<ICustomLink> = ({
   textKor,
   customStyles,
   disabled,
+  children
 }) => {
   return <motion.div className={`w-full flex justify-center items-center py-3 rounded-xl transition-all duration-100 ease-in-out  lg:hover:shadow-xl lg:hover:scale-105 ${primary ? "bg-black text-gray-100" : "bg-sunnyYellow text-black"} ${customStyles}`}
     whileTap={{scale: 0.98}}
   >
       <Link href={route}>
-           <a><Text type='button' textEng={textEng} textKor={textKor} /></a>
+           <a><Text type='button' textEng={textEng} textKor={textKor} />
+            {children}
+           </a>
       </Link>
   </motion.div>;
 };
