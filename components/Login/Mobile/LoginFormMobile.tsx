@@ -13,20 +13,20 @@ import { useRouter } from "next/dist/client/router";
 import Loading from "./../../Loading/index";
 import { IErrorState } from "./../../../types/index";
 import { API_URL } from "./../../../helpers/url";
-import { helperVar } from "../../../helpers/helperVar";
+import useDeviceHeight from "../../../hooks/useDeviceHeight";
 
 interface ILoginFormMobile {
   showLoginForm: boolean;
   setShowLoginForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const deviceHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0).toString()
 
 const LoginFormMobile: React.FC<ILoginFormMobile> = ({
   showLoginForm,
   setShowLoginForm,
 }) => {
   const router = useRouter();
+  const deviceHeight = useDeviceHeight();
 
   const [showErrorModal, setShowErrorModal] =
     useState<IErrorState | null>(null);
@@ -57,13 +57,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
         JSON.stringify(data),
         config
       );
-
-
-
         router.reload();
-
-
-
     } catch (err: any) {
       setShowErrorModal(err.response.data);
       reset();
@@ -74,7 +68,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
 
   return (
     <div
-      className={` flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full h-screen bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center ${
+      className={` flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full h-[${deviceHeight ? deviceHeight : '0'}px] bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center ${
         showLoginForm ? "left-0" : "left-full"
       }`}
     >

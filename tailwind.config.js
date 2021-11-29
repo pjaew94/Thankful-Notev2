@@ -1,3 +1,7 @@
+
+
+
+
 module.exports = {
   mode: 'jit',
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
@@ -13,12 +17,12 @@ module.exports = {
         "spaceBlack": "#18171E",
         "black": "#111111",
         "sunnyYellow": "#F7E353"
-      }
+      },
     },
   },
   variants: {
     extend: {
-      
+
     },
   },
   plugins: [],

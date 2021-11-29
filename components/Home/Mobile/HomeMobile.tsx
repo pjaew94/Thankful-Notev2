@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { userInfo } from "os";
 import { useState } from "react";
 import { helperFunc } from "../../../helpers/helperFunc";
+import useDeviceHeight from "../../../hooks/useDeviceHeight";
 
 import { IUserInfo } from "../../../types";
 
