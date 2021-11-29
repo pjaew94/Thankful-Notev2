@@ -9,6 +9,7 @@ import RegisterFormStep2 from "./RegisterFormStep2";
 import RegisterFormStep3 from "./RegisterFormStep3";
 import useResponsive from "../../hooks/useResponsive";
 import LogoLink from "../Buttons/LogoLink";
+import useDeviceHeight from "../../hooks/useDeviceHeight";
 
 interface IRegisterForm {
   showRegisterMobileForm: boolean;
@@ -33,16 +34,17 @@ const RegisterForm: React.FC<IRegisterForm> = ({
   });
 
   const responsive = useResponsive();
+  const deviceHeight = useDeviceHeight();
 
   return (
     <div
-      className={` flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full h-full bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center  ${
+      className={` flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full min-h-screen bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center  ${
         showRegisterMobileForm ? "left-0" : "left-full"
       }`}
     >
       {}
       {responsive === "sm" || responsive === "md" ? (
-        <div className="md:w-[400px]">
+        <div className="md:absolute md:left-10 md:top-10">
           <motion.button
             onClick={() => setShowRegisterMobileForm(false)}
             whileTap={{ scale: 0.95 }}

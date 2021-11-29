@@ -101,7 +101,7 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
   return (
     <motion.form
       onSubmit={handleSubmit(onSubmit)}
-      className={`flex ${deviceHeight} flex-col md:h-[600px] md:w-[400px]`}
+      className={`flex ${deviceHeight} flex-col md:w-[400px]`}
       variants={fadeUpQuickVariant}
       initial="initial"
       animate="animate"

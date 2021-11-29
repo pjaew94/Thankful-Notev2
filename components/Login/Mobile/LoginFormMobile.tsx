@@ -72,7 +72,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
         showLoginForm ? "left-0" : "left-full"
       }`}
     >
-       <div className="md:w-[400px]">
+       <div className="md:absolute left-10 top-10">
         <motion.button
           onClick={() => setShowLoginForm(false)}
           whileTap={{ scale: 0.95 }}
@@ -83,7 +83,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
       
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col h-full md:h-[600px] md:w-[400px]"
+        className="flex flex-col h-full w-full md:py-32 md:px-32"
       >
         <Text
           type="h1"

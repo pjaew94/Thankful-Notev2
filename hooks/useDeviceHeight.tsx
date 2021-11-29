@@ -9,7 +9,7 @@ const useDeviceHeight = () => {
         setDeviceHeight(Math.max(document.documentElement.clientHeight, window.innerHeight || 0).toString())
     }, [])
 
-    return "h-[" + deviceHeight + "px]"
+    return "min-h-[" + deviceHeight + "px]"
 }
 
 export default useDeviceHeight

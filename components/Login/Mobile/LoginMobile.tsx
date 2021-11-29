@@ -22,7 +22,7 @@ const LoginMobile: React.FC = () => {
       />
 
       <motion.div
-        className={`flex flex-col w-full h-full items-center px-10 pt-16 pb-24 md:h-[800px] md:w-[400px] md:p-0 ${showLoginForm && "overflow-y-hidden"} `}
+        className={`flex flex-col w-full h-full items-center px-10 pt-16 pb-24  md:p-48 `}
         variants={fadeUpVariant}
         initial="initial"
         animate="animate"

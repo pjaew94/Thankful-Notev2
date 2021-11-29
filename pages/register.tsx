@@ -27,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
     const deviceHeight = useDeviceHeight()
   
     return (
-      <div className={`flex w-screen relative ${deviceHeight} overflow-x-hidden items-center justify-center bg-sunnyYellow`}>
+      <div className={`flex w-screen relative min-h-screen overflow-x-hidden items-center justify-center bg-sunnyYellow`}>
         <RegisterForm
           setShowRegisterMobileForm={setShowRegisterMobileForm}
           showRegisterMobileForm={showRegisterMobileForm}
@@ -36,15 +36,16 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
         <div className="absolute top-10 left-10">
           <LogoLink />
         </div>
+
         <motion.div
-          className="flex flex-col  items-center px-10 pt-16 pb-24 w-full h-full justify-between md:h-[600px] md:w-[400px] lg:h-full lg:w-[40%] md:py-20 md:px-0 xl:w-[30%]"
+          className="flex flex-col  items-center px-10 pt-16 pb-24 w-full h-full md:p-48  lg:h-full lg:w-[40%] lg:px-0 lg:pt-16 lg:pb-24 xl:w-[30%]"
           variants={fadeUpQuickVariant}
           initial="initial"
           animate="animate"
           custom={0.2}
         >
           {/* Image */}
-          <div className="w-full lg:w-9/12">
+          <div className="w-full md:w-9/12 lg:w-9/12">
             <Image
               src="/register.png"
               width="100%"
@@ -68,7 +69,7 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
             />
           </div>
   
-          <div className="flex flex-col items-center w-full">
+          <div className="flex flex-col items-center w-full mt-auto">
             <div className="flex ">
               <Text
                 type="p"
