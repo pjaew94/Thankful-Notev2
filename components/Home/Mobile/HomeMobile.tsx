@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { userInfo } from "os";
 import { useState } from "react";
-import { checkToday } from "../../../helpers/check-today";
+import { helperFunc } from "../../../helpers/helperFunc";
+
 import { IUserInfo } from "../../../types";
 
 import CustomLink from "../../Buttons/CustomLink";
@@ -44,7 +45,7 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, havePostedToday}) => {
 
 
                 {/* Statistics */}
-                <button onClick={() => console.log(checkToday('asd'))}>
+                <button onClick={() => helperFunc.checkToday('2021-11-28 01:59:25.986')}>
                     TEST
                 </button>
                  

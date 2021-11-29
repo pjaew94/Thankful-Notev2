@@ -13,6 +13,7 @@ import { useRouter } from "next/dist/client/router";
 import Loading from "./../../Loading/index";
 import { IErrorState } from "./../../../types/index";
 import { API_URL } from "./../../../helpers/url";
+import { helperVar } from "../../../helpers/helperVar";
 
 interface ILoginFormMobile {
   showLoginForm: boolean;
@@ -70,7 +71,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
 
   return (
     <div
-      className={` flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full h-screen bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center ${
+      className={` flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full h-[${helperVar.deviceDimensions.h}] bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center ${
         showLoginForm ? "left-0" : "left-full"
       }`}
     >
@@ -85,7 +86,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
       
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col h-screen md:h-[600px] md:w-[400px]"
+        className="flex flex-col h-full md:h-[600px] md:w-[400px]"
       >
         <Text
           type="h1"
