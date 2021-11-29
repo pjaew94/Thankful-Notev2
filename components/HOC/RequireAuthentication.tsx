@@ -18,20 +18,18 @@ const RequireAuthentication = (gssp: GetServerSideProps) => {
     if (req.headers.cookie) {
       const {token, userId} = cookie.parse(req.headers.cookie);
       
-      // if(token && process.env.JWTSECRET && !userId) {
-      //   jwt.verify(token, process.env.JWTSECRET, (err, dec) => {
-      //     if(err){
-      //       return {
-      //         redirect: {
-      //           permanent: false,
-      //           destination: '/login',
-      //         },
-      //       };
-      //     } else {
-      //       next;
-      //     }
-      //   })
-      // }
+      if(token && process.env.JWTSECRET && !userId) {
+        jwt.verify(token, process.env.JWTSECRET, (err, dec) => {
+          if(err){
+            return {
+              redirect: {
+                permanent: false,
+                destination: '/login',
+              },
+            };
+          }
+        })
+      }
 
 
 
