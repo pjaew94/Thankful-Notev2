@@ -7,12 +7,9 @@ import Text from "../../Text";
 import ThankfulNoteUnderlined from "../../Text/ThankfulNoteUnderlined";
 import LoginFormMobile from "./LoginFormMobile";
 import { fadeUpVariant } from "./../../../motion/index";
-import useDeviceHeight from "../../../hooks/useDeviceHeight";
-
 
 const LoginMobile: React.FC = () => {
   const [showLoginForm, setShowLoginForm] = useState(false);
-  const deviceHeight = useDeviceHeight()
 
   return (
     <div className={`flex relative w-full h-[812px] md:h-full md:min-h-[768px] items-center justify-center overflow-x-hidden`}

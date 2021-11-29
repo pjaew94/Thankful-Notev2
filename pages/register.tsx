@@ -9,7 +9,7 @@ import Button from "../components/Buttons/Button";
 import RegisterForm from "../components/Register/RegisterForm";
 import { GetServerSideProps } from "next";
 import AlreadyAuthenticated from "../components/HOC/AlreadyAuthenticated";
-import useDeviceHeight from "../hooks/useDeviceHeight";
+
 
 export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
   async (ctx) => {
