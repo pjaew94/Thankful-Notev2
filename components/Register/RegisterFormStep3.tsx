@@ -70,11 +70,21 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
           JSON.stringify(deliverData),
           config
         );
+        await axios.post(
+          `${API_URL}/api/user/set-id-header`,
+          JSON.stringify(data),
+          config
+        );
         router.push("/");
       } else {
         const res = await axios.post(
           `${API_URL}/api/group/create-group`,
           JSON.stringify(deliverData),
+          config
+        );
+        await axios.post(
+          `${API_URL}/api/user/set-id-header`,
+          JSON.stringify(data),
           config
         );
         router.push("/");

@@ -41,6 +41,12 @@ const LoginFormDesktop: React.FC = () => {
         JSON.stringify(data),
         config
       );
+      await axios.post(
+        `${API_URL}/api/user/set-id-header`,
+        JSON.stringify(data),
+        config
+      );
+
 
       router.reload();
     } catch (err: any) {

@@ -49,8 +49,18 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
         JSON.stringify(data),
         config
       );
+      await axios.post(
+        `${API_URL}/api/user/set-id-header`,
+        JSON.stringify(data),
+        config
+      );
 
-      router.reload();
+
+
+        router.reload();
+
+
+
     } catch (err: any) {
       setShowErrorModal(err.response.data);
       reset();
@@ -60,7 +70,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
 
   return (
     <div
-      className={` flex flex-col px-10 py-16 absolute top-0 w-full h-screen bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center ${
+      className={` flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full h-screen bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center ${
         showLoginForm ? "left-0" : "left-full"
       }`}
     >

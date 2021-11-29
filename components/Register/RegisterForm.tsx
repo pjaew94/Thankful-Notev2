@@ -36,7 +36,7 @@ const RegisterForm: React.FC<IRegisterForm> = ({
 
   return (
     <div
-      className={` flex flex-col px-10 py-16 absolute top-0 w-full h-full bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center  ${
+      className={` flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full h-full bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center  ${
         showRegisterMobileForm ? "left-0" : "left-full"
       }`}
     >

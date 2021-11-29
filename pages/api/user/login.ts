@@ -41,7 +41,7 @@ export default async function handler(
 
     // Create token and set cookie for auth
     const id = await usersRepo.getId(email);
-    if (process.env.JWTSECRET && isCorrectPassword && checkEmail && validateEmail) {
+    if (process.env.JWTSECRET && isCorrectPassword && checkEmail && validateEmail && id) {
       const token = jwt.sign({ user: id }, process.env.JWTSECRET, {
         expiresIn: "1hr",
       });

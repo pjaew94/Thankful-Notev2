@@ -9,7 +9,7 @@ const AlreadyAuthenticated = (gssp: GetServerSideProps) => {
     const { req } = ctx;
 
     if (req.headers.cookie) {
-      const {token} = cookie.parse(req.headers.cookie);
+      const token = req.cookies['token'];
 
       if (token) {
         return {

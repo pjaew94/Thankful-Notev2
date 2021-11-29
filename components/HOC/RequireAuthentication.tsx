@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import next, { GetServerSideProps, GetServerSidePropsContext } from "next";
 import cookie from 'cookie'
 import jwt from 'jsonwebtoken';
 import dotenv from "dotenv";
@@ -13,7 +13,7 @@ const RequireAuthentication = (gssp: GetServerSideProps) => {
 
 
   return async (ctx: GetServerSidePropsContext) => {
-    const { req, res } = ctx;
+    const { req } = ctx;
 
     if (req.headers.cookie) {
       const {token, userId} = cookie.parse(req.headers.cookie);
@@ -28,18 +28,7 @@ const RequireAuthentication = (gssp: GetServerSideProps) => {
               },
             };
           } else {
-            return res.setHeader(
-              "Set-Cookie",
-              cookie.serialize("userId", dec!.user, {
-                httpOnly: true,
-                secure: process.env.NODE_ENV !== "development",
-                maxAge: 60 * 60,
-                sameSite: "strict",
-                path: "/",
-              })
-            );
-
-           
+            next;
           }
         })
       }
