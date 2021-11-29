@@ -32,17 +32,18 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, havePostedToday}) => {
 
                 {/* Todays Post */}
                 <motion.div className='px-10 py-10 border-b border-gray-200'>
-                {havePostedToday ? <div></div> : <div className='flex flex-col'>
-                    <Text type='h1' textEng={"Welcome back, " + userInfo.firstName + "!"} customStyles='text-6xl  mb-10' />
-                    <Text type='p' textEng="It looks like you haven't posted today. Let's not forget to take our daily breather and give thanks." customStyles='text-gray-500' />
-                    <Text type='p' textEng="What are you waiting for?" customStyles='mt-5 text-gray-500' />
-                    <Text type='p' textEng="Your group is waiting!" customStyles='mb-16 text-gray-500' />
-                    <CustomLink route='/post-form' textEng='Get Started!' primary={false} />
-                </div>}
+                    {havePostedToday ? <div></div> : <div className='flex flex-col'>
+                        <Text type='h1' textEng={"Welcome back, " + userInfo.firstName + "!"} customStyles='text-6xl  mb-10' />
+                        <Text type='p' textEng="It looks like you haven't posted today. Let's not forget to take our daily breather and give thanks." customStyles='text-gray-500' />
+                        <Text type='p' textEng="What are you waiting for?" customStyles='mt-5 text-gray-500' />
+                        <Text type='p' textEng="Your group is waiting!" customStyles='mb-16 text-gray-500' />
+                        <CustomLink route='/post-form' textEng='Get Started!' primary={false} />
+                    </div>}
                 </motion.div>
 
 
                 {/* Statistics */}
+
                  
             </div>
         </div>
