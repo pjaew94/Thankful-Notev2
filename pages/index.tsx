@@ -13,17 +13,18 @@ export const getServerSideProps: GetServerSideProps = RequireAuthentication(
   async (ctx) => {
     const {req} = ctx
 
+    let userInfo
+    if(req.headers.cookie){
       const { userId } = cookie.parse(req.headers!.cookie!);
-      const numberId = Number(userId)
 
       const response = await fetch(`${API_URL}/api/user/full-info`, {
         method: "POST",
         headers: {"Content-Type": "application/json" },
-        body: JSON.stringify({id: numberId})
+        body: JSON.stringify({id: Number(userId)})
       })
 
-      
-      const userInfo = await response.json();
+      userInfo = await response.json();
+    }
     return {
       props: { userInfo },
     };
@@ -35,12 +36,22 @@ interface IHome {
 }
 
 
+
+
 const Home: NextPage<IHome> = ({userInfo}) => {
   const responsive = useResponsive()
+
+  const button = () => {
+    console.log(userInfo);
+  }
 
 
   return (
     <div className='w-screen min-h-screen overflow-x-hidden'>
+
+      <button onClick={() => button()}>
+        sdasfasfafasfaf
+      </button>
         {responsive === "sm" || responsive === "md" ? <HomeMobile userInfo={userInfo} havePostedToday={false} /> : <HomeDesktop />}
     </div>
   )

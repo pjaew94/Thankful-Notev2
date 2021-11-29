@@ -21,7 +21,7 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, havePostedToday}) => {
 
     return (
         <div className='w-full overflow-x-hidden'>
-
+ 
             {/* Navbar and logout Modals all Absolute/sticky */}
             {showLogoutModal && <LogoutModal setShowLogoutModal={setShowLogoutModal} />}
             <NavTopMobile setOpenSideNav={setOpenSideNav} />
@@ -29,6 +29,8 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, havePostedToday}) => {
 
             {/* Content */}
             <div className='flex flex-col w-full'>
+
+                {/* Todays Post */}
                 <motion.div className='px-10 py-10 border-b border-gray-200'>
                 {havePostedToday ? <div></div> : <div className='flex flex-col'>
                     <Text type='h1' textEng={"Welcome back, " + userInfo.firstName + "!"} customStyles='text-6xl  mb-10' />
@@ -38,6 +40,10 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, havePostedToday}) => {
                     <CustomLink route='/post-form' textEng='Get Started!' primary={false} />
                 </div>}
                 </motion.div>
+
+
+                {/* Statistics */}
+                 
             </div>
         </div>
     )
