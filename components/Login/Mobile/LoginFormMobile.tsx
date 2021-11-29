@@ -20,6 +20,8 @@ interface ILoginFormMobile {
   setShowLoginForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+export const deviceHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0).toString()
+
 const LoginFormMobile: React.FC<ILoginFormMobile> = ({
   showLoginForm,
   setShowLoginForm,
@@ -69,9 +71,10 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
     setIsLoading(false);
   };
 
+
   return (
     <div
-      className={` flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full h-[${helperVar.deviceDimensions.h}] bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center ${
+      className={` flex flex-col px-10 pt-16 pb-24 absolute top-0 w-full h-[${deviceHeight}px] bg-gray-100 z-10 transition-all duration-500 ease-in-out md:justify-center md:items-center ${
         showLoginForm ? "left-0" : "left-full"
       }`}
     >
