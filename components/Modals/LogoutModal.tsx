@@ -19,7 +19,7 @@ const LogoutModal: React.FC<ILogoutModal> = ({ setShowLogoutModal }) => {
 
     const logOut = async() => {
         await axios.get(`${API_URL}/api/user/logout`);
-        // await axios.get(`${API_URL}/api/user/remove-user`);
+        await axios.get(`${API_URL}/api/user/remove-user`);
         router.push('/login')
     }
 
