@@ -15,42 +15,42 @@ const RequireAuthentication = (gssp: GetServerSideProps) => {
   return async (ctx: GetServerSidePropsContext) => {
     const { req } = ctx;
 
-    // if (req.headers.cookie) {
-    //   const {token, userId} = cookie.parse(req.headers.cookie);
+    if (req.headers.cookie) {
+      const {token, userId} = cookie.parse(req.headers.cookie);
       
-    //   if(token && process.env.JWTSECRET && !userId) {
-    //     jwt.verify(token, process.env.JWTSECRET, (err, dec) => {
-    //       if(err){
-    //         return {
-    //           redirect: {
-    //             permanent: false,
-    //             destination: '/login',
-    //           },
-    //         };
-    //       } else {
-    //         next;
-    //       }
-    //     })
-    //   }
+      // if(token && process.env.JWTSECRET && !userId) {
+      //   jwt.verify(token, process.env.JWTSECRET, (err, dec) => {
+      //     if(err){
+      //       return {
+      //         redirect: {
+      //           permanent: false,
+      //           destination: '/login',
+      //         },
+      //       };
+      //     } else {
+      //       next;
+      //     }
+      //   })
+      // }
 
 
 
-    //   if (!token) {
-    //     return {
-    //       redirect: {
-    //         permanent: false,
-    //         destination: '/login',
-    //       },
-    //     };
-    //   }
-    // } else {
-    //   return {
-    //     redirect: {
-    //       permanent: false,
-    //       destination: '/login',
-    //     },
-    //   };
-    // }
+      if (!token) {
+        return {
+          redirect: {
+            permanent: false,
+            destination: '/login',
+          },
+        };
+      }
+    } else {
+      return {
+        redirect: {
+          permanent: false,
+          destination: '/login',
+        },
+      };
+    }
     return await gssp(ctx);
   };
 };
