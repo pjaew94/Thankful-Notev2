@@ -9,6 +9,7 @@ import Button from "../components/Buttons/Button";
 import RegisterForm from "../components/Register/RegisterForm";
 import { GetServerSideProps } from "next";
 import AlreadyAuthenticated from "../components/HOC/AlreadyAuthenticated";
+import useDeviceHeight from "../hooks/useDeviceHeight";
 
 
 export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
@@ -23,9 +24,10 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
 
   const RegisterMobile: React.FC = () => {
     const [showRegisterMobileForm, setShowRegisterMobileForm] = useState(false);
+    const deviceHeight = useDeviceHeight()
   
     return (
-      <div className="flex w-screen relative h-screen items-center justify-center overflow-hidden bg-sunnyYellow">
+      <div className={`flex w-screen relative ${deviceHeight} overflow-x-hidden items-center justify-center bg-sunnyYellow`}>
         <RegisterForm
           setShowRegisterMobileForm={setShowRegisterMobileForm}
           showRegisterMobileForm={showRegisterMobileForm}
@@ -35,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
           <LogoLink />
         </div>
         <motion.div
-          className="flex flex-col items-center px-10 pt-16 pb-24 w-full h-full justify-center md:h-[600px] md:w-[400px] lg:h-full lg:w-[40%] md:py-20 md:px-0 xl:w-[30%]"
+          className="flex flex-col  items-center px-10 pt-16 pb-24 w-full h-full justify-between md:h-[600px] md:w-[400px] lg:h-full lg:w-[40%] md:py-20 md:px-0 xl:w-[30%]"
           variants={fadeUpQuickVariant}
           initial="initial"
           animate="animate"
@@ -66,7 +68,7 @@ export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
             />
           </div>
   
-          <div className="flex flex-col items-center w-full mt-auto">
+          <div className="flex flex-col items-center w-full">
             <div className="flex ">
               <Text
                 type="p"
