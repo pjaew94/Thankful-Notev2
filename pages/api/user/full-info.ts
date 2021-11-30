@@ -1,7 +1,6 @@
 import { usersRepo } from './../../../helpers/api/userRepo';
 
 import type { NextApiRequest, NextApiResponse } from 'next'
-import prisma from '../../../lib/prisma';
 
 
 
@@ -10,9 +9,9 @@ import prisma from '../../../lib/prisma';
 export default async function handler ( req: NextApiRequest,
     res: NextApiResponse){
         try {
-            
+            let user;
 
-            const user = await usersRepo.getFullInfo(req.body.id)
+                user = await usersRepo.getFullInfo(req.body.id)
 
             if(!user) {
                 return res.status(400).json({eng: "The user does not exist.", kor: "사용자가 존재하지 않습니다."})

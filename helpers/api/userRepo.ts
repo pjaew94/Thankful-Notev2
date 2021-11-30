@@ -129,6 +129,43 @@ const getFullInfo = async(userId: number) => {
     return user
 }
 
+const getFullInfoUsername = async(username: string) => {
+    const user = await prisma.user.findUnique({
+        where: {
+            username: username
+        },
+        include: {
+            posts: {
+                include: {
+                    author : {
+                        select: {
+                            firstName: true,
+                            username: true
+                        }
+                    },
+                    msg: {
+                        select: {
+                            bookEng: true,
+                            bookKor: true,
+                            msgEng: true,
+                            msgKor: true,
+                            chapAndVerse: true,
+
+
+                        }
+                    }
+                },
+                orderBy: {
+                    createdAt: 'desc',
+                }
+            }
+        },
+        
+    })
+
+    return user
+}
+
 
 const updateUserCurrentDay = async(userId: number, msgId: number) => {
     const user = await prisma.user.update({
@@ -155,5 +192,6 @@ export const usersRepo = {
     hashPassword,
     createUser,
     getFullInfo,
-    updateUserCurrentDay
+    updateUserCurrentDay,
+    getFullInfoUsername
 }

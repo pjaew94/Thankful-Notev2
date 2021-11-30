@@ -19,6 +19,33 @@ export interface IFullInfoData {
 }
 
 export interface IPostFullInfo {
+    author: {
+        firstName: string,
+        username: string
+    },
+    authorId: number,
+
+    createdAt: string,
+    groupId: number,
+    id: number,
+    isPrivate: boolean,
+    msg: {
+        bookEng: string | null,
+        bookKor: string | null,
+        msgEng: string,
+        msgKor: string,
+        chapAndVerse: string | null,
+    },
+    
+    msgId: number,
+    thoughtOnVerse1: string
+    thoughtOnVerse2: string
+    thoughtOnVerse3: string
+    thoughtOnVerse4: string
+    thoughtOnVerse5: string
+    showThanks1: string
+    showThanks2: string
+    showThanks3: string
 }
 
 export interface ILoginForm {
