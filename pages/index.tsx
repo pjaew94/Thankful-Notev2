@@ -2,9 +2,9 @@ import RequireAuthentication from "./../components/HOC/RequireAuthentication";
 import { NextPage, GetServerSideProps } from "next";
 import useResponsive from "../hooks/useResponsive";
 import HomeMobile from "../components/Home/Mobile/HomeMobile";
-import HomeDesktop from "../components/Home/Desktop/HomeDesktop";
 import { API_URL } from "../helpers/url";
 import { IGroupInfo, IUserInfo } from "../types";
+import HomeDesktop from "../components/Home/Desktop/HomeDesktop";
 
 export const getServerSideProps: GetServerSideProps = RequireAuthentication(
   async (ctx) => {
@@ -55,7 +55,7 @@ const Home: NextPage<IHome> = ({ userInfo, hasPostedToday, groupInfo }) => {
       {responsive === "sm" || responsive === "md" ? (
         <HomeMobile userInfo={userInfo} groupInfo={groupInfo} hasPostedToday={hasPostedToday} />
       ) : (
-        <HomeDesktop />
+        <HomeDesktop userInfo={userInfo} groupInfo={groupInfo} hasPostedToday={hasPostedToday} />
       )}
     </div>
   );

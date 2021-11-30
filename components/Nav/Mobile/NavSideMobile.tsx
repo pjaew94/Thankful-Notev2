@@ -15,13 +15,15 @@ interface INavSideMobile {
   setOpenSideNav: Dispatch<SetStateAction<boolean>>;
   openSideNav: boolean;
   currentPage: "home" | "group" | "post";
+  groupRoute: string,
 }
 
 const NavSideMobile: React.FC<INavSideMobile> = ({
   setOpenSideNav,
   openSideNav,
   currentPage,
-  setShowLogoutModal
+  setShowLogoutModal,
+  groupRoute
 }) => {
   return (
     <div
@@ -30,10 +32,10 @@ const NavSideMobile: React.FC<INavSideMobile> = ({
       }`}
     >
       {/* Left Backdrop to click to close */}
-      <div className="w-5/12 h-full" onClick={() => setOpenSideNav(false)} />
+      <div className="w-5/12 md:w-8/12 h-full" onClick={() => setOpenSideNav(false)} />
 
       {/* Content */}
-      <div className="relative flex flex-col px-10 py-16 w-7/12 h-full bg-gray-100 border-l border-gray-200">
+      <div className="relative flex flex-col px-10 py-16 w-7/12 h-full bg-gray-100 border-l border-gray-200 md:w-4/12">
         <button
           className="absolute top-8 right-10"
           onClick={() => setOpenSideNav(false)}
@@ -50,7 +52,7 @@ const NavSideMobile: React.FC<INavSideMobile> = ({
             )}
           </a>
         </Link>
-        <Link href="/group">
+        <Link href={groupRoute}>
           <a className="flex items-center w-full relative">
             <UserGroupIcon className="w-4 h-4 mr-3 " />
             <Text type="label" textEng="Group" />

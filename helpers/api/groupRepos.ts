@@ -64,7 +64,31 @@ const getFullInfo = async (groupId: number) => {
     },
     include: {
       users: true,
-      posts: true
+      posts: {
+        include: {
+          author : {
+              select: {
+                  firstName: true,
+                  lastName: true,
+                  username: true
+              }
+          },
+          msg: {
+              select: {
+                  bookEng: true,
+                  bookKor: true,
+                  msgEng: true,
+                  msgKor: true,
+                  chapAndVerse: true,
+
+
+              }
+          }
+      },
+      orderBy: {
+          createdAt: 'desc',
+      }
+      }
     }
   })
 

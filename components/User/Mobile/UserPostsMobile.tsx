@@ -29,7 +29,7 @@ const UserPostsMobile:React.FC<IUserPostsMobile> = ({userInfo, visitorInfo}) => 
             {/* Navbar and logout Modals all Absolute/sticky */}
             {showLogoutModal && <LogoutModal setShowLogoutModal={setShowLogoutModal} />}
             <NavTopMobile setOpenSideNav={setOpenSideNav} />
-            <NavSideMobile setOpenSideNav={setOpenSideNav} openSideNav={openSideNav} setShowLogoutModal={setShowLogoutModal} currentPage="post" />
+            <NavSideMobile setOpenSideNav={setOpenSideNav} openSideNav={openSideNav} setShowLogoutModal={setShowLogoutModal} currentPage="post" groupRoute={`/group/${userInfo.groupId}`} />
 
             <motion.div className='flex flex-col px-10'
                 variants={fadeUpQuickVariant}
@@ -74,11 +74,7 @@ const UserPostsMobile:React.FC<IUserPostsMobile> = ({userInfo, visitorInfo}) => 
                     />
                 })}
             </motion.div>
-
-
-        {console.log(userInfo)}
-        {console.log(visitorInfo)}
-            
+           
         </div>
     )
 }

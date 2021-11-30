@@ -52,7 +52,7 @@ const PostFormPage: NextPage<IPostFormPage> = ({todaysMessage, userId, groupInfo
     {responsive === "sm" || responsive === "md" ? (
         <PostFormMobile todaysMessage={todaysMessage} groupInfo={groupInfo} userId={userId} />
       ) : (
-        <PostFormDesktop />
+        <PostFormDesktop todaysMessage={todaysMessage} groupInfo={groupInfo} userId={userId} />
       )}
         </div>
 

@@ -35,13 +35,12 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday, groupInfo})
             {/* Navbar and logout Modals all Absolute/sticky */}
             {showLogoutModal && <LogoutModal setShowLogoutModal={setShowLogoutModal} />}
             <NavTopMobile setOpenSideNav={setOpenSideNav} />
-            <NavSideMobile setOpenSideNav={setOpenSideNav} openSideNav={openSideNav} setShowLogoutModal={setShowLogoutModal} currentPage="home" />
+            <NavSideMobile setOpenSideNav={setOpenSideNav} openSideNav={openSideNav} setShowLogoutModal={setShowLogoutModal} currentPage="home" groupRoute={`/group/${userInfo.groupId}`} />
 
             {/* Content */}
             <div className='flex flex-col w-full'>
-    
                 {/* Todays Post */}
-                <motion.div className='px-10 py-10 border-b border-gray-200'
+                <motion.div className='px-10 py-10 border-b border-gray-200 md:px-48'
                 variants={fadeUpQuickVariant}
                 initial='initial'
                 animate='animate'
@@ -51,7 +50,7 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday, groupInfo})
                     <Text type='h1Extra' textEng={"Hey, " + userInfo.firstName + "!"} customStyles='mb-10' />
                     <Text type='p' textEng="You've already posted today!" customStyles='text-gray-500' />
                     <Text type='p' textEng="Want to check out how your group was thankful today?" customStyles='mb-16 text-gray-500' />
-                    <CustomLink route={`/group/${userInfo.groupId}/posts`} textEng='Group' primary={true} />
+                    <CustomLink route={`/group/${userInfo.groupId}`} textEng='Group' primary={true} />
                     </div> : <div className='flex flex-col'>
                         <Text type='h1Extra' textEng={"Welcome back, " + userInfo.firstName + "!"} customStyles='mb-10' />
                         <Text type='p' textEng="It looks like you haven't posted today. Let's not forget to take our daily breather and give thanks." customStyles='text-gray-500' />
@@ -63,7 +62,7 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday, groupInfo})
 
 
                 {/* Statistics */}
-                <motion.div className='flex flex-col py-10 px-10'
+                <motion.div className='flex flex-col py-10 px-10 md:px-48'
                                 variants={fadeUpQuickVariant}
                                 initial='initial'
                                 animate='animate'

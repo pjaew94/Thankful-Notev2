@@ -57,7 +57,7 @@ const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage, userId, grou
   };
 
   return (
-    <div className="w-full flex flex-col min-h-[812px] pt-20 mb-20">
+    <div className="w-full flex flex-col min-h-[812px] pt-20 mb-20 md:px-28 md:items-center">
       {/* Navbar and logout Modals all Absolute/sticky */}
       {showLogoutModal && (
         <LogoutModal setShowLogoutModal={setShowLogoutModal} />
@@ -68,6 +68,7 @@ const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage, userId, grou
         openSideNav={openSideNav}
         setShowLogoutModal={setShowLogoutModal}
         currentPage="post"
+        groupRoute={`/group/${groupInfo.id}`}
       />
       {isLoading && <Loading />}
 

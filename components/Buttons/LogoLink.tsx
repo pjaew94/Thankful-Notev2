@@ -10,8 +10,8 @@ const LogoLink: React.FC<ILogoLink> = ({yellow}) => {
     <Link href="/">
       <a>
         <div className="relative cursor-pointer lg:hover:scale-110">
-          <div className={`font-sans text-4xl font-bold z-50`}>t.n</div>
-          <div className="w-full absolute -bottom-3 z-0">
+          <div className={`font-sans text-4xl font-bold z-50 lg:text-5xl`}>t.n</div>
+          <div className="w-full absolute -bottom-3 z-0 lg:w-7/12">
             <Image
               src={yellow ? "/underlineYellow2.svg" :  "/underlineBlack2.svg"}
               height="50%"
