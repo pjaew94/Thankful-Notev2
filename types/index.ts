@@ -1,3 +1,5 @@
+
+
 export interface IErrorEngKor {
     eng: string,
     kor: string
@@ -72,7 +74,8 @@ export interface IUserInfo {
     createdAt: string,
     currentDay: number,
     streak: number,
-    username: string
+    username: string,
+    posts: IPostFullInfo[]
 }
 
 export interface IMessage {
@@ -98,5 +101,15 @@ export interface IPostForm {
 
 export interface ICreatePostData extends IPostForm {
     msgId: number,
-    userId: number
+    userId: number,
+    groupId: number
+}
+
+export interface IGroupInfo {
+    id: number,
+    createdAt: string,
+    finder: string,
+    name: string,
+    posts: IPostFullInfo[]
+    users: IUserInfo[]
 }

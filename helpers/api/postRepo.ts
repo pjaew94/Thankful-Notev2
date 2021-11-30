@@ -38,7 +38,8 @@ const createPost = async (formData: ICreatePostData) => {
     showThanks3,
     isPrivate,
     msgId,
-    userId
+    userId,
+    groupId
   } = formData;
 
   const post = await prisma.post.create({
@@ -57,6 +58,9 @@ const createPost = async (formData: ICreatePostData) => {
       },
       msg: {
         connect: {id: msgId}
+      },
+      group: {
+        connect: {id: groupId}
       }
     },
   });

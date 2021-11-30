@@ -1,9 +1,11 @@
 import axios from "axios";
+import { motion } from "framer-motion";
 import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { API_URL } from "../../../helpers/url";
-import { IMessage, IPostForm } from "../../../types";
+import { fadeUpQuickVariant } from "../../../motion";
+import { IGroupInfo, IMessage, IPostForm } from "../../../types";
 import Button from "../../Buttons/Button";
 import PostFormField from "../../FormFields/PostFormField";
 import PostFormPrivateToggle from "../../FormFields/PostPrivateToggle";
@@ -15,9 +17,10 @@ import Text from "../../Text";
 
 interface IPostFormMobile {
   todaysMessage: IMessage;
-  userId: number
+  userId: number;
+  groupInfo: IGroupInfo
 }
-const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage, userId }) => {
+const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage, userId, groupInfo }) => {
 
   const router = useRouter();
   const { id, bookEng, bookKor, msgKor, msgEng, chapAndVerse } = todaysMessage;
@@ -40,7 +43,7 @@ const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage, userId }) =>
           "Content-Type": "application/json"
         }
       }
-      const finalData = {...data, isPrivate: isPrivate, msgId: id, userId}
+      const finalData = {...data, isPrivate: isPrivate, msgId: id, userId, groupId: groupInfo.id}
     console.log(finalData);
 
     try {
@@ -68,9 +71,13 @@ const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage, userId }) =>
       />
       {isLoading && <Loading />}
 
-      <form
+      <motion.form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col px-10 py-10"
+        variants={fadeUpQuickVariant}
+        initial='initial'
+        animate='animate'
+        custom='0.2'
       >
         <Text type="h1Extra" textEng={"Day " + id} customStyles="mb-10" />
         <Text type="h4" textEng="Today's Message" customStyles="mb-5" />
@@ -196,7 +203,7 @@ const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage, userId }) =>
           textKor="올리기"
           customStyles="mt-16"
         />
-      </form>
+      </motion.form>
     </div>
   );
 };

@@ -121,17 +121,8 @@ const getFullInfo = async(userId: number) => {
         where: {
             id: userId
         },
-        select: {
-            id: true,
-            firstName: true,
-            lastName: true,
-            email: true,
-            groupId: true,
-            age: true,
-            createdAt: true,
-            currentDay: true,
-            streak: true,
-            username: true
+        include: {
+            posts: true
         }
     })
 

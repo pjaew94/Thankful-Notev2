@@ -6,7 +6,7 @@ import PostFormMobile from "../../components/Post/Mobile/PostFormMobile";
 import { API_URL } from "../../helpers/url";
 
 import useResponsive from "../../hooks/useResponsive";
-import { IMessage } from "../../types";
+import { IGroupInfo, IMessage } from "../../types";
 
 
 
@@ -19,12 +19,18 @@ export const getServerSideProps: GetServerSideProps = RequireAuthentication(
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: Number(userId) }),
     })
+    const getGroupInfo = await fetch(`${API_URL}/api/group/info`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: Number(userId) }),
+    })
 
     const todaysMessage = await response.json();
+    const groupInfo = await getGroupInfo.json()
 
 
     return {
-      props: {todaysMessage, userId: Number(userId)},
+      props: {todaysMessage, userId: Number(userId), groupInfo},
     };
   }
 )
@@ -32,18 +38,19 @@ export const getServerSideProps: GetServerSideProps = RequireAuthentication(
 interface IPostFormPage {
   todaysMessage: IMessage
   userId: number
+  groupInfo: IGroupInfo
 }
 
 
 
 
-const PostFormPage: NextPage<IPostFormPage> = ({todaysMessage, userId}) => {
+const PostFormPage: NextPage<IPostFormPage> = ({todaysMessage, userId, groupInfo}) => {
 
     const responsive = useResponsive();
     return (
         <div className='min-h-screen w-screen'>
     {responsive === "sm" || responsive === "md" ? (
-        <PostFormMobile todaysMessage={todaysMessage} userId={userId} />
+        <PostFormMobile todaysMessage={todaysMessage} groupInfo={groupInfo} userId={userId} />
       ) : (
         <PostFormDesktop />
       )}

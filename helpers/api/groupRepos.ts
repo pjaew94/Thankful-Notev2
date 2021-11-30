@@ -57,7 +57,22 @@ const createGroupAndUser = async (data: IRegisterData) => {
   
 };
 
+const getFullInfo = async (groupId: number) => {
+  const group = await prisma.group.findUnique({
+    where: {
+      id: groupId
+    },
+    include: {
+      users: true,
+      posts: true
+    }
+  })
+
+  return group
+}
+
 export const groupRepo = {
   groupExist,
   createGroupAndUser,
+  getFullInfo
 };

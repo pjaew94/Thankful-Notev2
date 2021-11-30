@@ -4,7 +4,7 @@ import useResponsive from "../hooks/useResponsive";
 import HomeMobile from "../components/Home/Mobile/HomeMobile";
 import HomeDesktop from "../components/Home/Desktop/HomeDesktop";
 import { API_URL } from "../helpers/url";
-import { IUserInfo } from "../types";
+import { IGroupInfo, IUserInfo } from "../types";
 
 export const getServerSideProps: GetServerSideProps = RequireAuthentication(
   async (ctx) => {
@@ -21,12 +21,19 @@ export const getServerSideProps: GetServerSideProps = RequireAuthentication(
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: Number(userId) }),
     })
+    const getGroupInfo = await fetch(`${API_URL}/api/group/info`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: Number(userId) }),
+    })
 
     const userInfo = await user.json();
+    const groupInfo = await getGroupInfo.json();
     const hasPostedToday = await checkTodayCall.json();
+  
 
     return {
-      props: { userInfo, hasPostedToday },
+      props: { userInfo, hasPostedToday, groupInfo },
     };
   }
 );
@@ -34,10 +41,11 @@ export const getServerSideProps: GetServerSideProps = RequireAuthentication(
 interface IHome {
   userInfo: IUserInfo;
   hasPostedToday: boolean;
+  groupInfo: IGroupInfo
   
 }
 
-const Home: NextPage<IHome> = ({ userInfo, hasPostedToday }) => {
+const Home: NextPage<IHome> = ({ userInfo, hasPostedToday, groupInfo }) => {
 
   const responsive = useResponsive();
 
@@ -45,7 +53,7 @@ const Home: NextPage<IHome> = ({ userInfo, hasPostedToday }) => {
     <div className="w-screen min-h-screen overflow-x-hidden">
 
       {responsive === "sm" || responsive === "md" ? (
-        <HomeMobile userInfo={userInfo} hasPostedToday={hasPostedToday} />
+        <HomeMobile userInfo={userInfo} groupInfo={groupInfo} hasPostedToday={hasPostedToday} />
       ) : (
         <HomeDesktop />
       )}

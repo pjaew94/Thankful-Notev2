@@ -1,13 +1,14 @@
 import axios from "axios";
 import { motion } from "framer-motion";
 import { userInfo } from "os";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { postRepo } from "../../../helpers/api/postRepo";
 import { helperFunc } from "../../../helpers/helperFunc";
 import { API_URL } from "../../../helpers/url";
 import useDeviceHeight from "../../../hooks/useDeviceHeight";
+import { fadeUpQuickVariant } from "../../../motion";
 
-import { IUserInfo } from "../../../types";
+import { IGroupInfo, IUserInfo } from "../../../types";
 
 import CustomLink from "../../Buttons/CustomLink";
 import LogoutModal from "../../Modals/LogoutModal";
@@ -19,14 +20,15 @@ import Text from "../../Text";
 interface IHomeMobile {
     userInfo: IUserInfo,
     hasPostedToday: boolean;
+    groupInfo: IGroupInfo
 }
 
-const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday}) => {
+const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday, groupInfo}) => {
     const [openSideNav, setOpenSideNav] = useState(false);
     const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-    const button = async () => {
-      }
+    let groupDateCreated = helperFunc.convertDate(groupInfo.createdAt)
+
 
     return (
         <div className='w-full overflow-x-hidden pt-20'>
@@ -40,7 +42,12 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday}) => {
             <div className='flex flex-col w-full'>
 
                 {/* Todays Post */}
-                <motion.div className='px-10 py-10 border-b border-gray-200'>
+                <motion.div className='px-10 py-10 border-b border-gray-200'
+                variants={fadeUpQuickVariant}
+                initial='initial'
+                animate='animate'
+                custom='0.2'
+                >
                     {hasPostedToday ? <div className='flex flex-col'>
                     <Text type='h1Extra' textEng={"Hey, " + userInfo.firstName + "!"} customStyles='mb-10' />
                     <Text type='p' textEng="You've already posted today!" customStyles='text-gray-500' />
@@ -57,9 +64,26 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday}) => {
 
 
                 {/* Statistics */}
-                {console.log(hasPostedToday)}
+                {console.log(groupInfo)}
+                {console.log(userInfo)}
+                <div className='flex flex-col py-10 px-10'>
+                    <Text type='h1' textEng='Statistic' textKor='' customStyles='mb-2' />
+                    <Text type='p' textEng="Here are a few things we know about you so far!" customStyles='text-gray-500' />
+                    
+                    <div className='flex flex-col mt-10'>
+                        <Text type='p' textEng={"🖐️ You've been a member since " + groupDateCreated}  textKor={"🖐️ 감사노트 가입한 날짜: " + groupDateCreated} customStyles='mb-2' />
+                        <Text type='p' textEng={`📋 You've posted ${userInfo.posts.length}  ${userInfo.posts.length === 1 ? 'time.' : 'times.'}`}  textKor={"📋 게시올린 수: " + userInfo.posts.length} customStyles='mb-2' />
+                        <Text type='p' textEng={"❤️ You're associated with the group " + groupInfo.name}  textKor={"❤️ 그룹 이름: " + groupInfo.name} customStyles='mb-2' />
+                        <Text type='p' textEng={`🙌 Your group posted ${groupInfo.posts.length}  ${groupInfo.posts.length === 1 ? 'time.' : 'times.'}`}   textKor={"🙌 그룹 게시올린 수: " + groupInfo.posts.length} customStyles='mb-2' />
 
-                 
+
+
+
+                    </div>
+
+                </div>
+
+
             </div>
         </div>
     )
