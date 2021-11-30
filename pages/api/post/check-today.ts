@@ -8,8 +8,8 @@ export default async function handler(
     res: NextApiResponse
   ) {
     try {
-      const {userId} = req.body
-        const response = await postRepo.checkIfPostedToday(userId);
+      const {id} = req.body
+        const response = await postRepo.checkIfPostedToday(id);
 
         return res.status(200).send(response)
 

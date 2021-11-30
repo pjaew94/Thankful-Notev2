@@ -2,6 +2,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { userInfo } from "os";
 import { useState } from "react";
+import { postRepo } from "../../../helpers/api/postRepo";
 import { helperFunc } from "../../../helpers/helperFunc";
 import { API_URL } from "../../../helpers/url";
 import useDeviceHeight from "../../../hooks/useDeviceHeight";
@@ -25,7 +26,6 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday}) => {
     const [showLogoutModal, setShowLogoutModal] = useState(false);
 
     const button = async () => {
-        
       }
 
     return (
@@ -41,7 +41,12 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday}) => {
 
                 {/* Todays Post */}
                 <motion.div className='px-10 py-10 border-b border-gray-200'>
-                    {hasPostedToday ? <div></div> : <div className='flex flex-col'>
+                    {hasPostedToday ? <div className='flex flex-col'>
+                    <Text type='h1Extra' textEng={"Hey, " + userInfo.firstName + "!"} customStyles='mb-10' />
+                    <Text type='p' textEng="You've already posted today!" customStyles='text-gray-500' />
+                    <Text type='p' textEng="Want to check out how your group was thankful today?" customStyles='mb-16 text-gray-500' />
+                    <CustomLink route='/group/posts' textEng='Group' primary={true} />
+                    </div> : <div className='flex flex-col'>
                         <Text type='h1Extra' textEng={"Welcome back, " + userInfo.firstName + "!"} customStyles='mb-10' />
                         <Text type='p' textEng="It looks like you haven't posted today. Let's not forget to take our daily breather and give thanks." customStyles='text-gray-500' />
                         <Text type='p' textEng="What are you waiting for?" customStyles='mt-5 text-gray-500' />
@@ -52,9 +57,8 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday}) => {
 
 
                 {/* Statistics */}
-                <button onClick={() => button()}>
-                    TESTasdasf
-                </button>
+                {console.log(hasPostedToday)}
+
                  
             </div>
         </div>

@@ -4,6 +4,7 @@ import { helperFunc } from "./../helperFunc";
 import prisma from "../../lib/prisma";
 
 const checkIfPostedToday = async (userId: number) => {
+
   const mostRecentPostDate = await prisma.post.findFirst({
     where: {
       authorId: userId,

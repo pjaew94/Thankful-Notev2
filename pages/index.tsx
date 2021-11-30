@@ -15,8 +15,12 @@ export const getServerSideProps: GetServerSideProps = RequireAuthentication(
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: Number(userId) }),
     });
-    const checkTodayCall = await fetch(`${API_URL}/api/post/check-today`)
     
+    const checkTodayCall = await fetch(`${API_URL}/api/post/check-today`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: Number(userId) }),
+    })
 
     const userInfo = await user.json();
     const hasPostedToday = await checkTodayCall.json();
@@ -29,7 +33,8 @@ export const getServerSideProps: GetServerSideProps = RequireAuthentication(
 
 interface IHome {
   userInfo: IUserInfo;
-  hasPostedToday: boolean
+  hasPostedToday: boolean;
+  
 }
 
 const Home: NextPage<IHome> = ({ userInfo, hasPostedToday }) => {

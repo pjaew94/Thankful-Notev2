@@ -139,6 +139,20 @@ const getFullInfo = async(userId: number) => {
 }
 
 
+const updateUserCurrentDay = async(userId: number, msgId: number) => {
+    const user = await prisma.user.update({
+        where: {
+            id: userId
+        },
+        data: {
+            currentDay: msgId + 1
+        }
+    })
+
+    return user
+}
+
+
 
 export const usersRepo = {
     checkUsername,
@@ -149,5 +163,6 @@ export const usersRepo = {
     validatePassword,
     hashPassword,
     createUser,
-    getFullInfo
+    getFullInfo,
+    updateUserCurrentDay
 }
