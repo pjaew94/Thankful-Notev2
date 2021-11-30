@@ -16,6 +16,7 @@ export const getServerSideProps: GetServerSideProps = RequireAuthentication(
       body: JSON.stringify({ id: Number(userId) }),
     });
     const checkTodayCall = await fetch(`${API_URL}/api/post/check-today`)
+    
 
     const userInfo = await user.json();
     const hasPostedToday = await checkTodayCall.json();

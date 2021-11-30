@@ -24,25 +24,26 @@ export const getServerSideProps: GetServerSideProps = RequireAuthentication(
 
 
     return {
-      props: {todaysMessage},
+      props: {todaysMessage, userId: Number(userId)},
     };
   }
 )
 
 interface IPostFormPage {
   todaysMessage: IMessage
+  userId: number
 }
 
 
 
 
-const PostFormPage: NextPage<IPostFormPage> = ({todaysMessage}) => {
+const PostFormPage: NextPage<IPostFormPage> = ({todaysMessage, userId}) => {
 
     const responsive = useResponsive();
     return (
         <div className='min-h-screen w-screen'>
     {responsive === "sm" || responsive === "md" ? (
-        <PostFormMobile todaysMessage={todaysMessage} />
+        <PostFormMobile todaysMessage={todaysMessage} userId={userId} />
       ) : (
         <PostFormDesktop />
       )}

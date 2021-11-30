@@ -62,7 +62,7 @@ model Post {
 
 model Message {
   id              Int         @default(autoincrement()) @id
-  messages        Post[]
+  posts           Post[]
   msgEng          String
   msgKor          String
   bookEng         String?

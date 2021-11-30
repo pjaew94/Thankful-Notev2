@@ -14,7 +14,7 @@ interface INavSideMobile {
     setShowLogoutModal: Dispatch<SetStateAction<boolean>>;
   setOpenSideNav: Dispatch<SetStateAction<boolean>>;
   openSideNav: boolean;
-  currentPage: "home" | "group";
+  currentPage: "home" | "group" | "post";
 }
 
 const NavSideMobile: React.FC<INavSideMobile> = ({

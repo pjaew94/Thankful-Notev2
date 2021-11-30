@@ -95,3 +95,8 @@ export interface IPostForm {
     showThanks3: string,
     isPrivate: boolean
 }
+
+export interface ICreatePostData extends IPostForm {
+    msgId: number,
+    userId: number
+}

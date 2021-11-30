@@ -29,7 +29,7 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday}) => {
       }
 
     return (
-        <div className='w-full overflow-x-hidden'>
+        <div className='w-full overflow-x-hidden pt-20'>
  
             {/* Navbar and logout Modals all Absolute/sticky */}
             {showLogoutModal && <LogoutModal setShowLogoutModal={setShowLogoutModal} />}

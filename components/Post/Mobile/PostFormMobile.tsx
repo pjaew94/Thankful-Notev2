@@ -1,9 +1,13 @@
 import axios from "axios";
+import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { API_URL } from "../../../helpers/url";
 import { IMessage, IPostForm } from "../../../types";
+import Button from "../../Buttons/Button";
 import PostFormField from "../../FormFields/PostFormField";
+import PostFormPrivateToggle from "../../FormFields/PostPrivateToggle";
+import Loading from "../../Loading";
 import LogoutModal from "../../Modals/LogoutModal";
 import NavSideMobile from "../../Nav/Mobile/NavSideMobile";
 import NavTopMobile from "../../Nav/Mobile/NavTopMobile";
@@ -11,11 +15,16 @@ import Text from "../../Text";
 
 interface IPostFormMobile {
   todaysMessage: IMessage;
+  userId: number
 }
-const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage }) => {
+const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage, userId }) => {
+
+  const router = useRouter();
   const { id, bookEng, bookKor, msgKor, msgEng, chapAndVerse } = todaysMessage;
   const [openSideNav, setOpenSideNav] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [isPrivate, setIsPrivate] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -24,10 +33,28 @@ const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage }) => {
     reset,
   } = useForm<IPostForm>();
 
-  const onSubmit = async () => {};
+  const onSubmit = async (data: IPostForm) => {
+      setIsLoading(true);
+      const config = {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+      const finalData = {...data, isPrivate: isPrivate, msgId: id, userId}
+    console.log(finalData);
+
+    try {
+        const response = await axios.post(`${API_URL}/api/post/create`, JSON.stringify(finalData), config)
+        router.push('/')
+
+    } catch (err) {
+      console.log(err);
+      setIsLoading(false)
+    }
+  };
 
   return (
-    <div className="w-full flex flex-col min-h-[812px]">
+    <div className="w-full flex flex-col min-h-[812px] pt-20 mb-20">
       {/* Navbar and logout Modals all Absolute/sticky */}
       {showLogoutModal && (
         <LogoutModal setShowLogoutModal={setShowLogoutModal} />
@@ -37,9 +64,9 @@ const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage }) => {
         setOpenSideNav={setOpenSideNav}
         openSideNav={openSideNav}
         setShowLogoutModal={setShowLogoutModal}
-        currentPage="home"
+        currentPage="post"
       />
-      {console.log(todaysMessage)}
+      {isLoading && <Loading />}
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -72,19 +99,30 @@ const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage }) => {
           )}
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-16">
           <Text type="h4" textEng="Gratitude" textKor="감사함" />
           <Text
             type="p"
             textEng="What were 5 things you were thankful for today?"
             textKor="오늘은 다섯가지 감사한게 무엇이있었습니까?"
-            customStyles="text-gray-400 w-10/12 mb-5"
+            customStyles="text-gray-400 w-10/12  mt-2"
           />
+          {errors.thoughtOnVerse1 ||
+            errors.thoughtOnVerse2 ||
+            errors.thoughtOnVerse3 ||
+            errors.thoughtOnVerse4 ||
+            (errors.thoughtOnVerse5 && (
+              <Text
+                type="error"
+                textEng="You must include all 5 fields!"
+                textKor="You must include all 5 fields!"
+              />
+            ))}
           <PostFormField
             field="thoughtOnVerse1"
             placeholder="1."
             register={register}
-            customStyles="mb-5"
+            customStyles="my-5"
           />
           <PostFormField
             field="thoughtOnVerse2"
@@ -108,9 +146,56 @@ const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage }) => {
             field="thoughtOnVerse5"
             placeholder="5."
             register={register}
+          />
+        </div>
+
+        <div className="flex flex-col mb-16">
+          <Text type="h4" textEng="Show Thanks" textKor="감사함" />
+          <Text
+            type="p"
+            textEng="In what ways were you able to show your gratitude today?"
+            textKor="오늘 감사를 표현한 3가지 방법은?"
+            customStyles="text-gray-400 w-10/12 mt-2"
+          />
+          {errors.showThanks1 ||
+            errors.showThanks2 ||
+            (errors.showThanks3 && (
+              <Text
+                type="error"
+                textEng="You must include all 3 fields!"
+                textKor="You must include all 3 fields!"
+              />
+            ))}
+          <PostFormField
+            field="showThanks1"
+            placeholder="1."
+            register={register}
+            customStyles="my-5"
+          />
+          <PostFormField
+            field="showThanks2"
+            placeholder="2."
+            register={register}
+            customStyles="mb-5"
+          />
+          <PostFormField
+            field="showThanks3"
+            placeholder="3."
+            register={register}
             customStyles="mb-5"
           />
         </div>
+
+        <PostFormPrivateToggle
+          isPrivate={isPrivate}
+          setIsPrivate={setIsPrivate}
+        />
+        <Button
+          primary={false}
+          textEng="Submit"
+          textKor="올리기"
+          customStyles="mt-16"
+        />
       </form>
     </div>
   );
