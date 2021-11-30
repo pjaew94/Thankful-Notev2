@@ -116,6 +116,28 @@ const createUser = async (data: IRegisterData) => {
       return user;
 }
 
+const getFullInfo = async(userId: number) => {
+    const user = await prisma.user.findUnique({
+        where: {
+            id: userId
+        },
+        select: {
+            id: true,
+            firstName: true,
+            lastName: true,
+            email: true,
+            groupId: true,
+            age: true,
+            createdAt: true,
+            currentDay: true,
+            streak: true,
+            username: true
+        }
+    })
+
+    return user
+}
+
 
 
 export const usersRepo = {
@@ -126,5 +148,6 @@ export const usersRepo = {
     validateEmail,
     validatePassword,
     hashPassword,
-    createUser
+    createUser,
+    getFullInfo
 }

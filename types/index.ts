@@ -75,3 +75,23 @@ export interface IUserInfo {
     username: string
 }
 
+export interface IMessage {
+    id: number,
+    msgEng: string,
+    msgKor: string,
+    bookEng: string | null,
+    bookKor: string | null,
+    chapAndVerse: string | null
+}
+
+export interface IPostForm {
+    thoughtOnVerse1: string
+    thoughtOnVerse2: string
+    thoughtOnVerse3: string
+    thoughtOnVerse4: string
+    thoughtOnVerse5: string
+    showThanks1: string,
+    showThanks2: string,
+    showThanks3: string,
+    isPrivate: boolean
+}

@@ -10,14 +10,14 @@ export const getServerSideProps: GetServerSideProps = RequireAuthentication(
   async (ctx) => {
     const { req } = ctx;
     const userId = req.cookies["userId"];
-    const response = await fetch(`${API_URL}/api/user/full-info`, {
+    const user = await fetch(`${API_URL}/api/user/full-info`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: Number(userId) }),
     });
     const checkTodayCall = await fetch(`${API_URL}/api/post/check-today`)
 
-    const userInfo = await response.json();
+    const userInfo = await user.json();
     const hasPostedToday = await checkTodayCall.json();
 
     return {

@@ -1,7 +1,9 @@
+import axios from "axios";
 import { motion } from "framer-motion";
 import { userInfo } from "os";
 import { useState } from "react";
 import { helperFunc } from "../../../helpers/helperFunc";
+import { API_URL } from "../../../helpers/url";
 import useDeviceHeight from "../../../hooks/useDeviceHeight";
 
 import { IUserInfo } from "../../../types";
@@ -22,6 +24,10 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday}) => {
     const [openSideNav, setOpenSideNav] = useState(false);
     const [showLogoutModal, setShowLogoutModal] = useState(false);
 
+    const button = async () => {
+        
+      }
+
     return (
         <div className='w-full overflow-x-hidden'>
  
@@ -36,7 +42,7 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday}) => {
                 {/* Todays Post */}
                 <motion.div className='px-10 py-10 border-b border-gray-200'>
                     {hasPostedToday ? <div></div> : <div className='flex flex-col'>
-                        <Text type='h1' textEng={"Welcome back, " + userInfo.firstName + "!"} customStyles='text-6xl  mb-10' />
+                        <Text type='h1Extra' textEng={"Welcome back, " + userInfo.firstName + "!"} customStyles='mb-10' />
                         <Text type='p' textEng="It looks like you haven't posted today. Let's not forget to take our daily breather and give thanks." customStyles='text-gray-500' />
                         <Text type='p' textEng="What are you waiting for?" customStyles='mt-5 text-gray-500' />
                         <Text type='p' textEng="Your group is waiting!" customStyles='mb-16 text-gray-500' />
@@ -46,8 +52,8 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday}) => {
 
 
                 {/* Statistics */}
-                <button onClick={() => console.log('asd')}>
-                    TEST
+                <button onClick={() => button()}>
+                    TESTasdasf
                 </button>
                  
             </div>
