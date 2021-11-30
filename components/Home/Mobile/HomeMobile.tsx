@@ -31,7 +31,7 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday, groupInfo})
 
 
     return (
-        <div className='w-full overflow-x-hidden pt-20'>
+        <div className='w-full overflow-x-hidden pt-20 mb-20'>
  
             {/* Navbar and logout Modals all Absolute/sticky */}
             {showLogoutModal && <LogoutModal setShowLogoutModal={setShowLogoutModal} />}
@@ -64,24 +64,28 @@ const HomeMobile:React.FC<IHomeMobile> = ({userInfo, hasPostedToday, groupInfo})
 
 
                 {/* Statistics */}
-                {console.log(groupInfo)}
-                {console.log(userInfo)}
-                <div className='flex flex-col py-10 px-10'>
+                <motion.div className='flex flex-col py-10 px-10'
+                                variants={fadeUpQuickVariant}
+                                initial='initial'
+                                animate='animate'
+                                custom='0.3'
+                >
                     <Text type='h1' textEng='Statistic' textKor='' customStyles='mb-2' />
                     <Text type='p' textEng="Here are a few things we know about you so far!" customStyles='text-gray-500' />
                     
-                    <div className='flex flex-col mt-10'>
+                    <div className='flex flex-col mt-10 mb-10'>
                         <Text type='p' textEng={"🖐️ You've been a member since " + groupDateCreated}  textKor={"🖐️ 감사노트 가입한 날짜: " + groupDateCreated} customStyles='mb-2' />
                         <Text type='p' textEng={`📋 You've posted ${userInfo.posts.length}  ${userInfo.posts.length === 1 ? 'time.' : 'times.'}`}  textKor={"📋 게시올린 수: " + userInfo.posts.length} customStyles='mb-2' />
                         <Text type='p' textEng={"❤️ You're associated with the group " + groupInfo.name}  textKor={"❤️ 그룹 이름: " + groupInfo.name} customStyles='mb-2' />
                         <Text type='p' textEng={`🙌 Your group posted ${groupInfo.posts.length}  ${groupInfo.posts.length === 1 ? 'time.' : 'times.'}`}   textKor={"🙌 그룹 게시올린 수: " + groupInfo.posts.length} customStyles='mb-2' />
-
-
-
-
                     </div>
 
-                </div>
+                    <CustomLink 
+                        route={`/${userInfo.username}/posts`}
+                        textEng='My Posts'
+                        primary={false}
+                    />
+                </motion.div>
 
 
             </div>
