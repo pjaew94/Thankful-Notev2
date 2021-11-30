@@ -9,34 +9,37 @@ import { IUserInfo } from "../types";
 export const getServerSideProps: GetServerSideProps = RequireAuthentication(
   async (ctx) => {
     const { req } = ctx;
-    let userInfo;
     const userId = req.cookies["userId"];
     const response = await fetch(`${API_URL}/api/user/full-info`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: Number(userId) }),
     });
-    userInfo = await response.json();
+    const checkTodayCall = await fetch(`${API_URL}/api/post/check-today`)
+
+    const userInfo = await response.json();
+    const hasPostedToday = await checkTodayCall.json();
+
     return {
-      props: { userInfo },
+      props: { userInfo, hasPostedToday },
     };
   }
 );
 
 interface IHome {
   userInfo: IUserInfo;
+  hasPostedToday: boolean
 }
 
-const Home: NextPage<IHome> = ({ userInfo }) => {
-  const responsive = useResponsive();
+const Home: NextPage<IHome> = ({ userInfo, hasPostedToday }) => {
 
+  const responsive = useResponsive();
 
   return (
     <div className="w-screen min-h-screen overflow-x-hidden">
 
-
       {responsive === "sm" || responsive === "md" ? (
-        <HomeMobile userInfo={userInfo} havePostedToday={false} />
+        <HomeMobile userInfo={userInfo} hasPostedToday={hasPostedToday} />
       ) : (
         <HomeDesktop />
       )}
