@@ -75,7 +75,7 @@ const PostFormDesktop: React.FC<IPostFormMobile> = ({
             {isLoading && <Loading />}
       <NavLeftDesktop
         currentPage="home"
-        groupRoute={`empty`}
+        groupRoute={`/group/${groupInfo.id}`}
         setShowLogoutModal={setShowLogoutModal}
       />
 
