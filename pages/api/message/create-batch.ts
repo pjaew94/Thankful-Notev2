@@ -14,4 +14,4 @@ export default async function handler(
         res.status(500).send({ eng: "Server Error", kor: "서버 예러" });
     }
 
-  }
+  } 

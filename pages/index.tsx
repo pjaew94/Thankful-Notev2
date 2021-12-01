@@ -3,59 +3,46 @@ import { NextPage, GetServerSideProps } from "next";
 import useResponsive from "../hooks/useResponsive";
 import HomeMobile from "../components/Home/Mobile/HomeMobile";
 import { API_URL } from "../helpers/url";
-import { IGroupInfo, IUserInfo } from "../types";
+import { IGroupInfo, IHomeInfo, IUserInfo } from "../types";
 import HomeDesktop from "../components/Home/Desktop/HomeDesktop";
 
 export const getServerSideProps: GetServerSideProps = RequireAuthentication(
   async (ctx) => {
     const { req } = ctx;
     const userId = req.cookies["userId"];
-    const user = await fetch(`${API_URL}/api/user/full-info`, {
+    const home = await fetch(`${API_URL}/api/user/home-info`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: Number(userId) }),
     });
-    
-    const checkTodayCall = await fetch(`${API_URL}/api/post/check-today`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: Number(userId) }),
-    })
-    const getGroupInfo = await fetch(`${API_URL}/api/group/info`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: Number(userId) }),
-    })
+  
 
-    const userInfo = await user.json();
-    const groupInfo = await getGroupInfo.json();
-    const hasPostedToday = await checkTodayCall.json();
+    const homeInfo = await home.json();
+
   
 
     return {
-      props: { userInfo, hasPostedToday, groupInfo },
+      props: { homeInfo },
     };
   }
 );
 
 interface IHome {
-  userInfo: IUserInfo;
-  hasPostedToday: boolean;
-  groupInfo: IGroupInfo
+  homeInfo: IHomeInfo
   
 }
 
-const Home: NextPage<IHome> = ({ userInfo, hasPostedToday, groupInfo }) => {
+const Home: NextPage<IHome> = ({ homeInfo}) => {
 
   const responsive = useResponsive();
+  
 
   return (
     <div className="w-screen min-h-screen overflow-x-hidden">
-
       {responsive === "sm" || responsive === "md" ? (
-        <HomeMobile userInfo={userInfo} groupInfo={groupInfo} hasPostedToday={hasPostedToday} />
+        <HomeMobile homeInfo={homeInfo} />
       ) : (
-        <HomeDesktop userInfo={userInfo} groupInfo={groupInfo} hasPostedToday={hasPostedToday} />
+        <HomeDesktop homeInfo={homeInfo} />
       )}
     </div>
   );

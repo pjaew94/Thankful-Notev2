@@ -107,6 +107,7 @@ const createUser = async (data: IRegisterData) => {
               email,
               username,
               password: hashedPassword,
+              updatedAt: new Date().toISOString(),
                 group: {
                     connect: { finder }
                 }
@@ -173,7 +174,8 @@ const updateUserCurrentDay = async(userId: number, msgId: number) => {
             id: userId
         },
         data: {
-            currentDay: msgId + 1
+            currentDay: msgId + 1,
+            updatedAt: new Date().toISOString()
         }
     })
 

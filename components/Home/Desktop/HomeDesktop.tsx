@@ -2,33 +2,30 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { helperFunc } from "../../../helpers/helperFunc";
 import { fadeUpQuickVariant } from "../../../motion";
-import { IGroupInfo, IUserInfo } from "../../../types";
+import { IGroupInfo, IHomeInfo, IUserInfo } from "../../../types";
 import CustomLink from "../../Buttons/CustomLink";
 import LogoutModal from "../../Modals/LogoutModal";
 import NavLeftDesktop from "../../Nav/Desktop/NavLeftDesktop";
 import Text from "../../Text";
 
 interface IHomeDesktop {
-  userInfo: IUserInfo;
-  hasPostedToday: boolean;
-  groupInfo: IGroupInfo;
+ homeInfo: IHomeInfo
 }
 
 const HomeDesktop: React.FC<IHomeDesktop> = ({
-  userInfo,
-  hasPostedToday,
-  groupInfo,
+  homeInfo
 }) => {
 
     const [showLogoutModal, setShowLogoutModal] = useState(false);
-  let groupDateCreated = helperFunc.convertDate(groupInfo.createdAt);
+  let groupDateCreated = helperFunc.convertDate(homeInfo.group.createdAt);
+  const havePostedToday = helperFunc.checkToday(homeInfo.updatedAt)
 
   return (
     <div className=" flex w-screen  min-h-screen">
         {showLogoutModal && <LogoutModal setShowLogoutModal={setShowLogoutModal} />}
-      <NavLeftDesktop currentPage='home' groupRoute={`/group/${groupInfo.id}`} setShowLogoutModal={setShowLogoutModal} />
+      <NavLeftDesktop currentPage='home' groupRoute={`/group/${homeInfo.groupId}`} setShowLogoutModal={setShowLogoutModal} />
 
-    
+     
 
       <div className="ml-auto w-9/12 pt-10 pb-28">
         {/* Content */}
@@ -41,11 +38,11 @@ const HomeDesktop: React.FC<IHomeDesktop> = ({
             animate="animate"
             custom="0.2"
           >
-            {hasPostedToday ? (
-              <div className="flex flex-col">
+            
+              {havePostedToday && homeInfo.posts.length > 0 ? <div className="flex flex-col">
                 <Text
                   type="h1Extra"
-                  textEng={"Hey, " + userInfo.firstName + "!"}
+                  textEng={"Hey, " + homeInfo.firstName + "!"}
                   customStyles="mb-10"
                 />
                 <Text
@@ -59,16 +56,16 @@ const HomeDesktop: React.FC<IHomeDesktop> = ({
                   customStyles="mb-16 text-gray-500"
                 />
                 <CustomLink
-                  route={`/group/${userInfo.groupId}`}
+                  route={`/group/${homeInfo.groupId}`}
                   textEng="Group"
                   primary={true}
                 />
               </div>
-            ) : (
+             : 
               <div className="flex flex-col">
                 <Text
                   type="h1Extra"
-                  textEng={"Welcome back, " + userInfo.firstName + "!"}
+                  textEng={"Welcome back, " + homeInfo.firstName + "!"}
                   customStyles="mb-10"
                 />
                 <Text
@@ -91,8 +88,8 @@ const HomeDesktop: React.FC<IHomeDesktop> = ({
                   textEng="Get Started!"
                   primary={false}
                 />
-              </div>
-            )}
+              </div>}
+            
           </motion.div>
 
           {/* Statistics */}
@@ -124,32 +121,32 @@ const HomeDesktop: React.FC<IHomeDesktop> = ({
               />
               <Text
                 type="p"
-                textEng={`📋 You've posted ${userInfo.posts.length}  ${
-                  userInfo.posts.length === 1 ? "time." : "times."
+                textEng={`📋 You've posted ${homeInfo.posts.length}  ${
+                  homeInfo.posts.length === 1 ? "time." : "times."
                 }`}
-                textKor={"📋 게시올린 수: " + userInfo.posts.length}
+                textKor={"📋 게시올린 수: " + homeInfo.posts.length}
                 customStyles="mb-2"
               />
               <Text
                 type="p"
                 textEng={
-                  "❤️ You're associated with the group " + groupInfo.name
+                  "❤️ You're associated with the group " + homeInfo.group.name
                 }
-                textKor={"❤️ 그룹 이름: " + groupInfo.name}
+                textKor={"❤️ 그룹 이름: " + homeInfo.group.name}
                 customStyles="mb-2"
               />
               <Text
                 type="p"
-                textEng={`🙌 Your group posted ${groupInfo.posts.length}  ${
-                  groupInfo.posts.length === 1 ? "time." : "times."
+                textEng={`🙌 Your group posted ${homeInfo.group.posts.length}  ${
+                  homeInfo.group.posts.length === 1 ? "time." : "times."
                 }`}
-                textKor={"🙌 그룹 게시올린 수: " + groupInfo.posts.length}
+                textKor={"🙌 그룹 게시올린 수: " + homeInfo.group.posts.length}
                 customStyles="mb-2"
               />
             </div>
 
             <CustomLink
-              route={`/user/${userInfo.username}/posts`}
+              route={`/user/${homeInfo.username}/posts`}
               textEng="My Posts"
               primary={false}
             />

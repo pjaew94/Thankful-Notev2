@@ -1,4 +1,4 @@
-const checkToday = async (date: Date) => {
+const checkToday = (date: string) => {
   const n = new Date().toISOString();
   const now = new Date(n);
   const nowDate = now.getDate();

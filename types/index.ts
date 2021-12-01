@@ -140,3 +140,25 @@ export interface IGroupInfo {
     posts: IPostFullInfo[]
     users: IUserInfo[]
 }
+
+
+export interface IHomeInfo {
+    createdAt: string,
+    currentDay: string,
+    email: string,
+    firstName: string,
+    updatedAt: string,
+    group: 
+        {createdAt: string,
+        name: string,
+        posts: [{
+            id: number
+        }]
+    }
+    
+    groupId: number,
+    id: number,
+    lastName: string,
+    posts: [id: number]
+    username: string
+}

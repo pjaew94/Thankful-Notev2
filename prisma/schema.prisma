@@ -36,6 +36,7 @@ model User {
   currentDay      Int         @default(1)
   streak          Int         @default(0)
   posts           Post[]
+  updatedAt       DateTime    @updatedAt
 }
 
 model Post {

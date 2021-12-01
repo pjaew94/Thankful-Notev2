@@ -18,7 +18,7 @@ const Login: NextPage = () => {
   const responsive = useResponsive();
 
   return (
-    <div className="h-screen w-screen relative">
+    <div className="h-screen w-screen relative overflow-x-hidden">
         {responsive === "sm" || responsive ==="md" ? <LoginMobile /> : <LoginDesktop />}
     </div>
   );

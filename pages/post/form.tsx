@@ -48,7 +48,7 @@ const PostFormPage: NextPage<IPostFormPage> = ({todaysMessage, userId, groupInfo
 
     const responsive = useResponsive();
     return (
-        <div className='min-h-screen w-screen'>
+        <div className='min-h-screen w-screen overflow-x-hidden'>
     {responsive === "sm" || responsive === "md" ? (
         <PostFormMobile todaysMessage={todaysMessage} groupInfo={groupInfo} userId={userId} />
       ) : (
