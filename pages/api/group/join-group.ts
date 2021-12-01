@@ -43,6 +43,7 @@ export default async function handler(
       return res.status(404).json({eng: "There was an error with your request.", kor:"예러"})
       
     } catch (err) {
+      res.status(500).send(err)
         res.status(500).send({ eng: "Server Error", kor: "서버 예러" });
     }
   }

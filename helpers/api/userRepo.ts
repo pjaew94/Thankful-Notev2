@@ -97,8 +97,6 @@ const createUser = async (data: IRegisterData) => {
       const hashedPassword = await hashPassword(password);
       const numberAge = Number(age);
 
-
-
       const user = await prisma.user.create({
           data: {
               firstName,
