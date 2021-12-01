@@ -107,7 +107,7 @@ const createUser = async (data: IRegisterData) => {
               email,
               username,
               password: hashedPassword,
-              updatedAt: new Date().toISOString(),
+              updatedAt: new Date().toISOString().toString(),
                 group: {
                     connect: { finder }
                 }
