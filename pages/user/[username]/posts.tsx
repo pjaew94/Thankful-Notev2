@@ -55,10 +55,10 @@ const UserPosts: NextPage<IUserPosts> = ({visitorInfo}) => {
         return <div>-<Loading /></div>
     }
     return <div className="w-screen min-h-screen overflow-x-hidden">
-      {responsive === "sm" || (responsive === "md" && data) ? (
+      {responsive === "sm" || responsive === "md" ? (
         <UserPostsMobile userInfo={data} visitorInfo={visitorInfo} />
       ) : (
-        <UserPostsDesktop />
+        <UserPostsDesktop userInfo={data} visitorInfo={visitorInfo} />
       )}
     </div>
   

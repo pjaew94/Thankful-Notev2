@@ -55,7 +55,7 @@ const GroupPage: NextPage<IGroupPage> = ({visitorInfo}) => {
       {responsive === "sm" || (responsive === "md" && data) ? (
         <GroupMobile groupInfo={data} visitorInfo={visitorInfo} />
       ) : (
-        <GroupDesktop />
+        <GroupDesktop groupInfo={data} visitorInfo={visitorInfo} />
       )}
     </div>
 }

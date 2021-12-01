@@ -5,7 +5,7 @@ import Text from '../../Text'
 
 
 interface INavLeftDesktop {
-    currentPage: "home" | "group" 
+    currentPage: "home" | "group" | ''
     groupRoute: string,
     setShowLogoutModal: Dispatch<SetStateAction<boolean>>
 }
