@@ -1,6 +1,10 @@
 const checkToday = (date: string) => {
-  const n = new Date().toISOString();
-  const now = new Date(n);
+  const now = new Date();
+  
+  // const last = new Date(date);
+  // last.setHours(last.getHours() - 5);
+
+
   const nowDate = now.getDate();
   const nowMonth = now.getMonth(); //It comes in respect to index(starts at 0);
   const nowYear = now.getFullYear();

@@ -1,2 +1,2 @@
 
-export const API_URL = process.env.NODE_ENV === 'production' ? 'https://thankful-notev2.vercel.app' : 'http://localhost:3000'
+export const API_URL = process.env.NODE_ENV === 'production' ? 'https://www.thankfulnotes.blog/' : 'http://localhost:3000'

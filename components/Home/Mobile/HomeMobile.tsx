@@ -30,10 +30,11 @@ const HomeMobile:React.FC<IHomeMobile> = ({homeInfo}) => {
     const havePostedToday = helperFunc.checkToday(homeInfo.updatedAt)
 
 
-
+const button = () => {
+    return new Date()
+}
     return (
         <div className='w-full overflow-x-hidden pt-20 pb-20'>
-            {console.log(homeInfo)}
  
             {/* Navbar and logout Modals all Absolute/sticky */}
             {showLogoutModal && <LogoutModal setShowLogoutModal={setShowLogoutModal} />}
@@ -88,7 +89,7 @@ const HomeMobile:React.FC<IHomeMobile> = ({homeInfo}) => {
                     />
                 </motion.div>
 
-       
+                {console.log(button())}
             </div>
         </div>
     )
