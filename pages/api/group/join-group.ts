@@ -22,23 +22,23 @@ export default async function handler(
     
         const user = await usersRepo.createUser(req.body);
 
-        // if(user && process.env.JWTSECRET){
-        //   const token = jwt.sign({ user: user.id }, process.env.JWTSECRET, {
-        //       expiresIn: "1hr",
-        //     });
-        //     res.setHeader(
-        //       "Set-Cookie",
-        //       cookie.serialize("token", token, {
-        //         httpOnly: true,
-        //         secure: process.env.NODE_ENV !== "development",
-        //         maxAge: 60 * 60,
-        //         sameSite: "strict",
-        //         path: "/",
-        //       })
-        //     );
+        if(user && process.env.JWTSECRET){
+          const token = jwt.sign({ user: user.id }, process.env.JWTSECRET, {
+              expiresIn: "1hr",
+            });
+            res.setHeader(
+              "Set-Cookie",
+              cookie.serialize("token", token, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV !== "development",
+                maxAge: 60 * 60,
+                sameSite: "strict",
+                path: "/",
+              })
+            );
 
             return res.send(user)
-      // }
+      }
 
       return res.status(404).json({eng: "There was an error with your request.", kor:"예러"})
       

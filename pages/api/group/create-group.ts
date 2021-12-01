@@ -21,23 +21,23 @@ export default async function handler(
         
         const group = await groupRepo.createGroupAndUser(req.body)
 
-        // if(group && process.env.JWTSECRET){
-        //     const token = jwt.sign({ user: group.users[0].id }, process.env.JWTSECRET, {
-        //         expiresIn: "1hr",
-        //       });
-        //       res.setHeader(
-        //         "Set-Cookie",
-        //         cookie.serialize("token", token, {
-        //           httpOnly: true,
-        //           secure: process.env.NODE_ENV !== "development",
-        //           maxAge: 60 * 60,
-        //           sameSite: "strict",
-        //           path: "/",
-        //         })
-        //       );
+        if(group && process.env.JWTSECRET){
+            const token = jwt.sign({ user: group.users[0].id }, process.env.JWTSECRET, {
+                expiresIn: "1hr",
+              });
+              res.setHeader(
+                "Set-Cookie",
+                cookie.serialize("token", token, {
+                  httpOnly: true,
+                  secure: process.env.NODE_ENV !== "development",
+                  maxAge: 60 * 60,
+                  sameSite: "strict",
+                  path: "/",
+                })
+              );
 
               return res.send(group)
-        // }
+        }
 
         return res.status(404).json({eng: "There was an error with your request.", kor:"예러"})
 
