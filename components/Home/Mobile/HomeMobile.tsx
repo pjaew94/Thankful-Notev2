@@ -32,6 +32,7 @@ const HomeMobile:React.FC<IHomeMobile> = ({homeInfo}) => {
 
 
 
+
     return (
         <div className='w-full overflow-x-hidden pt-20 pb-20'>
             {console.log(homeInfo)}
@@ -88,6 +89,9 @@ const HomeMobile:React.FC<IHomeMobile> = ({homeInfo}) => {
                         primary={false}
                     />
                 </motion.div>
+
+
+       
             </div>
         </div>
     )
