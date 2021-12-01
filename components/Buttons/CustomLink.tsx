@@ -22,15 +22,14 @@ const CustomLink: React.FC<ICustomLink> = ({
   disabled,
   children
 }) => {
-  return <motion.div className={`w-full flex justify-center items-center py-3 rounded-xl transition-all duration-100 ease-in-out cursor-pointer lg:hover:shadow-xl lg:hover:scale-105 ${primary ? "bg-black text-gray-100" : "bg-sunnyYellow text-black"} ${customStyles}`}
-    whileTap={{scale: 0.98}}
-  >
-      <Link href={route}>
-           <a><Text type='button' textEng={textEng} textKor={textKor} />
+  return <Link href={route}>
+           <motion.a whileTap={{scale:0.98}} className={`w-full flex justify-center items-center py-3 rounded-xl transition-all duration-100 ease-in-out cursor-pointer lg:hover:shadow-xl lg:hover:scale-105 ${primary ? "bg-black text-gray-100" : "bg-sunnyYellow text-black"} ${customStyles}`}><Text type='button' textEng={textEng} textKor={textKor}
+            
+            />
             {children}
-           </a>
+           </motion.a>
       </Link>
-  </motion.div>;
+
 };
 
 export default CustomLink;
