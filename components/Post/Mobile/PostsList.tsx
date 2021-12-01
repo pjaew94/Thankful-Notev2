@@ -135,31 +135,31 @@ const PostsList: React.FC<IPostsList> = ({
               type="p"
               textEng={`1. ${thoughtOnVerse1}`}
               textKor={`1. ${thoughtOnVerse1}`}
-              customStyles="mb-2 break-all"
+              customStyles="mb-2 break-words"
             />
             <Text
               type="p"
               textEng={`2. ${thoughtOnVerse2}`}
               textKor={`2. ${thoughtOnVerse2}`}
-              customStyles="mb-2 break-all"
+              customStyles="mb-2 break-words"
             />
             <Text
               type="p"
               textEng={`3. ${thoughtOnVerse3}`}
               textKor={`3. ${thoughtOnVerse3}`}
-              customStyles="mb-2 break-all"
+              customStyles="mb-2 break-words"
             />
             <Text
               type="p"
               textEng={`4. ${thoughtOnVerse4}`}
               textKor={`4. ${thoughtOnVerse4}`}
-              customStyles="mb-2 break-all"
+              customStyles="mb-2 break-words"
             />
             <Text
               type="p"
               textEng={`5. ${thoughtOnVerse5}`}
               textKor={`5. ${thoughtOnVerse5}`}
-              customStyles=" break-all"
+              customStyles=" break-words"
             />
           </div>
           <div className="flex flex-col pt-5 px-6">
@@ -167,19 +167,19 @@ const PostsList: React.FC<IPostsList> = ({
               type="p"
               textEng={`1. ${showThanks1}`}
               textKor={`1. ${showThanks1}`}
-              customStyles="mb-2 break-all"
+              customStyles="mb-2 break-words"
             />
             <Text
               type="p"
               textEng={`2. ${showThanks2}`}
               textKor={`2. ${showThanks2}`}
-              customStyles="mb-2 break-all"
+              customStyles="mb-2 break-words"
             />
             <Text
               type="p"
               textEng={`3. ${showThanks3}`}
               textKor={`3. ${showThanks3}`}
-              customStyles=" break-all"
+              customStyles=" break-words"
             />
           </div>
         </div>
