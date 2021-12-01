@@ -181,6 +181,34 @@ const updateUserCurrentDay = async(userId: number, msgId: number) => {
 }
 
 
+const homeInfoOnly = async(userId: number) => {
+    const homeInfo = await prisma.user.findUnique({
+        where: {
+            id: userId
+        },
+        include: {
+            group: {
+                select: {
+                    createdAt: true,
+                    name: true,
+                    posts: {
+                        select: {
+                            id: true
+                        }
+                    }
+                }
+            },
+            posts: {
+                select: {
+                    id: true
+                }
+            }
+        }
+    })
+    return homeInfo
+}
+
+
 
 export const usersRepo = {
     checkUsername,
@@ -193,5 +221,6 @@ export const usersRepo = {
     createUser,
     getFullInfo,
     updateUserCurrentDay,
-    getFullInfoUsername
+    getFullInfoUsername,
+    homeInfoOnly
 }
