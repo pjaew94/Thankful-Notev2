@@ -77,7 +77,7 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
           JSON.stringify(data),
           config
         );
-        router.push("/");
+        router.replace("/");
       } else {
         const res = await axios.post(
           `${API_URL}/api/group/create-group`,
@@ -89,7 +89,7 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
           JSON.stringify(data),
           config
         );
-        router.push("/");
+        router.replace("/");
       }
     } catch (err: any) {
       setShowErrorModal(err.response.data);
