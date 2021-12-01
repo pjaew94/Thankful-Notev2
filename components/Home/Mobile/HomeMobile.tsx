@@ -30,9 +30,7 @@ const HomeMobile:React.FC<IHomeMobile> = ({homeInfo}) => {
     const havePostedToday = helperFunc.checkToday(homeInfo.updatedAt)
 
 
-const button = () => {
-    return new Date()
-}
+
     return (
         <div className='w-full overflow-x-hidden pt-20 pb-20'>
  
@@ -89,7 +87,7 @@ const button = () => {
                     />
                 </motion.div>
 
-                {console.log(button())}
+              
             </div>
         </div>
     )
