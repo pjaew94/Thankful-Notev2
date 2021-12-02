@@ -128,11 +128,8 @@ const PostsList: React.FC<IPostsList> = ({
   const mobileList = (
     <motion.div
       className="flex flex-col gap-2 border border-black py-2 rounded-md mb-5"
-      whileTap={{ scale: 0.98 }}
       onClick={() => mobileClicked()}
     >
-      
-      {/* Show without expand */}
       <div
         className='grid grid-cols-12'
       >

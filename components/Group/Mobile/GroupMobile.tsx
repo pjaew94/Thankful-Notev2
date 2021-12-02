@@ -71,7 +71,7 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
         currentPage="group"
         groupRoute={`/group/${groupInfo.id}`}
       />
- <PostInfoMobile
+      <PostInfoMobile
       showPostInfoMobile={showPostInfoMobile}
       setShowPostInfoMobile={setShowPostInfoMobile}
       />
@@ -140,7 +140,7 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
         </div>
 
         {membersOrPosts === "posts" ? (
-          <div className="" style={{WebkitOverflowScrolling: "touch"}}>
+          <div className="">
             {/* Post Template */}
             <div className="grid grid-cols-12 gap-2 mb-3">
               <Text
