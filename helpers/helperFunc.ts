@@ -8,8 +8,6 @@ const checkToday = (date: string) => {
   const lastDate = last.getDate();
   const nowDate = now.getDate();
 
-  console.log(lastDate)
-  console.log(nowDate)
 
   if(lastDate !== nowDate){
     return false
