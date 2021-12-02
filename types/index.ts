@@ -162,3 +162,24 @@ export interface IHomeInfo {
     posts: [id: number]
     username: string
 }
+
+export interface IPostInfoMobileState {
+    msgId: number
+    author: string;
+    createdAt: string
+    thoughtOnVerse1: string;
+    thoughtOnVerse2: string;
+    thoughtOnVerse3: string;
+    thoughtOnVerse4: string;
+    thoughtOnVerse5: string;
+    showThanks1: string
+    showThanks2: string
+    showThanks3: string
+    bookEng: string | null;
+    bookKor: string | null;
+    msgEng: string;
+    msgKor: string;
+    chapAndVerse: string | null;
+    authorUsername: string;
+    show: boolean
+}

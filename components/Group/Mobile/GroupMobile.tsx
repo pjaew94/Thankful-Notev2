@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { helperFunc } from "../../../helpers/helperFunc";
 import { fadeUpQuickVariant } from "../../../motion";
-import { IGroupInfo, IUserInfo } from "../../../types";
+import { IGroupInfo, IPostInfoMobileState, IUserInfo } from "../../../types";
 import LogoutModal from "../../Modals/LogoutModal";
 import NavSideMobile from "../../Nav/Mobile/NavSideMobile";
 import NavTopMobile from "../../Nav/Mobile/NavTopMobile";
+import PostInfoMobile from "../../Post/Mobile/PostInfoMobile";
 import PostsList from "../../Post/Mobile/PostsList";
 import Text from "../../Text";
 import MembersList from "../MembersList";
@@ -18,11 +19,44 @@ interface IGroupMobile {
 const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
   const [openSideNav, setOpenSideNav] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [showPostInfoMobile, setShowPostInfoMobile] = useState<IPostInfoMobileState>({
+    msgId: 0,
+    author: "",
+    createdAt: "",
+    thoughtOnVerse1: "",
+    thoughtOnVerse2: "",
+    thoughtOnVerse3: "",
+    thoughtOnVerse4: "",
+    thoughtOnVerse5: "",
+    showThanks1: "",
+    showThanks2: "",
+    showThanks3: "",
+    bookEng:"",
+    bookKor: "",
+    msgEng: "",
+    msgKor: "",
+    chapAndVerse: "",
+    authorUsername: "",
+    show: false
+  })
+
 
   const [membersOrPosts, setMembersOrPosts] = useState<"posts" | "members" >(
     "posts"
   );
+
+  
   const dateConverted = helperFunc.convertDate(groupInfo.createdAt);
+
+  useEffect(() => {
+    if(showPostInfoMobile.show){
+        document.body.style.overflowY = 'hidden';
+        return () =>{
+          document.body.style.overflowY = 'auto';
+        }
+    }
+  }, [showPostInfoMobile.show])
+
   return (
     <div className="w-full overflow-x-hidden pt-20 pb-20" style={{WebkitOverflowScrolling: "touch"}}>
       {/* Navbar and logout Modals all Absolute/sticky */}
@@ -37,6 +71,12 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
         currentPage="group"
         groupRoute={`/group/${groupInfo.id}`}
       />
+ <PostInfoMobile
+      showPostInfoMobile={showPostInfoMobile!}
+      setShowPostInfoMobile={setShowPostInfoMobile}
+      />
+
+
 
       {/* Content */}
       <motion.div
@@ -143,6 +183,7 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
                   id={p.id}
                   chapAndVerse={p.msg.chapAndVerse}
                   visitorUsername={visitorInfo.username}
+                  setShowPostInfoMobile={setShowPostInfoMobile}
                 />
               );
             })}

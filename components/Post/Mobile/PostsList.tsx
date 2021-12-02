@@ -1,8 +1,9 @@
 import { LockClosedIcon, LockOpenIcon } from "@heroicons/react/solid";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { helperFunc } from "../../../helpers/helperFunc";
 import useResponsive from "../../../hooks/useResponsive";
+import { IPostInfoMobileState } from "../../../types";
 import Text from "../../Text";
 
 interface IPostsList {
@@ -26,6 +27,7 @@ interface IPostsList {
   chapAndVerse: string | null;
   authorUsername: string;
   visitorUsername: string;
+  setShowPostInfoMobile?: Dispatch<SetStateAction<IPostInfoMobileState>>
 }
 
 const PostsList: React.FC<IPostsList> = ({
@@ -49,10 +51,10 @@ const PostsList: React.FC<IPostsList> = ({
   chapAndVerse,
   author,
   visitorUsername,
+  setShowPostInfoMobile
 }) => {
   const responsive = useResponsive();
   const dateConverted = helperFunc.convertDate(createdAt);
-
   const [expand, setExpand] = useState(false);
 
   const clicked = () => {
@@ -66,19 +68,73 @@ const PostsList: React.FC<IPostsList> = ({
     }
   };
 
+
+  const mobileClicked = () => {
+    if (isPrivate) {
+      if (authorUsername === visitorUsername) {
+        if(setShowPostInfoMobile) {
+          setShowPostInfoMobile({
+          msgId,
+        author,
+        createdAt: dateConverted,
+        thoughtOnVerse1,
+        thoughtOnVerse2,
+        thoughtOnVerse3,
+        thoughtOnVerse4,
+        thoughtOnVerse5,
+        showThanks1,
+        showThanks2,
+        showThanks3,
+        bookEng,
+        bookKor,
+        msgEng,
+        msgKor,
+        chapAndVerse,
+        authorUsername,
+        show: true
+          })
+        }
+      } else {
+      }
+    } else {
+      if(setShowPostInfoMobile) {
+ 
+        setShowPostInfoMobile({
+          msgId,
+        author,
+        createdAt: dateConverted,
+        thoughtOnVerse1,
+        thoughtOnVerse2,
+        thoughtOnVerse3,
+        thoughtOnVerse4,
+        thoughtOnVerse5,
+        showThanks1,
+        showThanks2,
+        showThanks3,
+        bookEng,
+        bookKor,
+        msgEng,
+        msgKor,
+        chapAndVerse,
+        authorUsername,
+        show: true
+          })
+      }
+    }
+  }
+
   const shortenedThought = thoughtOnVerse1.slice(0, 20) + '...'
 
   const mobileList = (
     <motion.div
       className="flex flex-col gap-2 border border-black py-2 rounded-md mb-5"
       whileTap={{ scale: 0.98 }}
-      onClick={() => clicked()}
+      onClick={() => mobileClicked()}
     >
+      
       {/* Show without expand */}
       <div
-        className={`grid grid-cols-12 ${
-          expand && "pb-2 border-b border-gray-200"
-        }`}
+        className='grid grid-cols-12'
       >
         <Text
           type="p"
@@ -109,83 +165,6 @@ const PostsList: React.FC<IPostsList> = ({
           customStyles="text-gray-400"
         />
       </div>
-
-      {expand && (
-        <div className="flex flex-col py-4">
-          <Text
-            type="p"
-            textEng={msgEng}
-            textKor={msgKor}
-            customStyles="mb-3 px-6"
-          />
-          <div className="flex w-full justify-end text-gray-400 pb-5 px-6 border-b border-gray-200">
-            {bookEng && bookKor && (
-              <Text
-                type="p"
-                textEng={bookEng}
-                textKor={bookKor}
-                customStyles="mr-2"
-              />
-            )}
-            {chapAndVerse && (
-              <Text type="p" textEng={chapAndVerse} textKor={chapAndVerse} />
-            )}
-          </div>
-
-          <div className="flex flex-col py-5 px-6 border-b border-gray-200">
-            <Text
-              type="p"
-              textEng={`1. ${thoughtOnVerse1}`}
-              textKor={`1. ${thoughtOnVerse1}`}
-              customStyles="mb-2 break-words"
-            />
-            <Text
-              type="p"
-              textEng={`2. ${thoughtOnVerse2}`}
-              textKor={`2. ${thoughtOnVerse2}`}
-              customStyles="mb-2 break-words"
-            />
-            <Text
-              type="p"
-              textEng={`3. ${thoughtOnVerse3}`}
-              textKor={`3. ${thoughtOnVerse3}`}
-              customStyles="mb-2 break-words"
-            />
-            <Text
-              type="p"
-              textEng={`4. ${thoughtOnVerse4}`}
-              textKor={`4. ${thoughtOnVerse4}`}
-              customStyles="mb-2 break-words"
-            />
-            <Text
-              type="p"
-              textEng={`5. ${thoughtOnVerse5}`}
-              textKor={`5. ${thoughtOnVerse5}`}
-              customStyles=" break-words"
-            />
-          </div>
-          <div className="flex flex-col pt-5 px-6">
-            <Text
-              type="p"
-              textEng={`1. ${showThanks1}`}
-              textKor={`1. ${showThanks1}`}
-              customStyles="mb-2 break-words"
-            />
-            <Text
-              type="p"
-              textEng={`2. ${showThanks2}`}
-              textKor={`2. ${showThanks2}`}
-              customStyles="mb-2 break-words"
-            />
-            <Text
-              type="p"
-              textEng={`3. ${showThanks3}`}
-              textKor={`3. ${showThanks3}`}
-              customStyles=" break-words"
-            />
-          </div>
-        </div>
-      )}
     </motion.div>
   );
 
