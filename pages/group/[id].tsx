@@ -51,7 +51,7 @@ const GroupPage: NextPage<IGroupPage> = ({visitorInfo}) => {
     if(!data) {
         return <div>-<Loading /></div>
     }
-    return <div className="w-screen overflow-x-hidden" style={{WebkitOverflowScrolling: "touch"}}>
+    return <div className="w-screen min-h-screen overflow-x-hidden" style={{WebkitOverflowScrolling: "touch"}}>
       {responsive === "sm" || (responsive === "md" && data) ? (
         <GroupMobile groupInfo={data} visitorInfo={visitorInfo} />
       ) : (

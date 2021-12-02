@@ -28,7 +28,6 @@ const GroupDesktop:React.FC<IGroupDesktop> = ({groupInfo, visitorInfo}) => {
             {showLogoutModal && <LogoutModal setShowLogoutModal={setShowLogoutModal} />}
       <NavLeftDesktop currentPage='group' groupRoute={`/group/${groupInfo.id}`} setShowLogoutModal={setShowLogoutModal} />
             
-            {console.log(groupInfo)}
             {/* Content */}
             <div className="ml-auto w-9/12 pt-10 pb-28">
             <div className='w-full overflow-x-hidden pb-20'>
