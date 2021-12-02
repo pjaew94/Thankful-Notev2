@@ -92,9 +92,11 @@ const PostsList: React.FC<IPostsList> = ({
         />
         <div className="col-span-3 h-full flex justify-center items-center">
           {isPrivate ? (
-            <LockClosedIcon className="h-4 w-4" />
+            // <LockClosedIcon className="h-4 w-4" />
+            <Text type='p' textEng='🔒' />
           ) : (
-            <LockOpenIcon className="h-4 w-4 text-sunnyYellow" />
+            // <LockOpenIcon className="h-4 w-4 text-sunnyYellow" />
+            <Text type='p' textEng='🔓' />
           )}
         </div>
       </div>

@@ -19,8 +19,8 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
   const [openSideNav, setOpenSideNav] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  const [membersOrPosts, setMembersOrPosts] = useState<"posts" | "members" | null>(
-    null
+  const [membersOrPosts, setMembersOrPosts] = useState<"posts" | "members" >(
+    "posts"
   );
   const dateConverted = helperFunc.convertDate(groupInfo.createdAt);
   return (
