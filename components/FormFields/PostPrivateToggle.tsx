@@ -26,7 +26,7 @@ export const PostFormPrivateToggle: React.FC<IPostFormPrivateToggle> = ({
             <span className="sr-only">Set Private</span>
             <span
               className={`${
-                isPrivate ? "translate-x-1" : "translate-x-6"
+                isPrivate ? "translate-x-6" : "translate-x-1"
               } inline-block w-4 h-4 transform bg-white rounded-full transition duration-500 ease-in-out`}
             />
           </Switch>
