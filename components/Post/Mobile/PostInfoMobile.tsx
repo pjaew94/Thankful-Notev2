@@ -54,7 +54,7 @@ const PostInfoMobile: React.FC<IPostInfoMobile> = ({
       </div>
 
 
-      <div className="flex flex-col py-5 px-10 border-b border-gray-200 w-full md:mt-16">
+      <div className="flex flex-col py-5 px-10 border-b border-gray-200 w-full mt-5 md:mt-16">
         <Text type="h1Extra" textEng={"Day " + msgId} customStyles="mb-10" />
         <Text type="p" textEng={`😊 Author: ${author} (${authorUsername})`} />
         <Text type="p" textEng={`🕐 Date: ${createdAt}`} customStyles="mb-10" />
