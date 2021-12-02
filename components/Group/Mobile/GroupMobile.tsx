@@ -24,7 +24,7 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
   );
   const dateConverted = helperFunc.convertDate(groupInfo.createdAt);
   return (
-    <div className="w-full overflow-x-hidden pt-20 pb-20">
+    <div className="w-full overflow-x-hidden pt-20 pb-20" style={{WebkitOverflowScrolling: "touch"}}>
       {/* Navbar and logout Modals all Absolute/sticky */}
       {showLogoutModal && (
         <LogoutModal setShowLogoutModal={setShowLogoutModal} />
@@ -73,7 +73,7 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
           textEng={`📋 Your group has a total of ${groupInfo.posts.length} posts.`}
         />
 
-        <div className="w-full grid grid-cols-2 gap-3 my-10 sticky top-0">
+        <div className="w-full grid grid-cols-2 gap-3 my-10 top-0">
           <button
             className={`py-3 font-bold ${
               membersOrPosts === "posts"

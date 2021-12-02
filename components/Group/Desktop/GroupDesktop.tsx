@@ -48,7 +48,7 @@ const GroupDesktop:React.FC<IGroupDesktop> = ({groupInfo, visitorInfo}) => {
                 <Text type='p' textEng={`🙌 There are ${groupInfo.users.length} members in your group.`} customStyles='mb-2'  />
                 <Text type='p' textEng={`📋 Your group has a total of ${groupInfo.posts.length} posts.`}  />
 
-                <div className='w-full grid grid-cols-2 gap-3 my-10 sticky top-0'>
+                <div className='w-full grid grid-cols-2 gap-3 my-10 top-0'>
                     <button className={`py-3 font-bold ${membersOrPosts === "posts" ? " border-b-2 border-black" : " text-gray-400"}`} onClick={() => setMembersOrPosts("posts")}>View Posts</button>
                     <button className={`py-3 font-bold ${membersOrPosts === "members" ? " border-b-2 border-black" : " text-gray-400"}`} onClick={() => setMembersOrPosts("members")}>See Members</button>
                 </div>
