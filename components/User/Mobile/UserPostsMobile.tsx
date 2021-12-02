@@ -71,8 +71,8 @@ const UserPostsMobile:React.FC<IUserPostsMobile> = ({userInfo, visitorInfo}) => 
                 animate='animate'
                 custom={0.2}
             >
-                <Text type='h1Extra' textEng={`${userInfo.firstName}'s Posts`} customStyles='mb-2' />
-                <Text type='p' textEng={`${userInfo.firstName} is currently on day ${userInfo.currentDay}/153.`} customStyles='text-gray-400 mb-10' />
+                <Text type='h1Extra' textEng={`${userInfo.firstName}'s Posts`} textKor={`감사노트 ${userInfo.firstName}`} customStyles='mb-2' />
+                <Text type='p' textEng={`${userInfo.firstName} is currently on day ${userInfo.currentDay}/153.`} textKor={`게시물 수: ${userInfo.currentDay}/153.`}  customStyles='text-gray-400 mb-10' />
 
                 {/* Post Template */}
                 <div className='grid grid-cols-12 gap-2 mb-3'>
