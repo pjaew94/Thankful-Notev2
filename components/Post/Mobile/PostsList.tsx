@@ -145,7 +145,7 @@ const PostsList: React.FC<IPostsList> = ({
           textKor={dateConverted}
           customStyles="col-span-6 text-center"
         />
-        <div className="col-span-3 h-full flex justify-center items-center">
+        <div className="col-span-3 flex justify-center items-center">
           {isPrivate ? (
             <LockClosedIcon className="h-4 w-4" />
 
@@ -203,6 +203,7 @@ const PostsList: React.FC<IPostsList> = ({
         <Text
           type="p"
           textEng={dateConverted}
+          textKor={dateConverted}
           customStyles="col-span-3 text-center"
         />
         <div className="col-span-2 h-full flex justify-center items-center">

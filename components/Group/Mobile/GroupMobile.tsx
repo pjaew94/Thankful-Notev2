@@ -58,7 +58,7 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
   }, [showPostInfoMobile.show])
 
   return (
-    <div className="w-full overflow-x-hidden pt-20 pb-20" style={{WebkitOverflowScrolling: "touch"}}>
+    <div className="w-full overflow-x-hidden pt-20 pb-20">
       {/* Navbar and logout Modals all Absolute/sticky */}
       {showLogoutModal && (
         <LogoutModal setShowLogoutModal={setShowLogoutModal} />
