@@ -36,7 +36,7 @@ const PostInfoMobile: React.FC<IPostInfoMobile> = ({
 
   return (
     <div
-      className={`flex flex-col fixed top-0 bottom-0 right-0 w-screen min-h-screen bg-gray-100 z-50 py-10 overflow-y-scroll transition-all duration-500 ease-in-out  ${
+      className={`flex flex-col fixed top-0 bottom-0 right-0 w-screen min-h-screen bg-gray-100 z-50 pt-10 pb-24 overflow-y-scroll transition-all duration-500 ease-in-out  ${
         show ? "left-0" : "left-full"
       }`}
     >

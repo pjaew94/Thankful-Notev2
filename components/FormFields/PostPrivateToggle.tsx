@@ -21,7 +21,7 @@ export const PostFormPrivateToggle: React.FC<IPostFormPrivateToggle> = ({
             onChange={setIsPrivate}
             className={`${
               isPrivate ? "bg-black" : "bg-gray-400"
-            } relative inline-flex items-center h-6 rounded-full w-11`}
+            } relative inline-flex items-center h-6 rounded-full w-11 mr-6`}
           >
             <span className="sr-only">Set Private</span>
             <span
@@ -30,6 +30,7 @@ export const PostFormPrivateToggle: React.FC<IPostFormPrivateToggle> = ({
               } inline-block w-4 h-4 transform bg-white rounded-full transition duration-500 ease-in-out`}
             />
           </Switch>
+          {isPrivate ? <Text type='h4' textEng='On' textKor='On' /> : <Text type='h4' textEng='Off' textKor='Off' />}
         </div>
         <Text
           type="p"
