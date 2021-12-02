@@ -57,8 +57,6 @@ const convertDate = (date: string) => {
   } else {
     return getMonth + " " + getDate + ", " + getYear
   }
-
-
 }
 
 export const helperFunc = {

@@ -39,12 +39,9 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
       />
 
       {/* Content */}
-      <motion.div
+      <div
         className="flex flex-col py-10 px-10"
-        variants={fadeUpQuickVariant}
-        initial="initial"
-        animate="animate"
-        custom={0.2}
+   
       >
         <Text
           type="h1"
@@ -148,11 +145,8 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
             })}
           </div>
         ) : (
-          <motion.div
+          <div
             className=""
-            variants={fadeUpQuickVariant}
-            initial="initial"
-            animate="animate"
           >
             {/* Template */}
             <div className="grid grid-cols-12 gap-2 mb-3">
@@ -189,9 +183,9 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
                 />
               );
             })}
-          </motion.div>
+          </div>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 };
