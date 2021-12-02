@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { fadeUpQuickVariant } from "../../../motion";
-import { IUserInfo } from "../../../types"
+import { IPostInfoMobileState, IUserInfo } from "../../../types"
 import LogoutModal from "../../Modals/LogoutModal";
 import NavSideMobile from "../../Nav/Mobile/NavSideMobile";
 import NavTopMobile from "../../Nav/Mobile/NavTopMobile";
+import PostInfoMobile from "../../Post/Mobile/PostInfoMobile";
 import PostsList from "../../Post/Mobile/PostsList";
 import Text from "../../Text";
 
@@ -23,6 +24,35 @@ const UserPostsMobile:React.FC<IUserPostsMobile> = ({userInfo, visitorInfo}) => 
 
     const [openSideNav, setOpenSideNav] = useState(false);
     const [showLogoutModal, setShowLogoutModal] = useState(false);
+    const [showPostInfoMobile, setShowPostInfoMobile] = useState<IPostInfoMobileState>({
+        msgId: 0,
+        author: "",
+        createdAt: "",
+        thoughtOnVerse1: "",
+        thoughtOnVerse2: "",
+        thoughtOnVerse3: "",
+        thoughtOnVerse4: "",
+        thoughtOnVerse5: "",
+        showThanks1: "",
+        showThanks2: "",
+        showThanks3: "",
+        bookEng:"",
+        bookKor: "",
+        msgEng: "",
+        msgKor: "",
+        chapAndVerse: "",
+        authorUsername: "",
+        show: false
+      })
+
+      useEffect(() => {
+        if(showPostInfoMobile.show){
+            document.body.style.overflowY = 'hidden';
+            return () =>{
+              document.body.style.overflowY = 'auto';
+            }
+        }
+      }, [showPostInfoMobile.show])
     
     return (
         <div className='w-full overflow-x-hidden pt-28 pb-20'>
@@ -31,6 +61,10 @@ const UserPostsMobile:React.FC<IUserPostsMobile> = ({userInfo, visitorInfo}) => 
             <NavTopMobile setOpenSideNav={setOpenSideNav} />
             <NavSideMobile setOpenSideNav={setOpenSideNav} openSideNav={openSideNav} setShowLogoutModal={setShowLogoutModal} currentPage="post" groupRoute={`/group/${userInfo.groupId}`} />
 
+            <PostInfoMobile
+      showPostInfoMobile={showPostInfoMobile}
+      setShowPostInfoMobile={setShowPostInfoMobile}
+      />
             <motion.div className='flex flex-col px-10'
                 variants={fadeUpQuickVariant}
                 initial='initial'
@@ -70,6 +104,7 @@ const UserPostsMobile:React.FC<IUserPostsMobile> = ({userInfo, visitorInfo}) => 
                         id={p.id}
                         chapAndVerse={p.msg.chapAndVerse}
                         visitorUsername={visitorInfo.username}
+                        setShowPostInfoMobile={setShowPostInfoMobile}
 
                     />
                 })}

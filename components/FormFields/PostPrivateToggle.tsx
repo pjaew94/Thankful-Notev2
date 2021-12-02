@@ -34,7 +34,7 @@ export const PostFormPrivateToggle: React.FC<IPostFormPrivateToggle> = ({
         </div>
         <Text
           type="p"
-          textEng="Toggling this will only allow you to see the content of the post."
+          textEng="Toggling this will allow only you to see the content of the post."
           textKor="토글하면 이 게시물은 개인만 볼수있습니다."
           customStyles="text-gray-400 w-10/12"
         />

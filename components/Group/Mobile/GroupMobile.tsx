@@ -72,7 +72,7 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
         groupRoute={`/group/${groupInfo.id}`}
       />
  <PostInfoMobile
-      showPostInfoMobile={showPostInfoMobile!}
+      showPostInfoMobile={showPostInfoMobile}
       setShowPostInfoMobile={setShowPostInfoMobile}
       />
 
@@ -201,19 +201,13 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
                 type="p"
                 textEng="Name"
                 textKor="이름"
-                customStyles="col-span-3 text-center text-gray-400"
+                customStyles="col-span-6 text-center text-gray-400"
               />
               <Text
                 type="p"
                 textEng="Joined"
                 textKor="조인 날짜"
                 customStyles="col-span-6 text-center text-gray-400"
-              />
-              <Text
-                type="p"
-                textEng="Post #"
-                textKor="게시물 수"
-                customStyles="col-span-3 text-center text-gray-400"
               />
             </div>
 

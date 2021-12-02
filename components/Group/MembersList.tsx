@@ -40,22 +40,16 @@ const MembersList: React.FC<IMembersList> = ({
         <Text
           type="p"
           textEng={`${firstName} ${lastName}`}
-          customStyles="col-span-3 text-center"
+          customStyles="col-span-6 text-center"
         />
         <Text
           type="p"
           textEng={dateConverted}
           customStyles="col-span-6 text-center"
         />
-        <Text
-          type="p"
-          textEng={(currentDay - 1).toString()}
-          textKor={(currentDay - 1).toString()}
-          customStyles="col-span-3 text-center"
-        />
       </div>
       {visitorUsername !== username && (
-        <div className="flex justify-center px-6">
+        <div className="flex px-6 justify-center">
           <Text type="p" textEng={username} customStyles="text-gray-400" />
         </div>
       )}
