@@ -19,8 +19,8 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
   const [openSideNav, setOpenSideNav] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  const [membersOrPosts, setMembersOrPosts] = useState<"posts" | "members">(
-    "posts"
+  const [membersOrPosts, setMembersOrPosts] = useState<"posts" | "members" | null>(
+    null
   );
   const dateConverted = helperFunc.convertDate(groupInfo.createdAt);
   return (
@@ -39,9 +39,12 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
       />
 
       {/* Content */}
-      <div
+      <motion.div
         className="flex flex-col py-10 px-10"
-   
+        variants={fadeUpQuickVariant}
+        initial="initial"
+        animate="animate"
+        custom={0.2}
       >
         <Text
           type="h1"
@@ -94,7 +97,7 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
         </div>
 
         {membersOrPosts === "posts" ? (
-          <div className="">
+          <div className="" style={{WebkitOverflowScrolling: "touch"}}>
             {/* Post Template */}
             <div className="grid grid-cols-12 gap-2 mb-3">
               <Text
@@ -145,8 +148,11 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
             })}
           </div>
         ) : (
-          <div
+          <motion.div
             className=""
+            variants={fadeUpQuickVariant}
+            initial="initial"
+            animate="animate"
           >
             {/* Template */}
             <div className="grid grid-cols-12 gap-2 mb-3">
@@ -183,9 +189,9 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
                 />
               );
             })}
-          </div>
+          </motion.div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };
