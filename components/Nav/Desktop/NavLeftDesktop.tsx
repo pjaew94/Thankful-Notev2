@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Dispatch, SetStateAction } from 'react'
 import LogoLink from '../../Buttons/LogoLink'
+import Toggle from '../../Language/Toggle'
 import Text from '../../Text'
 
 
@@ -15,10 +16,15 @@ const NavLeftDesktop:React.FC<INavLeftDesktop> = ({currentPage,groupRoute, setSh
 
     return (
         <div className='fixed top-0 left-0 h-full flex flex-end pr-5 py-16 border-r border-gray-200 w-3/12 xl:pr-10'>
+            
             <div className='flex flex-col h-full ml-auto'>
                 <div className='w-28'>
                         <LogoLink yellow={true} />  
 
+                </div>
+                <div className='mt-16'>
+
+                <Toggle />
                 </div>
   
             <div className='flex flex-col mt-16'>

@@ -44,13 +44,14 @@ const ErrorModal: React.FC<IErrorModal> = ({
         <Text
           type="p"
           textEng={showErrorModal?.eng}
-          textKor={showErrorModal?.eng}
+          textKor={showErrorModal?.kor}
           customStyles="mb-10 text-center"
         />
         <Button
           onClick={() => setShowErrorModal(null)}
           primary={true}
           textEng="Try Again"
+          textKor='닫기'
         />
       </motion.div>
     </div>

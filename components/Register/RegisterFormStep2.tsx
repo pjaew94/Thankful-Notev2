@@ -15,7 +15,8 @@ import LoginErrorModal from "../Modals/ErrorModals";
 import axios from "axios";
 import { API_URL } from "../../helpers/url";
 import Link from "next/link";
-import useDeviceHeight from "../../hooks/useDeviceHeight";
+import { languageState } from "../../pages/_app";
+import {useRecoilState} from 'recoil'
 
 interface IRegisterFormStep2 {
   setRegisterStep: Dispatch<SetStateAction<1 | 2 | 3>>;
@@ -28,7 +29,8 @@ const RegisterFormStep2: React.FC<IRegisterFormStep2> = ({
   setData,
   data,
 }) => {
-  const deviceHeight = useDeviceHeight();
+  const [language, setLanguage] = useRecoilState(languageState)
+
   const [showErrorModal, setShowErrorModal] = useState<IErrorState | null>(
     null
   );
@@ -82,37 +84,39 @@ const RegisterFormStep2: React.FC<IRegisterFormStep2> = ({
       initial="initial"
       animate="animate"
     >
-      <Text type="h3" textEng="Getting spicy." customStyles="mb-10" />
+      <Text type="h3" textEng="Getting spicy." textKor='입증' customStyles="mb-10" />
       <RegisterStep2FormField
         field="email"
-        placeholder="Email"
+        placeholder={language ? "이메일":"Email"}
         errors={errors?.email && errors.email.message}
-        errorMsg="Please enter your email."
+        errorMsg={language ? "이메일을 포함해주세요." :"Please enter your email."}
         register={register}
         customStyles="mb-5"
       />
       <RegisterStep2FormField
         field="username"
-        placeholder="Username"
+        placeholder= {language ? "유저네임":"Username"}
         errors={errors?.username && errors.username.message}
-        errorMsg="Please select a unique username."
+        errorMsg={language ? "유저네임을 포함해주세요.":"Please select a unique username."}
+
         register={register}
         customStyles="mb-5"
       />
       <RegisterStep2FormField
         field="password"
-        placeholder="Password"
+        placeholder={language ? "비밀번호":"Password"}
         errors={errors?.password && errors.password.message}
-        errorMsg="Please select a password."
+        errorMsg={language ? "비밀번호를 선택하세요.": "Please select a password."}
+  
         register={register}
         customStyles="mb-5"
         inputType="password"
       />
       <RegisterStep2FormField
         field="repeatPassword"
-        placeholder="Repeat Password"
+        placeholder={language ? "비밀번호 반복":"Repeat Password"}
         errors={errors?.repeatPassword && errors.repeatPassword.message}
-        errorMsg="Make sure the two passwords are matching."
+        errorMsg={language ? "두 비밀번호가 일치하는지 확인해주세요.": "Make sure the two passwords are matching."}
         register={register}
         customStyles="mb-5"
         inputType="password"
@@ -123,11 +127,12 @@ const RegisterFormStep2: React.FC<IRegisterFormStep2> = ({
           <Text
             type="p"
             textEng="Already a member?"
+            textKor="이미 멤버이신가요?"
             customStyles="mr-2 text-black"
           />
           <Link href="/login">
             <a className="lg:hover:text-gray-400">
-              <Text type="p" textEng="Sign In" customStyles="font-bold" />
+              <Text type="p" textEng="Sign In" textKor='로그인' customStyles="font-bold" />
             </a>
           </Link>
         </div>
@@ -135,10 +140,11 @@ const RegisterFormStep2: React.FC<IRegisterFormStep2> = ({
           <Button
             primary={true}
             textEng="Back"
+            textKor='뒤로'
             formSubmit={false}
             onClick={() => setRegisterStep(1)}
           />
-          <Button primary={false} textEng="Next" formSubmit={true} />
+          <Button primary={false} textEng="Next" textKor='다음' formSubmit={true} />
         </div>
       </div>
 

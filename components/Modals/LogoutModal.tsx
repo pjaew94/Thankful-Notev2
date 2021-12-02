@@ -53,6 +53,7 @@ const LogoutModal: React.FC<ILogoutModal> = ({ setShowLogoutModal }) => {
         <Text
           type="p"
           textEng='Are you sure you want to head out?'
+          textKor='로그아웃 하실겁니까?'
           customStyles="mb-10 text-center"
         />
         <div className='w-full grid grid-cols-2 gap-3'>
@@ -60,11 +61,13 @@ const LogoutModal: React.FC<ILogoutModal> = ({ setShowLogoutModal }) => {
           onClick={() => setShowLogoutModal(false)}
           primary={false}
           textEng="Stay"
+          textKor="아니요"
         />
         <Button
           onClick={() => logOut()}
           primary={true}
           textEng="Leave"
+          textKor="네"
         />
 
 

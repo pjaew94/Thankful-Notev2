@@ -21,7 +21,7 @@ const RegisterGroupToggle: React.FC<IRegisterGroupToggle> = ({
         onClick={() => setJoinOrCreateGroup("join")}
         whileTap={{scale: 0.95}}
       >
-        <Text type="label" textEng="Join" />
+        <Text type="label" textEng="Join" textKor='가입하기' />
       </motion.button>
       <motion.button
       type="button"
@@ -31,7 +31,7 @@ const RegisterGroupToggle: React.FC<IRegisterGroupToggle> = ({
         onClick={() => setJoinOrCreateGroup("create")}
         whileTap={{scale: 0.95}}
       >
-        <Text type="label" textEng="Create" />
+        <Text type="label" textEng="Create" textKor='만들기' />
       </motion.button>
     </motion.div>
   );

@@ -139,11 +139,13 @@ const PostsList: React.FC<IPostsList> = ({
         <Text
           type="p"
           textEng={msgId.toString()}
+          textKor={msgId.toString()}
           customStyles="col-span-3 text-center"
         />
         <Text
           type="p"
           textEng={dateConverted}
+          textKor={dateConverted}
           customStyles="col-span-6 text-center"
         />
         <div className="col-span-3 h-full flex justify-center items-center">
@@ -160,6 +162,9 @@ const PostsList: React.FC<IPostsList> = ({
         <Text
           type="p"
           textEng={`By: ${
+            visitorUsername === authorUsername ? "You" : authorUsername
+          }`}
+          textKor={`By: ${
             visitorUsername === authorUsername ? "You" : authorUsername
           }`}
           customStyles="text-gray-400"

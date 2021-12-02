@@ -101,16 +101,19 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
         <Text
           type="p"
           textEng={`❤️ Your group was created on ${dateConverted}.`}
+          textKor={`❤️ 그룹 만들어진 날짜: ${dateConverted}.`}
           customStyles="mb-2"
         />
         <Text
           type="p"
           textEng={`🙌 There are ${groupInfo.users.length} members in your group.`}
+          textKor={`🙌 그룹 멤버들 수: ${groupInfo.users.length}`}
           customStyles="mb-2"
         />
         <Text
           type="p"
           textEng={`📋 Your group has a total of ${groupInfo.posts.length} posts.`}
+          textKor={`📋 그룹 포스트 수: ${groupInfo.posts.length}`}
         />
 
         <div className="w-full grid grid-cols-2 gap-3 my-10 top-0">
@@ -122,7 +125,7 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
             }`}
             onClick={() => setMembersOrPosts("posts")}
           >
-            View Posts
+            <Text type='p' textEng='View Posts' textKor='포스트 보기' />
           </button>
           <button
             className={`py-3 font-bold ${
@@ -132,7 +135,7 @@ const GroupMobile: React.FC<IGroupMobile> = ({ groupInfo, visitorInfo }) => {
             }`}
             onClick={() => setMembersOrPosts("members")}
           >
-            See Members
+            <Text type='p' textEng='See Members' textKor='멤버들 보기' />
           </button>
         </div>
 

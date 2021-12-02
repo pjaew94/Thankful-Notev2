@@ -8,7 +8,8 @@ import { IRegisterData, IRegisterStep1Form } from "./../../types/index";
 import { motion } from "framer-motion";
 import { fadeUpQuickVariant } from "./../../motion/index";
 import Link from "next/link";
-import useDeviceHeight from "../../hooks/useDeviceHeight";
+import { languageState } from "../../pages/_app";
+import {useRecoilState} from 'recoil'
 
 interface IRegisterFormStep1 {
   setRegisterStep: Dispatch<SetStateAction<1 | 2 | 3>>;
@@ -21,8 +22,10 @@ const RegisterFormStep1: React.FC<IRegisterFormStep1> = ({
   setData,
   data,
 }) => {
-  const deviceHeight = useDeviceHeight();
   const [isLoading, setIsLoading] = useState(false);
+  
+
+  const [language, setLanguage] = useRecoilState(languageState)
 
   const {
     register,
@@ -56,28 +59,29 @@ const RegisterFormStep1: React.FC<IRegisterFormStep1> = ({
       animate="animate"
     >
 
-      <Text type="h3" textEng="Let's start easy." customStyles="mb-10" />
+      <Text type="h3" textEng="Let's start easy." textKor="기본 정보." customStyles="mb-10" />
       <RegisterStep1FormField
         field="firstName"
-        placeholder="First Name"
+        placeholder={language ? "이름" : "First Name"}
         errors={errors?.firstName && errors.firstName.message}
-        errorMsg="Please include your first name."
+        errorMsg={language ? "이름을 포함해주세요." : "Please include your first name."}
+    
         register={register}
         customStyles="mb-5"
       />
       <RegisterStep1FormField
         field="lastName"
-        placeholder="Last Name"
+        placeholder={language? "성":"Last Name"}
         errors={errors?.lastName && errors.lastName.message}
-        errorMsg="Please include your last name."
+        errorMsg={language ? "성을 포함해주세요.": "Please include your last name."}
         register={register}
         customStyles="mb-5"
       />
       <RegisterStep1FormField
         field="age"
-        placeholder="Age"
+        placeholder={language? "나이" : "Age"}
         errors={errors?.age && errors.age.message}
-        errorMsg="Please include your age."
+        errorMsg={language? "나이를 포함해주세요." :"Please include your age."}
         register={register}
         customStyles="mb-5"
         inputType="number"
@@ -88,15 +92,16 @@ const RegisterFormStep1: React.FC<IRegisterFormStep1> = ({
           <Text
             type="p"
             textEng="Already a member?"
+            textKor="이미 멤버이신가요?"
             customStyles="mr-2 text-black"
           />
           <Link href="/login">
             <a className="lg:hover:text-gray-400">
-              <Text type="p" textEng="Sign In" customStyles="font-bold" />
+              <Text type="p" textEng="Sign In" textKor='로그인' customStyles="font-bold" />
             </a>
           </Link>
         </div>
-        <Button primary={false} textEng="Next" formSubmit={true} />
+        <Button primary={false} textEng="Next" textKor='다음'formSubmit={true} />
       </div>
 
       {isLoading && <Loading />}

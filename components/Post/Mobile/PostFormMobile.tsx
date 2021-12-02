@@ -80,8 +80,8 @@ const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage, userId, grou
         animate='animate'
         custom='0.2'
       >
-        <Text type="h1Extra" textEng={"Day " + id} customStyles="mb-10" />
-        <Text type="h4" textEng="Today's Message" customStyles="mb-5" />
+        <Text type="h1Extra" textEng={"Day " + id} textKor={id+"일차"} customStyles="mb-10" />
+        <Text type="h4" textEng="Today's Message" textKor='오늘의 말씀' customStyles="mb-5" />
         <Text
           type="p"
           textEng={'"' + msgEng + '"'}
@@ -113,7 +113,7 @@ const PostFormMobile: React.FC<IPostFormMobile> = ({ todaysMessage, userId, grou
             type="p"
             textEng="What were 5 things you were thankful for today?"
             textKor="오늘은 다섯가지 감사한게 무엇이있었습니까?"
-            customStyles="text-gray-400 w-10/12  mt-2"
+            customStyles="text-gray-400 w-11/12  mt-2"
           />
           {errors.thoughtOnVerse1 ||
             errors.thoughtOnVerse2 ||

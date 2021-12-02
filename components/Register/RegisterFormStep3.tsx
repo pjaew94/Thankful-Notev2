@@ -18,7 +18,8 @@ import RegisterGroupToggle from "./IRegisterGroupToggle";
 import RegisterStep3FormField from "../FormFields/RegisterStep3FormField";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
-import useDeviceHeight from "../../hooks/useDeviceHeight";
+import { languageState } from "../../pages/_app";
+import {useRecoilState} from 'recoil'
 
 interface IRegisterFormStep3 {
   setRegisterStep: Dispatch<SetStateAction<1 | 2 | 3>>;
@@ -31,7 +32,8 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
   setData,
   data,
 }) => {
-  const deviceHeight = useDeviceHeight();
+  
+  const [language, setLanguage] = useRecoilState(languageState)
   const router = useRouter();
   const [showErrorModal, setShowErrorModal] = useState<IErrorState | null>(
     null
@@ -115,30 +117,32 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
         <Text
           type="p"
           textEng="Joining a group helps keep each other accountable to be sure to give thanks everyday!"
+          textKor="그룹에 가입하면 서로에게 매일 감사할 수 있는 책임을 지는 데 도움이 됩니다!"
           customStyles="mb-5 text-gray-400"
         />
       ) : (
         <Text
           type="p"
           textEng="Create your own group to start a community! I mean... someone has to start it."
+          textKor="세로운 거뮤니티를 시작하시기를 원하십니까?"
           customStyles="mb-5 text-gray-400"
         />
       )}
 
       <RegisterStep3FormField
         field="finder"
-        placeholder="Unique Group ID"
+        placeholder={language ? "고유한 그룹 ID":"Unique Group ID"}
         errors={errors?.finder && errors.finder.message}
-        errorMsg="Unique group ID cannot be blank. This is required for other people to join your group!"
+        errorMsg={language ? "고유한 그룹 ID는 비워둘 수 없습니다. 이것은 다른 사람들이 당신의 그룹에 가입하는 데 필요합니다!":"Unique group ID cannot be blank. This is required for other people to join your group!"}
         register={register}
         customStyles="mb-5"
       />
       {joinOrCreateGroup === "create" && (
         <RegisterStep3FormField
           field="name"
-          placeholder="Group Name"
+          placeholder={language ? "그룹 이름":"Group Name"}
           errors={errors?.name && errors.name.message}
-          errorMsg="Please select a name for your group!"
+          errorMsg={language ? "그룹 이름을 선택하세요!":"Please select a name for your group!"}
           register={register}
           customStyles="mb-5"
         />
@@ -149,11 +153,12 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
           <Text
             type="p"
             textEng="Already a member?"
+            textKor="이미 멤버이신가요?"
             customStyles="mr-2 text-black"
           />
           <Link href="/login">
             <a className="lg:hover:text-gray-400">
-              <Text type="p" textEng="Sign In" customStyles="font-bold" />
+              <Text type="p" textEng="Sign In" textKor='로그인' customStyles="font-bold" />
             </a>
           </Link>
         </div>
@@ -161,10 +166,11 @@ const RegisterFormStep3: React.FC<IRegisterFormStep3> = ({
           <Button
             primary={true}
             textEng="Back"
+            textKor='뒤로'
             formSubmit={false}
             onClick={() => setRegisterStep(2)}
           />
-          <Button primary={false} textEng="Join!" formSubmit={true} />
+          <Button primary={false} textEng="Join!" textKor='가입!' formSubmit={true} />
         </div>
       </div>
 

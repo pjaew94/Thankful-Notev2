@@ -9,6 +9,7 @@ import Button from "../components/Buttons/Button";
 import RegisterForm from "../components/Register/RegisterForm";
 import { GetServerSideProps } from "next";
 import AlreadyAuthenticated from "../components/HOC/AlreadyAuthenticated";
+import Toggle from "../components/Language/Toggle";
 
 
 export const getServerSideProps: GetServerSideProps = AlreadyAuthenticated(
@@ -35,9 +36,12 @@ const RegisterMobile: React.FC = () => {
         <div className="absolute top-10 left-10">
           <LogoLink />
         </div>
+        <div className="absolute top-12 right-10">
+          <Toggle />
+        </div>
 
         <motion.div
-          className="flex flex-col  items-center px-10 pt-16 pb-24 w-full h-full md:p-48  lg:h-full lg:w-[40%] lg:px-0 lg:pt-16 lg:pb-24 xl:w-[30%]"
+          className="flex flex-col  items-center px-10 pt-24 pb-24 w-full h-full md:p-48  lg:h-full lg:w-[40%] lg:px-0 lg:pt-16 lg:pb-24 xl:w-[30%]"
           variants={fadeUpQuickVariant}
           initial="initial"
           animate="animate"
@@ -58,12 +62,13 @@ const RegisterMobile: React.FC = () => {
 
           {/* Welcome Text */}
           <div className="flex flex-col items-center mt-5 md:mb-16 lg:mb-6">
-            <Text type="h1" textEng="Glad You're" />
-            <Text type="h1" textEng="Joining us!" />
+            <Text type="h1" textEng="Glad You're" textKor='감사노트에 오신' />
+            <Text type="h1" textEng="Joining us!" textKor='것을 환영합니다!' />
 
             <Text
               type="p"
               textEng="Thankful notes helps all of us to take a step back and recognize the good in our lives. Ready to get started?"
+              textKor='감사노트는 우리 모두가 한 발 물러서서 우리 삶의 좋은 점을 인식하는 데 도움이 됩니다. 시작해보실까요?'
               customStyles="text-center mt-5 lg:w-9/12"
             />
           </div>
@@ -73,11 +78,12 @@ const RegisterMobile: React.FC = () => {
               <Text
                 type="p"
                 textEng="Already a member?"
+                textKor="이미 멤버이신가요?"
                 customStyles="mr-2 text-black"
               />
               <Link href="/login">
                 <a className="lg:hover:text-gray-400">
-                  <Text type="p" textEng="Sign In" customStyles="font-bold" />
+                  <Text type="p" textEng="Sign In" textKor='로그인' customStyles="font-bold" />
                 </a>
               </Link>
             </div>
@@ -85,6 +91,7 @@ const RegisterMobile: React.FC = () => {
               onClick={() => setShowRegisterMobileForm(true)}
               primary={true}
               textEng="Start!"
+              textKor="시작!"
               formSubmit={false}
               customStyles="mt-3"
             />

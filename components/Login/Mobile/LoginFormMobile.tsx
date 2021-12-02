@@ -13,7 +13,9 @@ import { useRouter } from "next/dist/client/router";
 import Loading from "./../../Loading/index";
 import { IErrorState } from "./../../../types/index";
 import { API_URL } from "./../../../helpers/url";
-import useDeviceHeight from "../../../hooks/useDeviceHeight";
+import Toggle from "../../Language/Toggle";
+import { languageState } from "../../../pages/_app";
+import {useRecoilState} from 'recoil'
 
 interface ILoginFormMobile {
   showLoginForm: boolean;
@@ -25,6 +27,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
   showLoginForm,
   setShowLoginForm,
 }) => {
+  const [language, setLanguage] = useRecoilState(languageState)
   const router = useRouter();
 
 
@@ -72,14 +75,17 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
         showLoginForm ? "left-0" : "left-full"
       }`}
     >
-       <div className="md:absolute left-10 top-10">
+
+       <div className="flex items-center justify-between md:absolute left-10 top-10">
         <motion.button
           onClick={() => setShowLoginForm(false)}
           whileTap={{ scale: 0.95 }}
         >
           <ReplyIcon className="h-7 w-7" />
         </motion.button>
+        <Toggle />
       </div>
+
       
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -88,27 +94,29 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
         <Text
           type="h1"
           textEng="Let's sign you in."
+          textKor="로그인"
           customStyles="mt-10 mb-2"
         />
-        <Text type="h3" textEng="Welcome back." customStyles="text-gray-400" />
+        <Text type="h3" textEng="Welcome back." textKor='다시 오신 것을' customStyles="text-gray-400" />
         <Text
           type="h3"
           textEng="You've been missed!"
+          textKor=' 환영합니다.'
           customStyles="text-gray-400 mb-20"
         />
         <LoginFormField
           field="email"
-          placeholder="Email"
+          placeholder={language ? "이메일":"Email"}
           errors={errors?.email && errors.email.message}
-          errorMsg="Please include your email."
+          errorMsg={language ? "이메일을 포함하세요.":"Please include your email."}
           register={register}
           customStyles="mb-5"
         />
         <LoginFormField
           field="password"
-          placeholder="Password"
+          placeholder={language ? "비밀번호" :"Password"}
           errors={errors?.password && errors.password.message}
-          errorMsg="Please include your password."
+          errorMsg={language ? "비밀번호를 입력하세요.":"Please include your password."}
           register={register}
           inputType='password'
         />
@@ -118,17 +126,19 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
             <Text
               type="p"
               textEng="Don't have an account?"
+              textKor='아직 멤버가 아닌가요?'
               customStyles="mr-2 text-gray-400"
             />
             <Link href="/register">
               <a>
-                <Text type="p" textEng="Register" customStyles="font-bold" />
+                <Text type="p" textEng="Register" textKor='등록하기' customStyles="font-bold" />
               </a>
             </Link>
           </div>
           <Button
             primary={true}
             textEng="Sign In"
+            textKor='로그인'
             formSubmit={true}
             customStyles="mt-3"
             disabled={isLoading}

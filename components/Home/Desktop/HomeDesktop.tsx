@@ -43,21 +43,25 @@ const HomeDesktop: React.FC<IHomeDesktop> = ({
                 <Text
                   type="h1Extra"
                   textEng={"Hey, " + homeInfo.firstName + "!"}
+                  textKor={`안녕하세요 ${homeInfo.username}님!`}
                   customStyles="mb-10"
                 />
                 <Text
                   type="p"
                   textEng="You've already posted today!"
+                  textKor="오늘 이미 포스트하셨습니다!"
                   customStyles="text-gray-500"
                 />
                 <Text
                   type="p"
                   textEng="Want to check out how your group was thankful today?"
+                  textKor="오늘 그룹이 어떻게 감사했는지 볼까요?"
                   customStyles="mb-16 text-gray-500"
                 />
                 <CustomLink
                   route={`/group/${homeInfo.groupId}`}
                   textEng="Group"
+                  textKor="그룹"
                   primary={true}
                 />
               </div>
@@ -66,11 +70,13 @@ const HomeDesktop: React.FC<IHomeDesktop> = ({
                 <Text
                   type="h1Extra"
                   textEng={"Welcome back, " + homeInfo.firstName + "!"}
+                  textKor={`안녕하세요 ${homeInfo.username}님!`}
                   customStyles="mb-10"
                 />
                 <Text
                   type="p"
                   textEng="It looks like you haven't posted today. Let's not forget to take our daily breather and give thanks."
+                  textKor="오늘 포스트를 아직 올리지 않으셧습니다. 하루마다 감사하는 것을 잊지 맙시다."
                   customStyles="text-gray-500"
                 />
                 <Text
@@ -86,6 +92,7 @@ const HomeDesktop: React.FC<IHomeDesktop> = ({
                 <CustomLink
                   route="/post/form"
                   textEng="Get Started!"
+                  textKor="시작하기"
                   primary={false}
                 />
               </div>}
@@ -103,7 +110,7 @@ const HomeDesktop: React.FC<IHomeDesktop> = ({
             <Text
               type="h1"
               textEng="Statistic"
-              textKor=""
+              textKor="통계량"
               customStyles="mb-2"
             />
             <Text
@@ -148,6 +155,7 @@ const HomeDesktop: React.FC<IHomeDesktop> = ({
             <CustomLink
               route={`/user/${homeInfo.username}/posts`}
               textEng="My Posts"
+              textKor="나의 게시물"
               primary={false}
             />
           </motion.div>

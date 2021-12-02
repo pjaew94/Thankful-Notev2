@@ -21,7 +21,7 @@ export default async function handler(
         
             // Check password
             const checkPassword = await usersRepo.validatePassword(password)
-            if(!checkPassword) return res.status(400).json({eng: "Password must contain one of each of the following: uppercase letter, lowercase letter, number, special character.", kor: ""})
+            if(!checkPassword) return res.status(400).json({eng: "Password must contain one of each of the following: uppercase letter, lowercase letter, number, special character.", kor: "비밀번호는 대문자, 소문자, 숫자, 특수문자 중 하나식 포함해야 합니다."})
             if(password !== repeatPassword) return res.status(400).json({eng: "Your passwords must be matching.", kor: "비밀번호가 일치해야 합니다."})
 
             return res.status(200).send({success: true});

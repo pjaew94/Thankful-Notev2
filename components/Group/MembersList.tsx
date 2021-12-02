@@ -40,17 +40,19 @@ const MembersList: React.FC<IMembersList> = ({
         <Text
           type="p"
           textEng={`${firstName} ${lastName}`}
+          textKor={`${firstName} ${lastName}`}
           customStyles="col-span-6 text-center"
         />
         <Text
           type="p"
           textEng={dateConverted}
+          textKor={dateConverted}
           customStyles="col-span-6 text-center"
         />
       </div>
       {visitorUsername !== username && (
         <div className="flex px-6 justify-center">
-          <Text type="p" textEng={username} customStyles="text-gray-400" />
+          <Text type="p" textEng={username}  textKor={username} customStyles="text-gray-400" />
         </div>
       )}
     </motion.div>
@@ -67,16 +69,19 @@ const MembersList: React.FC<IMembersList> = ({
         <Text
           type="p"
           textEng={`${firstName} ${lastName}`}
+          textKor={`${firstName} ${lastName}`}
           customStyles="col-span-3 text-center"
         />
         <Text
           type="p"
           textEng={username}
+          textKor={username}
           customStyles="col-span-3 text-center"
         />
         <Text
           type="p"
           textEng={dateConverted}
+          textKor={dateConverted}
           customStyles="col-span-3 text-center"
         />
         <Text
