@@ -40,11 +40,24 @@ const convertDate = (date: string) => {
     10: 'Nov',
     11: 'Dec'
   }
+  const now = new Date();
+  const nowDate = now.getDate()
+  const nowYear = now.getFullYear()
+  const nowMonth = now.getMonth()
+
+  
+
+
   const getDate = toBeConverted.getDate()
   const getYear = toBeConverted.getFullYear()
   const getMonth = dateMap[toBeConverted.getMonth()]
 
-  return getMonth + " " + getDate + ", " + getYear
+  if(nowDate + nowMonth + nowYear === getDate + toBeConverted.getMonth() + getYear) {
+    return "Today"
+  } else {
+    return getMonth + " " + getDate + ", " + getYear
+  }
+
 
 }
 
