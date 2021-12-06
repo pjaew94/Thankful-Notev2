@@ -27,7 +27,6 @@ const Text:React.FC<IText> = ({type, textEng, textKor, customStyles}) => {
         label: 'font-sans text-xl xl:text-2xl',
         button: 'font-sans text-2xl',
         error: 'text-xs text-red-400',
-        
       }
 
 

@@ -1,6 +1,8 @@
+import axios from "axios";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { helperFunc } from "../../../helpers/helperFunc";
+import { API_URL } from "../../../helpers/url";
 import { fadeUpQuickVariant } from "../../../motion";
 import { IGroupInfo, IHomeInfo, IUserInfo } from "../../../types";
 import CustomLink from "../../Buttons/CustomLink";
@@ -19,6 +21,8 @@ const HomeDesktop: React.FC<IHomeDesktop> = ({
     const [showLogoutModal, setShowLogoutModal] = useState(false);
   let groupDateCreated = helperFunc.convertDate(homeInfo.group.createdAt);
   const havePostedToday = helperFunc.checkToday(homeInfo.updatedAt)
+
+
 
   return (
     <div className=" flex w-screen  min-h-screen">

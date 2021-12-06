@@ -10,9 +10,6 @@
     @apply bg-gray-100 text-black;
     padding: 0;
     margin: 0;
-    position: relative;
-    overflow-x: hidden;
-    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     
   }

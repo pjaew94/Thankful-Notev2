@@ -20,48 +20,47 @@ const createMessageBatch = async() => {
             
                 {
                   msgEng:
-                    "Rejoice always, pray without ceasing, give thanks in all circumstances; for this is the will of God in Christ Jesus for you.",
+                    "I will bless the Lord at all times: his praise shall continually be in my mouth.",
                   msgKor:
-                    "항상 기뻐하라 쉬지 말고 기도하라 범사에 감사하라 이것이 그리스도 예수 안에서 너희를 향하신 하나님의 뜻이니라",
-                  bookEng: "1 Thessalonians",
-                  bookKor: "살전",
-                  chapAndVerse: "5:16-18",
+                    "내가 여호와를 항상 송축함이여 내 입술로 항상 주를 찬양하리이다.",
+                  bookEng: "Psalm",
+                  bookKor: "시편",
+                  chapAndVerse: "34:1",
                 },
                 {
                   msgEng:
-                    "For everything God created is good, and nothing is to be rejected if it is received with thanksgiving, because it is consecrated by the word of God and prayer.",
+                    "We are not grateful for the abundance of things, but because we are able to be grateful in the midst of difficulties.",
                   msgKor:
-                    "하나님께서 지으신 모든 것이 선하매 감사함으로 받으면 버릴 것이 없나니 하나님의 말씀과 기도로 거룩하여짐이라",
-                  bookEng: "1 Timothy",
-                  bookKor: "딤전",
-                  chapAndVerse: "4:4,5",
-                },
-                {
-                  msgEng:
-                    "When everything is falling down and when my heart is filled with resentment, force yourself to be thankful. The thanks you give today will give you strength tomorrow.",
-                  msgKor:
-                    "환경이 답답하고 감사가 나오지 않고 원망과 불평이 나올 때 당겨서 감사해보라. 오늘 드린 감사가 내일의 삶에 능력이 될 것이다",
+                    "객관적으로 풍요로운 것이 많아서 감사하는 것이 아니라, 어려운 가운데서도 감사를 선택했기 때문에 감사할 수 있는 것이다.",
                   bookEng: null,
                   bookKor: null,
                   chapAndVerse: null,
                 },
                 {
                   msgEng:
-                    "Gratitude is training. Gratitude is what is learned through many trials, many pains, and constantly falling and getting back up.",
-                  msgKor:
-                    "감사는 훈련이다. 수많은 연단을 거치고 수많은 아픔을 거치고 넘어지고 깨지면서 습득되는 것이 감사이다.",
-                  bookEng: null,
-                  bookKor: null,
-                  chapAndVerse: null,
+                    " I always thank my God for you because of his grace given you in Christ Jesus.",
+                  msgKor: "그리스도 예수 안에서 너희에게 주신 하나님의 은혜로 말미암아 내가 너희를 위하여 항상 하나님께 감사하노니.",
+                  bookEng: "1 Corinthians",
+                  bookKor: "고린도전서",
+                  chapAndVerse: "4:1",
                 },
                 {
                   msgEng:
-                    "We always thank God, the Father of our Lord Jesus Christ, when we pray for you.",
+                    "We praise you, God, we praise you, for your Name is near; people tell of your wonderful deeds.",
                   msgKor:
-                    "우리가 너희를 위하여 기도할 때마다 하나님 곧 우리 주 예수 그리스도의 아버지께 감사하노라",
-                  bookEng: "Colossians",
-                  bookKor: "골",
-                  chapAndVerse: "1:3",
+                    "하나님이여 우리가 주께 감사하고 감사함은 주의 이름이 1)가까움이라 사람들이 주의 기이한 일들을 전파하나이다.",
+                  bookEng: "Psalm",
+                  bookKor: "시편",
+                  chapAndVerse: "75:1",
+                },
+                {
+                  msgEng:
+                    "Do not let your emotions control you. You have to struggle and fight. Don't leave yourself to your instincts. Gratitude is earned through training.",
+                  msgKor:
+                    "감정을 방치하면 안 된다. 몸부림치며 싸워야 한다. 내 본능에 맡기면 안 된다. 감사는 훈련을 통해서 얻어지기 때문이다.",
+                    bookEng: null,
+                    bookKor: null,
+                    chapAndVerse: null,
                 },
               
         ]
