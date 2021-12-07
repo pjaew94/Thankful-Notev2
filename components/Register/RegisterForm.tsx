@@ -45,13 +45,14 @@ const RegisterForm: React.FC<IRegisterForm> = ({
     >
       {}
       {responsive === "sm" || responsive === "md" ? (
-        <div className="flex w-full items-center justify-between md:absolute md:left-10 md:top-10">
+        <div className="flex w-full items-center justify-between md:absolute md:left-0 md:top-10 md:px-10">
           <motion.button
             onClick={() => setShowRegisterMobileForm(false)}
             whileTap={{ scale: 0.95 }}
           >
             <ReplyIcon className="h-7 w-7" />
           </motion.button>
+
             <Toggle />
         </div>
       ) : <div className='absolute left-10 top-16'>

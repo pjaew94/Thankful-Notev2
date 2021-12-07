@@ -76,7 +76,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
       }`}
     >
 
-       <div className="flex items-center justify-between md:absolute left-10 top-10">
+       <div className="flex items-center justify-between md:absolute left-0 top-10 md:px-10  w-full">
         <motion.button
           onClick={() => setShowLoginForm(false)}
           whileTap={{ scale: 0.95 }}
