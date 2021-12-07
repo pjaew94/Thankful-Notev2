@@ -7,7 +7,7 @@
 @layer base {
   html,
   body {
-    @apply bg-gray-100 text-black;
+    @apply text-black;
     padding: 0;
     margin: 0;
     -webkit-overflow-scrolling: touch;
