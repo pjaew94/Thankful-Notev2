@@ -39,7 +39,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    setValue,
   } = useForm<ILoginForm>();
 
   const onSubmit = async (data: ILoginForm) => {
@@ -63,7 +63,7 @@ const LoginFormMobile: React.FC<ILoginFormMobile> = ({
         router.push('/')
     } catch (err: any) {
       setShowErrorModal(err.response.data);
-      reset();
+      setValue("password", "")
     }
     setIsLoading(false);
   };

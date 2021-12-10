@@ -24,7 +24,7 @@ const RegisterMobile: React.FC = () => {
   const [showRegisterMobileForm, setShowRegisterMobileForm] = useState(false);
 
   return (
-    <div className="w-screen h-screen relative overflow-hidden">
+    <div className="w-screen h-screen relative overflow-x-hidden">
       <div
         className={`flex relative h-[812px] md:h-full md:min-h-[768px]  pb-10 overflow-x-hidden items-center justify-center xl:h-full xl:pb-0 w-screen bg-sunnyYellow "`}
       >

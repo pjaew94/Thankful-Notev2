@@ -16,7 +16,7 @@ const ErrorModal: React.FC<IErrorModal> = ({
   showErrorModal,
 }) => {
   return (
-    <div className="flex justify-center items-center absolute right-0 top-0 w-screen h-screen z-50">
+    <div className="flex justify-center items-center fixed right-0 top-0 w-screen h-screen z-50">
       {/* Backdrop */}
       <div
         className="h-full w-full fixed bg-black bg-opacity-80 "

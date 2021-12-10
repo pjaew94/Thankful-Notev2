@@ -64,9 +64,9 @@ const RegisterFormStep2: React.FC<IRegisterFormStep2> = ({
         JSON.stringify(formData),
         config
       );
-
+        const configEmail = email.toLowerCase().trim()
       if (res.data.success === true) {
-        setData({ ...data, email, username, password, repeatPassword });
+        setData({ ...data, email: configEmail, username, password, repeatPassword });
         setRegisterStep(3);
       }
     } catch (err: any) {
