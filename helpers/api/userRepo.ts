@@ -17,7 +17,7 @@ const checkUsername = async(username: string) => {
 }
 
 const checkEmail = async (email: string) => {
-    const configEmail = email.toLowerCase().trim()
+    const configEmail = email.trim()
 
     const user = await prisma.user.findUnique({
         where: {
@@ -32,7 +32,7 @@ const checkEmail = async (email: string) => {
 }
 
 const getPassword = async (email: string): Promise<string> => {
-    const configEmail = email.toLowerCase().trim()
+    const configEmail = email.trim()
     const user = await prisma.user.findUnique({
         where: {
             email: configEmail
@@ -49,7 +49,7 @@ const getPassword = async (email: string): Promise<string> => {
 }
 
 const getId = async(email: string): Promise<number | null> => {
-    const configEmail = email.toLowerCase().trim()
+    const configEmail = email.trim()
     const user = await prisma.user.findUnique({
         where: {
             email: configEmail
@@ -68,7 +68,7 @@ const getId = async(email: string): Promise<number | null> => {
 
 const validateEmail = async(email: string) => {
     const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return regexp.test(email.toLowerCase().trim());
+    return regexp.test(email.trim());
 }
 
 
